@@ -58,6 +58,26 @@ public:
         delete[] outputAmplitudes;
     }
 
+    void setNumPeaks(int n)
+    {
+        // free all previous allocated memory
+        delete [] output[0];
+        delete [] output[1];
+        delete [] output;
+        
+        // restrict the number of peaks to find to n
+        maxNumPeaks = n;
+
+        // allocate memory for output array
+        // output[0] is an array of frequencies, indexed by peak number
+        // output[1] is an array of amplitudes, indexed by peak number
+        // peaks are always stored in order of increasing frequency
+        // if there are fewer than maxNumPeaks peaks, the remaining elements are padded with zeros
+        output = new float*[2];
+        output[0] = new float[maxNumPeaks];
+        output[1] = new float[maxNumPeaks];
+    }
+
     // reset peaks arrays
     // this function is called at the beginning of each call to perform analysis
     // the number of peaks is reset to zero, and the arrays are zeroed out
