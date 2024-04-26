@@ -35,6 +35,22 @@ class SalientFreqs : public ModuleInterface<int*>
         salientFreqs[i] = -1;
       }
     }
+
+    SalientFreqs(int n)
+    {
+      if(n < 0 ) { n = 0; }
+      if(n > windowSizeBy2) { n = windowSizeBy2; }
+      
+      numFreqs = n;
+      salientFreqs = new int[numFreqs];
+      //amplitudes = new float[windowSize];
+      this->addSubmodule(&deltaAmps);
+
+      for (int i = 0; i < numFreqs; i++) {
+        salientFreqs[i] = -1;
+      }
+    }
+
     ~SalientFreqs()
     {
       delete [] salientFreqs;
