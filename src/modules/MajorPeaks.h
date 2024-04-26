@@ -20,7 +20,7 @@
 class MajorPeaks : public ModuleInterface<float**>
 {
 private:
-    int maxNumPeaks = 8; // default number of peaks to find
+    int maxNumPeaks = 4; // default number of peaks to find
     int numPeaks = 0;    // number of peaks found this iteration
 
     // temporary storage for calculating the output
@@ -28,6 +28,22 @@ private:
     float* outputAmplitudes = new float[windowSizeBy2>>1];
 
 public:
+    // default constructor the sets the number of peaks to 4
+    MajorPeaks()
+    {
+        // restrict the number of peaks to find to 4
+        maxNumPeaks = 4;
+
+        // allocate memory for output array
+        // output[0] is an array of frequencies, indexed by peak number
+        // output[1] is an array of amplitudes, indexed by peak number
+        // peaks are always stored in order of increasing frequency
+        // if there are fewer than maxNumPeaks peaks, the remaining elements are padded with zeros
+        output = new float*[2];
+        output[0] = new float[maxNumPeaks];
+        output[1] = new float[maxNumPeaks];
+    }
+    
     // constructor with optional parameter to set the number of peaks to find
     MajorPeaks(int n)
     {
