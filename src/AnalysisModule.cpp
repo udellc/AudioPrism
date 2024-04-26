@@ -118,3 +118,8 @@ void AnalysisModule::setAnalysisRangeByBin(int lowerBin, int upperBin)
     submodules[i]->setAnalysisRangeByBin(lowerBinBound, upperBinBound);
   }
 }
+
+void AnalysisModule::setDebugMode(bool mode) 
+{
+  debugMode = true;
+}

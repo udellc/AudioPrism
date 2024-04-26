@@ -89,6 +89,20 @@ class BreadSlicer : public ModuleInterface<float*>
         i -= 1;
         }
       }
+
+      // if debug is enabled, print the output to the serial console
+      if (debugMode) {
+        printOutput();
+      }
+    }
+
+    // Prints the sums (output) from the breadSlicer to the serial console
+    // Can be called manually but will be included automatically when debug mode is enabled
+    void printOutput() {
+      Serial.printf("BreadSlicer sums: \n");
+      for (int i=0; i < numBands; i++) {
+       Serial.printf("[%d]: %f\n", i, output[i]); 
+      }
     }
 };
 

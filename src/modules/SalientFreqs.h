@@ -28,7 +28,6 @@ class SalientFreqs : public ModuleInterface<int*>
     {
       numFreqs = 3; // default to finding frequency of max change
       salientFreqs = new int[numFreqs];
-      //amplitudes = new float[windowSize];
       this->addSubmodule(&deltaAmps);
 
       for (int i = 0; i < numFreqs; i++) {
@@ -43,7 +42,6 @@ class SalientFreqs : public ModuleInterface<int*>
       
       numFreqs = n;
       salientFreqs = new int[numFreqs];
-      //amplitudes = new float[windowSize];
       this->addSubmodule(&deltaAmps);
 
       for (int i = 0; i < numFreqs; i++) {
@@ -54,7 +52,6 @@ class SalientFreqs : public ModuleInterface<int*>
     ~SalientFreqs()
     {
       delete [] salientFreqs;
-      //delete [] amplitudes;
     }
 
     // change the amount of salient frequencies to be found
@@ -88,6 +85,10 @@ class SalientFreqs : public ModuleInterface<int*>
         currMaxAmpIdx = -1;
       }
       output = salientFreqs;
+
+      if(debugMode) {
+        printOutput();
+      }
     }
 
     void printOutput() {

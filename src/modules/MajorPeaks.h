@@ -193,7 +193,7 @@ public:
 
     // for demo/debugging purposes
     void printOutput(){
-        Serial.printf("[Freq, Amp]: ");
+        Serial.printf("MajorPeaks [Freq, Amp]: ");
         for(int i=0; i<maxNumPeaks-1; i++){
             Serial.printf("[%03g, %03g], ", round(output[0][i]), round(output[1][i]));
         }
@@ -214,6 +214,10 @@ public:
         findPeaks(input);
         trimPeaks();
         storePeaks();
+
+        if (debugMode) {
+            printOutput();
+        }
     }
 
 };

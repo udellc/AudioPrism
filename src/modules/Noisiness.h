@@ -66,6 +66,10 @@ public:
 
         // Normalize the entropy normalized to a 0-1 scale
         output = entropy / log2(upperBinBound - lowerBinBound);
+
+        if(debugMode) {
+            Serial.printf("Noisiness: %f\n", output);
+        }
     }
 };
 

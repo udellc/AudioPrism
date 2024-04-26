@@ -50,6 +50,10 @@ public:
         // calculate the mean amplitude by dividing the total amplitude by the number of bins in the selected frequency range
         // this module's output can be retrieved by calling getOutput() after analysis
         output = total / (upperBinBound - lowerBinBound);
+
+        if (debugMode) {
+            Serial.printf("MeanAmplitude: %f\n", output);
+        }
     }
 };
 #endif

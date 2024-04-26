@@ -37,6 +37,10 @@ public:
         // store the max amplitude in the output variable
         // the output of this module can be retrieved by calling getOutput() after analysis
         output = max;
+
+        if (debugMode) {
+            Serial.printf("MaxAmplitude: %f\n", output);
+        }
     }
 };
 

@@ -39,6 +39,10 @@ public:
         }
         centroid = (ampSum == 0) ? 0 : std::ceil(freqAmpSum / ampSum);
         output = centroid;
+
+        if (debugMode) {
+            Serial.printf("Centroid: %dHz\n", centroid);
+        }
     }
 };
 

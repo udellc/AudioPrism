@@ -27,6 +27,9 @@ protected:
     int numSubmodules = 0;
     AnalysisModule** submodules;
 
+    // boolean to enable debug mode for an analysis module
+    bool debugMode = false;
+
 public:
     // pure virtual function to be implemented by dervied classes
     virtual void doAnalysis(const float** input) = 0;
@@ -45,6 +48,9 @@ public:
     // set the frequency range to analyze 
     void setAnalysisRangeByFreq(int lowerFreq, int upperFreq);
     void setAnalysisRangeByBin(int lowerBin, int upperBin);
+
+    // enable debug mode
+    void setDebugMode(bool mode);
 };
 
 // interface for analysis module templatized components
@@ -72,6 +78,6 @@ public:
 #include "modules/SalientFreqs.h"
 #include "modules/TotalAmplitude.h"
 
-#include "modules/Formants.h"
+//#include "modules/Formants.h"
 
 #endif

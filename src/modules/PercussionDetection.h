@@ -156,40 +156,15 @@ public:
         // an output of true indicates that percussion is predicted to be present in the current window
         // an output of false indicates that percussion is not predicted to be present in the current window
         // the output of this module can be retrieved by calling getOutput() after analysis
-        
-        // print all
-        Serial.print("l:");
-        Serial.print(0);
-        Serial.print(",");
-
-        Serial.print("u:");
-        Serial.print(1000);
-        Serial.print(",");
-
-        Serial.print("tot:");
-        Serial.print(total);
-        Serial.print(",");
-
-        Serial.print("delt:");
-        Serial.print(deltaSum);
-        Serial.print(",");
-
-        Serial.print("noise:");
-        Serial.print(noiseOutput * 1000);
-        Serial.print(",");
-
-        Serial.print("tot_thresh:");
-        Serial.print(loudness_threshold);
-        Serial.print(",");
-
-        Serial.print("delt_thresh:");
-        Serial.print(delta_threshold);
-        Serial.print(",");
-
-        Serial.print("noise_thresh:");
-        Serial.println(noise_threshold * 1000);
-
         output = (total >= loudness_threshold) && (deltaSum >= delta_threshold) && (noiseOutput >= noise_threshold);
+    
+        if(debugMode) {
+            Serial.printf("PercussionDetection | \n");
+            Serial.printf(" loudness : %f\n", total);
+            Serial.printf(" delta    : %f\n", delta);
+            Serial.printf(" noisiness: %f\n", noise);
+            Serial.printf(" Output   : %d\n", output);
+        }
     }
 
 };

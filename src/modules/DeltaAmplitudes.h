@@ -37,6 +37,10 @@ class DeltaAmplitudes : public ModuleInterface<float*>
       }
 
       output = deltaAmplitudes;
+
+      if (debugMode) {
+        printOutput();
+      }
     }
 
     void printOutput()
