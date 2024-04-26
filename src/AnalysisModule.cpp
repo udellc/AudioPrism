@@ -1,5 +1,51 @@
 #include "AnalysisModule.h"
 
+void AnalysisModule::setWindowSize(int size)
+{
+    // window size must be a positive power of 2 to perform FFT
+    // the condition (size & (size-1)) == 0 checks if 'size' is a power of 2
+    if(size < 0 || (size & (size-1)) != 0) {
+        Serial.printf("Error: Window size must be a positive power of 2.\n");
+        return;
+    }
+
+    // update dependent constants 
+    windowSizeBy2 = size >> 1;
+    freqRes = float(sampleRate) / float(size);
+    freqWidth = float(size) / float(sampleRate);
+
+    // update frequency range constraints
+    // this will update bounds to the closest indices even for non-default constraints
+    lowerBinBound *= windowSize / size;
+    upperBinBound *= float(windowSize) / float(size);
+    upperBinBound = min(upperBinBound, size>>1);
+
+    // update window size
+    windowSize = size;
+}
+
+void AnalysisModule::setSampleRate(int rate)
+{
+    // sample rate must be a positive value
+    if(rate < 0) {
+        Serial.printf("Error: Sample rate must be a positive number.\n");
+        return;
+    }
+
+    // update frequency range constraints
+    // this will update bounds to the closest indices even for non-default constraints
+    lowerBinBound *= float(sampleRate) / float(rate);
+    upperBinBound *= float(sampleRate) / float(rate);
+    upperBinBound = min(upperBinBound, windowSizeBy2);
+
+    // update dependent constants
+    freqRes = float(sampleRate) / float(windowSize);
+    freqWidth = float(windowSize) / float(sampleRate);
+
+    // update sample rate
+    sampleRate = rate;
+}
+
 void AnalysisModule::addSubmodule(AnalysisModule *module)
 {
   
@@ -21,18 +67,6 @@ void AnalysisModule::addSubmodule(AnalysisModule *module)
   delete [] submodules;
   submodules = newSubmodules;
 }
-
-// void AnalysisModule::setInputArrays(const float* past, const float* current)
-// {
-//   pastWindow = past;
-//   curWindow = current;
-
-//   for(int i=0; i<numSubmodules; i++)
-//   {
-//     // Serial.printf("setting input arrays for submodule %d\n", i);
-//     submodules[i]->setInputArrays(past, current);
-//   }
-// }
 
 void AnalysisModule::setAnalysisRangeByFreq(int lowerFreq, int upperFreq)
 {
