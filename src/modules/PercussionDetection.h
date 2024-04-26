@@ -80,24 +80,58 @@ private:
     float noise_threshold = 0.7; // possible range: 0.0 to 1.0
 
 public:
-    // constructor
+    // default constructor
     // a constructor is necessary for modules containing submodules
     // all submodules must be registered with the parent in the constructor
     PercussionDetection()
     {
+        // register submodules
         this->addSubmodule(&totalAmp);  // register the TotalAmplitude submodule
         this->addSubmodule(&deltaAmp);  // register the DeltaAmplitude submodule
         this->addSubmodule(&noise);     // register the Noisiness submodule
     }
 
-    PercussionDetection(int loudness_threshold, int delta_threshold, float noise_threshold)
+    // constructor with parameters for the threshold values
+    // this funciton sets the threshold values and register the submodules
+    PercussionDetection(float loudness_threshold, float delta_threshold, float noise_threshold)
     {
-        this->loudness_threshold = loudness_threshold;
-        this->delta_threshold = delta_threshold;
-        this->noise_threshold = noise_threshold;
+        // set the threshold values
+        this->setLoudnessThreshold(loudness_threshold);
+        this->setDeltaThreshold(delta_threshold);
+        this->setNoisinessThreshold(noise_threshold);
+        
+        // register submodules
         this->addSubmodule(&totalAmp);  // register the TotalAmplitude submodule
         this->addSubmodule(&deltaAmp);  // register the DeltaAmplitude submodule
         this->addSubmodule(&noise);     // register the Noisiness submodule
+    }
+
+    // set the loudness threshold
+    // loudness is the immediate total amplitude of the input
+    // setting this threshold defines how loud a transient must be to be detected
+    void setLoudnessThreshold(float new_threshold)
+    {
+        if(new_threshold < 0) { loudness_threshold = 0; }
+        else loudness_threshold = new_threshold;
+    }
+
+    // set the delta threshold
+    // delta is the change in amplitude from the previous window to the current one
+    // setting this threshold defines how much a transient must spike in volume to be detected
+    void setDeltaThreshold(float new_threshold)
+    {
+        if(new_threshold < 0) { delta_threshold = 0; }
+        else delta_threshold = new_threshold;
+    }
+
+    // set the noisiness threshold (0-1)
+    // noisiness is the immediate spectral entropy of the input
+    // setting this threshold distinguishes percussive from tonal transients
+    void setNoisinessThreshold(float new_threshold)
+    {
+        if(new_threshold < 0) { noise_threshold = 0; }
+        else if(new_threshold > 1) { noise_threshold = 1; }
+        else noise_threshold = new_threshold;
     }
     
     void doAnalysis(const float** input)
