@@ -22,6 +22,12 @@ void AnalysisModule::setWindowSize(int size)
 
     // update window size
     windowSize = size;
+
+    // recursive propagate window size change to submodules
+    for(int i=0; i<numSubmodules; i++)
+    {
+        submodules[i]->setWindowSize(windowSize);
+    }
 }
 
 void AnalysisModule::setSampleRate(int rate)
@@ -44,13 +50,20 @@ void AnalysisModule::setSampleRate(int rate)
 
     // update sample rate
     sampleRate = rate;
+
+    // recursively propagate sample rate change to submodules
+    for(int i=0; i<numSubmodules; i++)
+    {
+        submodules[i]->setSampleRate(sampleRate);
+    }
 }
 
 void AnalysisModule::addSubmodule(AnalysisModule *module)
 {
   
   // set module parameters
-  // module->setInputArrays(pastWindow, curWindow);
+  module->setWindowSize(windowSize);
+  module->setSampleRate(sampleRate);
   module->setAnalysisRangeByBin(lowerBinBound, upperBinBound);
   
   // create new larger array for modules
