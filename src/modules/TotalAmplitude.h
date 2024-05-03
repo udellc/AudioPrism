@@ -32,14 +32,19 @@ public:
           total += input[CURR_WINDOW][i];
         }
 
-        if(debugMode)
-        {
-            Serial.printf("TotalAmplitude: %f\n", total);
-        }
-
         // store the total amplitude in the output variable
         // the output of this module can be retrieved by calling getOutput() after analysis
         output = total;
+    
+             // if debug is enabled, print the output to the serial console
+        if (debugMode & DEBUG_ENABLE) {
+            Serial.printf("===TOTAL_AMPLITUDE===\n");
+            if(debugMode & DEBUG_VERBOSE) { 
+                printModuleInfo(); 
+            }
+            Serial.printf("Total: %f\n", total);
+            Serial.printf("=====================\n");
+        } 
     }
 };
 

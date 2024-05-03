@@ -86,19 +86,23 @@ class SalientFreqs : public ModuleInterface<int*>
       }
       output = salientFreqs;
 
-      if(debugMode) {
-        printOutput();
+      // if debug is enabled, print the output to the serial console
+      if (debugMode & DEBUG_ENABLE) {
+        Serial.printf("===SALIENT_FREQS===\n");
+        if(debugMode & DEBUG_VERBOSE) { 
+          printModuleInfo(); 
+        }
+        Serial.printf("Salient Freqs: ");
+        for(int i=0; i<numFreqs; i++) {
+            Serial.printf("%d ", salientFreqs[i]);
+        }
+        Serial.printf("\n==========================\n");
       }
     }
 
     void printOutput() {
-        Serial.printf("SalientFreqs: ");
-        for (int i = 0; i < numFreqs; i++) {
-          Serial.printf("%d, ", output[i]);
-        }
-        Serial.printf("\n");
+        
     }
-
 };
 
 #endif

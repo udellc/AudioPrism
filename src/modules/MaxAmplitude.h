@@ -38,8 +38,14 @@ public:
         // the output of this module can be retrieved by calling getOutput() after analysis
         output = max;
 
-        if (debugMode) {
-            Serial.printf("MaxAmplitude: %f\n", output);
+        // if debug is enabled, print the output to the serial console
+        if (debugMode & DEBUG_ENABLE) {
+            Serial.printf("===MAX_AMPLITUDE===\n");
+            if(debugMode & DEBUG_VERBOSE) { 
+                printModuleInfo(); 
+            }
+            Serial.printf("Max: %f\n", max);
+            Serial.printf("===================\n");
         }
     }
 };

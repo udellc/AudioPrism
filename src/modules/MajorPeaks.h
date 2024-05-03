@@ -215,8 +215,14 @@ public:
         trimPeaks();
         storePeaks();
 
-        if (debugMode) {
+        // if debug is enabled, print the output to the serial console
+        if (debugMode & DEBUG_ENABLE) {
+            Serial.printf("===MAJORPEAKS===\n");
+            if(debugMode & DEBUG_VERBOSE) { 
+                printModuleInfo(); 
+            }
             printOutput();
+            Serial.printf("================\n");
         }
     }
 

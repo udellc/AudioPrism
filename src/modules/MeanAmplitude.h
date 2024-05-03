@@ -51,8 +51,14 @@ public:
         // this module's output can be retrieved by calling getOutput() after analysis
         output = total / (upperBinBound - lowerBinBound);
 
-        if (debugMode) {
-            Serial.printf("MeanAmplitude: %f\n", output);
+        // if debug is enabled, print the output to the serial console
+        if (debugMode & DEBUG_ENABLE) {
+            Serial.printf("===MEAN_AMPLITUDE===\n");
+            if(debugMode & DEBUG_VERBOSE) { 
+                printModuleInfo(); 
+            }
+            Serial.printf("Mean: %f\n", output);
+            Serial.printf("====================\n");
         }
     }
 };

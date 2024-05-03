@@ -91,8 +91,13 @@ class BreadSlicer : public ModuleInterface<float*>
       }
 
       // if debug is enabled, print the output to the serial console
-      if (debugMode) {
+      if (debugMode & DEBUG_ENABLE) {
+        Serial.printf("===BREADSLICER===\n");
+        if(debugMode & DEBUG_VERBOSE) { 
+            printModuleInfo(); 
+        }
         printOutput();
+        Serial.printf("=================\n");
       }
     }
 

@@ -158,12 +158,19 @@ public:
         // the output of this module can be retrieved by calling getOutput() after analysis
         output = (total >= loudness_threshold) && (deltaSum >= delta_threshold) && (noiseOutput >= noise_threshold);
     
-        if(debugMode) {
-            Serial.printf("PercussionDetection | \n");
-            Serial.printf(" loudness : %f\n", total);
-            Serial.printf(" delta    : %f\n", delta);
-            Serial.printf(" noisiness: %f\n", noise);
-            Serial.printf(" Output   : %d\n", output);
+        // if debug is enabled, print the output to the serial console
+        if (debugMode & DEBUG_ENABLE) {
+            Serial.printf("===PERCUSSION_DETECTION===\n");
+            if(debugMode & DEBUG_VERBOSE) { 
+                printModuleInfo(); 
+            }
+            Serial.printf("Total Threshold: %f\n", loudness_threshold);
+            Serial.printf("Total Value: %f\n", total);
+            Serial.printf("Noise Threshold: %f\n", noise_threshold);
+            Serial.printf("Noise Value: %f\n", noiseOutput);
+            Serial.printf("Delta Threshold: %f\n", delta_threshold);
+            Serial.printf("Delta Value: %f\n", deltaSum);
+            Serial.printf("==========================\n");
         }
     }
 

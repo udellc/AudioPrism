@@ -40,8 +40,16 @@ public:
         centroid = (ampSum == 0) ? 0 : std::ceil(freqAmpSum / ampSum);
         output = centroid;
 
-        if (debugMode) {
-            Serial.printf("Centroid: %dHz\n", centroid);
+        // if debug is enabled, print the output to the serial console
+        if (debugMode & DEBUG_ENABLE) {
+            Serial.printf("===CENTROID===\n");
+            if(debugMode & DEBUG_VERBOSE) { 
+                printModuleInfo(); 
+            }
+            Serial.printf("Amplitude Sum: %f\n", ampSum);
+            Serial.printf("Freq. Weighted Amp. Sum: %f\n", freqAmpSum);
+            Serial.printf("Centroid: %d\n", centroid);
+            Serial.printf("==============\n");
         }
     }
 };
