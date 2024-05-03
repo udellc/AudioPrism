@@ -14,11 +14,18 @@ void AnalysisModule::setWindowSize(int size)
     freqRes = float(sampleRate) / float(size);
     freqWidth = float(size) / float(sampleRate);
 
-    // update frequency range constraints
-    // this will update bounds to the closest indices even for non-default constraints
-    lowerBinBound *= windowSize / size;
-    upperBinBound *= float(windowSize) / float(size);
-    upperBinBound = min(upperBinBound, size>>1);
+    // if a non-default lower bound has been set, update it to the closest index under the new audio context
+    if(lowerBinBound != 0) {
+        lowerBinBound *= float(size) / float(windowSize);
+    }
+
+    // if a non-default upper bound has been set, update it the closest index under the new audio context
+    if(upperBinBound != windowSize>>1) {
+        upperBinBound *= float(size) / float(windowSize);
+        upperBinBound = min(upperBinBound, size>>1);
+    } else {
+        upperBinBound = size>>1;
+    }
 
     // update window size
     windowSize = size;
@@ -37,12 +44,16 @@ void AnalysisModule::setSampleRate(int rate)
         Serial.printf("Error: Sample rate must be a positive number.\n");
         return;
     }
-
-    // update frequency range constraints
-    // this will update bounds to the closest indices even for non-default constraints
-    lowerBinBound *= float(sampleRate) / float(rate);
-    upperBinBound *= float(sampleRate) / float(rate);
-    upperBinBound = min(upperBinBound, windowSizeBy2);
+    
+    // if a non-default lower bound has been set, update it to the closest index under the new audio context
+    if(lowerBinBound != 0){
+        lowerBinBound *= float(sampleRate) / float(rate);
+    }
+    // if a non-default upper bound has been set, update it to the closest index under the new audio context
+    if(upperBinBound != windowSizeBy2) {
+        upperBinBound *= float(sampleRate) / float(rate);
+        upperBinBound = min(upperBinBound, windowSizeBy2);
+    }
 
     // update dependent constants
     freqRes = float(sampleRate) / float(windowSize);
