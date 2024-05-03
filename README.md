@@ -161,15 +161,92 @@ PercussionDetection uses three submodules:
 3. A private instance of [Noisiness](#Noisiness) is used to measure the periodicity of the signal that generated the audio spectrum.
 
 ## MajorPeaks
+MajorPeaks finds the N largest peaks in the current FFT window and returns an array of tuples containing the frequency and amplitude of each peak. If there are fewer than N peaks, the remaining elements in the array are padded with zeros.
 ### Parameters
+1. An integer containing the number of peaks to be found. Defaults to 4 and can be set using the constructor or the `setNumPeaks()` method.
 ### Return Type
+`getOutput()` returns `float**`, 2D array of floats containing frequency and amplitudes pairs of the N largest peaks.
+
+### Example
+```c++
+#include "AnalysisModule.h"
+
+// This Example assumes FFT output is accessible.
+// Check README for more info on handling input, processing the FFT, and synthesizing output.
+float** FFTOutput;  // dummy pointer
+
+// Declare module
+MajorPeaks peaks = MajorPeaks(4);   // find 4 peaks
+
+void setup() {
+  // optionally limit the frequency range for a module
+  peaks.setAnalysisRangeByFreq(300, 900);
+
+  Serial.printf("Ready\n");
+}
+void loop() {
+    // Process input data and produce FFT output
+
+    // Run analysis for each module
+    peaks.doAnalysis(FFTOutput);
+
+    // Get MajorPeaks data
+    float** peakData = peaks.getOutput();
+    float* peakFrequencies = peaks.getOutput()[MP_FREQ];  // just the frequencies
+    float* peakAmplitudes  = peaks.getOutput()[MP_AMP];   // just the amplitudes
+
+    // Manipulate data
+
+    // Map outputs
+}
+```
 
 ## BreadSlicer
 The BreadSlicer module breaks down an input frequency spectrum into a set of configurable, non-overlapping, frequency slices, sums the amplitudes within each slice, and returns the list of sums ordered from lowest to highest frequency slice.
 ### Parameters
+1. An integer that contains the number of frequency bands (slices) to be analyzed. Defaults to 0 and must be changed using the `setBands()` method.
+2. An array of integers containing the index boundries of the frequency band. Defaults to NULL and must be set using the `setBands()` metbod.
 
 ### Return Type
 `getOutput()` returns a reference to an array of float values, the amplitude sums from the most recent analysis. This array has a length equal to the number of slices selected. The memory for this array is allocated by the default constructor and is freed by the default destructor.
+
+### Example
+```c++
+  /#include "AnalysisModule.h"
+
+// This Example assumes FFT output is accessible.
+// Check README for more info on handling input, processing the FFT, and synthesizing output.
+float** FFTOutput;  // dummy pointer
+
+// declare modules
+BreadSlicer slicer = BreadSlicer();
+
+void setup() {
+  // Example frequencie bands
+  int bands[] = {0, 200, 500, 2000, 4000};
+
+  // Set the number of bands and their frequencies
+  slicer.setBands(bands, 4);
+
+  Serial.printf("Ready\n");
+}
+void loop() {
+    // Process input data and produce FFT output
+
+    // Run analysis for each module
+    slicer.doAnalysis(FFTOutput);
+
+    // Get BreadSlicer amplitudes
+    float* amps = slicer.getOutput();
+
+    // Get a single sum
+    float ampSum0to200 = amps[0];
+
+    // Manipulate data
+
+    // Map outputs
+}
+```
 
 # Classes
 AudioPrism utilizes an object-oriented design to implement its analysis tools to maintain data access control, standardize common parameters and functionality, offer a framework for creating additional modules, and allow the creation of high-order modules composed of other analysis modules. This section describes the relationship between AudioPrism's classes and how to use them to implement analysis modules.
