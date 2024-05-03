@@ -24,6 +24,7 @@ private:
     int numPeaks = 0;    // number of peaks found this iteration
 
     // temporary storage for calculating the output
+    int outputLength = windowSizeBy2>>1;
     float* outputFrequencies = new float[windowSizeBy2>>1];
     float* outputAmplitudes = new float[windowSizeBy2>>1];
 
@@ -101,6 +102,13 @@ public:
     void resetPeaksArrays()
     {
         numPeaks = 0; // reset the number of peaks to zero
+
+        if(outputLength != windowSizeBy2>>1) {
+            delete [] outputFrequencies;
+            delete [] outputAmplitudes;
+            outputFrequencies = new float[windowSizeBy2>>1];
+            outputAmplitudes = new float[windowSizeBy2>>1];
+        }
 
         // zero out the output arrays
         for(int i=0; i<windowSizeBy2>>1; i++)
