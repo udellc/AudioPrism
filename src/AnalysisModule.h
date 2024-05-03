@@ -7,6 +7,10 @@
 #define CURR_WINDOW 0
 #define PREV_WINDOW 1
 
+#define DEBUG_ENABLE    0x01
+#define DEBUG_VERBOSE   0x02
+#define DEBUG_RECURSIVE 0x04
+
 class AnalysisModule
 {
 protected:
@@ -27,8 +31,8 @@ protected:
     int numSubmodules = 0;
     AnalysisModule** submodules;
 
-    // boolean to enable debug mode for an analysis module
-    bool debugMode = false;
+    // debug mode for an analysis module
+    int debugMode = 0x00;
 
 public:
     // pure virtual function to be implemented by dervied classes
@@ -50,7 +54,8 @@ public:
     void setAnalysisRangeByBin(int lowerBin, int upperBin);
 
     // enable debug mode
-    void setDebugMode(bool mode);
+    void setDebugMode(int mode);
+    void printModuleInfo();
 };
 
 // interface for analysis module templatized components
@@ -77,7 +82,5 @@ public:
 #include "modules/PercussionDetection.h"
 #include "modules/SalientFreqs.h"
 #include "modules/TotalAmplitude.h"
-
-//#include "modules/Formants.h"
 
 #endif

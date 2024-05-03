@@ -119,7 +119,30 @@ void AnalysisModule::setAnalysisRangeByBin(int lowerBin, int upperBin)
   }
 }
 
-void AnalysisModule::setDebugMode(bool mode) 
-{
-  debugMode = true;
+void AnalysisModule::setDebugMode(int mode) 
+{  
+  // update debug mode settings
+  debugMode = mode;
+
+  // if recursive flag is set, propagate debug mode to submodules
+  if(mode & DEBUG_RECURSIVE) {
+    for(int i=0; i<numSubmodules; i++) {
+        submodules[i]->setDebugMode(mode);      
+    }
+  }
+  // if recursive flag is not set, disable debug mode for submodules
+  else {
+    for(int i=0; i<numSubmodules; i++) {
+        submodules[i]->setDebugMode(~DEBUG_ENABLE);
+    }
+  }
+
+}
+
+void AnalysisModule::printModuleInfo() {
+    Serial.printf("Sample Rate: %d\n", sampleRate);
+    Serial.printf("Window Size: %d\n", windowSize);
+    Serial.printf("Lower Bin Bound: %d (%d Hz)\n", lowerBinBound, lowerBinBound * sampleRate / windowSize);
+    Serial.printf("Upper Bin Bound: %d (%d Hz)\n", upperBinBound, upperBinBound * sampleRate / windowSize); 
+    Serial.printf("Number of Submodules: %d\n", numSubmodules);  
 }
