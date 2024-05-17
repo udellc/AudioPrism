@@ -18,10 +18,10 @@
 #include <cmath>
 
 // Centroid inherits from the ModuleInterface with an int output type
-class Centroid : public ModuleInterface<int>
+class Centroid : public ModuleInterface<float>
 {
 public:
-    int centroid;
+    float centroid;
     int freqResBy2 = freqRes/2;
 
     void doAnalysis(const float** input)
@@ -37,7 +37,7 @@ public:
             ampSum += amp;
             freqAmpSum += freq * amp;
         }
-        centroid = (ampSum == 0) ? 0 : std::ceil(freqAmpSum / ampSum);
+        centroid = (ampSum == 0) ? 0 : (freqAmpSum / ampSum);
         output = centroid;
 
         // if debug is enabled, print the output to the serial console
@@ -48,7 +48,7 @@ public:
             }
             Serial.printf("Amplitude Sum: %f\n", ampSum);
             Serial.printf("Freq. Weighted Amp. Sum: %f\n", freqAmpSum);
-            Serial.printf("Centroid: %d\n", centroid);
+            Serial.printf("Centroid: %f\n", centroid);
             Serial.printf("==============\n");
         }
     }
