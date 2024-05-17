@@ -222,7 +222,7 @@ float** FFTOutput;  // dummy pointer
 BreadSlicer slicer = BreadSlicer();
 
 void setup() {
-  // Example frequencie bands
+  // Example frequency bands
   int bands[] = {0, 200, 500, 2000, 4000};
 
   // Set the number of bands and their frequencies
@@ -282,7 +282,7 @@ The base class implements functions that allow you to constrain a module's frequ
 derived_module.setAnalysisRangeByFreq(0, 1000);
 
 // set analysis range to bins 10 - 25 (this corresponds to 320 - 800 Hz)
-// Lower frequency: (8192 / 256) * 10 = 340 Hz
+// Lower frequency: (8192 / 256) * 10 = 320 Hz
 // Upper frequency: (8192 / 256) * 25 = 800 Hz
 derived_module.setAnalysisRangeByBin(10, 25);
 ```
