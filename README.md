@@ -212,7 +212,7 @@ The BreadSlicer module breaks down an input frequency spectrum into a set of con
 
 ### Example
 ```c++
-  /#include "AnalysisModule.h"
+#include "AnalysisModule.h"
 
 // This Example assumes FFT output is accessible.
 // Check README for more info on handling input, processing the FFT, and synthesizing output.
