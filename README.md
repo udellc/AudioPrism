@@ -90,7 +90,7 @@ The Centroid module calculates the center of mass of a frequency spectrum. This 
 ### Parameters
 Centroid has no modifiable parameters.
 ### Return Type
-`getOutput()` returns an integer value, the frequency of the center of mass of the input audio spectrum calculated in the most recent call to `.doAnalysis()`.
+`getOutput()` returns a float value, the frequency of the center of mass of the input audio spectrum calculated in the most recent call to `.doAnalysis()`.
 ### Submodules
 Centroid does not rely on any submodules.
 
