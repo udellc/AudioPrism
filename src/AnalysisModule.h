@@ -71,16 +71,4 @@ public:
 
 };
 
-// include derived analysis modules so they can be used by including just this file
-#include "modules/BreadSlicer.h"
-#include "modules/Centroid.h"
-#include "modules/DeltaAmplitudes.h"
-#include "modules/MajorPeaks.h"
-#include "modules/MaxAmplitude.h"
-#include "modules/MeanAmplitude.h"
-#include "modules/Noisiness.h"
-#include "modules/PercussionDetection.h"
-#include "modules/SalientFreqs.h"
-#include "modules/TotalAmplitude.h"
-
-#endif
+#endif // Analysis_Module_h
