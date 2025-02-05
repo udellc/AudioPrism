@@ -7,7 +7,7 @@
 //               the opposite of periodicity, so a low noisiness value
 //               indicates a high degree of periodicity, like a sine wave, and
 //               a high noisiness value indicates a low degree of periodicity,
-//               like white noise. 
+//               like white noise.
 //
 //               The noisiness of the current window is the
 //               entropy of the normalized amplitude spectrum. This is a
@@ -27,8 +27,7 @@
 
 // the Noisiness module inherits from the ModuleInterface with a float output type
 // this module has one submodule, TotalAmplitude
-class Noisiness : public ModuleInterface<float>
-{
+class Noisiness : public ModuleInterface<float> {
 private:
     // submodules are made private so they cannot be accessed outside of the parent module
 
@@ -46,19 +45,19 @@ public:
     {
         this->addSubmodule(&totalAmp); // register the TotalAmplitude submodule
     }
-    
-    void doAnalysis(const float** input)
+
+    void doAnalysis(const float* curr, const float* prev = 0)
     {
-        totalAmp.doAnalysis(input); // perform analysis with the TotalAmplitude submodule
+        totalAmp.doAnalysis(curr, prev); // perform analysis with the TotalAmplitude submodule
         float total = totalAmp.getOutput(); // retrieve the output of the TotalAmplitude submodule
-        
+
         float entropy = 0;
         // for each bin, calculate the contribution to the overall entropy
         for (int i = lowerBinBound; i < upperBinBound; i++) {
             // if the amplitude of the current bin is zero, skip it (log2(0) is undefined)
-            if (input[CURR_WINDOW][i] > 0) {
+            if (curr[i] > 0) {
                 // assign a probability to each bin based on its amplitude
-                float p = input[CURR_WINDOW][i] / total;
+                float p = curr[i] / total;
                 // calculate the contribution of this bin to the entropy
                 entropy -= p * log2(p);
             }
@@ -70,8 +69,8 @@ public:
         // if debug is enabled, print the output to the serial console
         if (debugMode & DEBUG_ENABLE) {
             Serial.printf("===NOISINESS===\n");
-            if(debugMode & DEBUG_VERBOSE) { 
-                printModuleInfo(); 
+            if (debugMode & DEBUG_VERBOSE) {
+                printModuleInfo();
             }
             Serial.printf("Noise: %f\n", output);
             Serial.printf("===============\n");

@@ -212,7 +212,7 @@ public:
     // this is the function called by the analysis manager to perform the analysis
     // the output is a 2d array of floats, where output[0] is an array of frequencies and output[1] is an array of amplitudes
     // the output is indexed by peak number, and is always in order of lowest freq peak to highest freq peak
-    void doAnalysis(const float* curr, const float* prev = NULL)
+    void doAnalysis(const float* curr, const float* prev = 0)
     {
         resetPeaksArrays();
         findPeaks(curr);
