@@ -36,6 +36,7 @@ protected:
 
 public:
     // pure virtual function to be implemented by dervied classes
+    virtual void doAnalysis(const float* curr, const float* prev = NULL) = 0;
     virtual void doAnalysis(const float** input) = 0;
 
     // set the window size of the analysis module
