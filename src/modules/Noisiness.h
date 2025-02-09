@@ -63,7 +63,7 @@ public:
             }
         }
 
-        // Normalize the entropy normalized to a 0-1 scale
+        // Normalize the entropy to a 0.-1. scale
         output = entropy / log2(upperBinBound - lowerBinBound);
 
         // if debug is enabled, print the output to the serial console
