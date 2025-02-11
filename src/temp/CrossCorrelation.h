@@ -1,6 +1,7 @@
 #ifndef CrossCorrelation_h
 #define CrossCorrelation_h
 
+#include <cstdint>
 /*
  * class for computing correlation coefficient between two signals
  */
@@ -26,6 +27,11 @@ class CrossCorrelation
         void computeTemplate(void);
     
     public:
+        /**
+         * Default constructor
+         */
+        CrossCorrelation();
+
         /**
          * constructor for CrossCorrelation
          * @param sampleRate sample rate of signal

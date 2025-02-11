@@ -1,4 +1,10 @@
 #include "CrossCorrelation.h"
+#include <cstdint>
+#include <cmath>
+
+CrossCorrelation::CrossCorrelation(){
+    
+}
 
 CrossCorrelation::CrossCorrelation(uint16_t sampleRate, uint16_t windowSize) {
     this->templatePtr = NULL;
