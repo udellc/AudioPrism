@@ -7,7 +7,7 @@
 //               the opposite of periodicity, so a low noisiness value
 //               indicates a high degree of periodicity, like a sine wave, and
 //               a high noisiness value indicates a low degree of periodicity,
-//               like white noise. 
+//               like white noise.
 //
 //               The noisiness of the current window is the
 //               entropy of the normalized amplitude spectrum. This is a
@@ -27,8 +27,7 @@
 
 // the Noisiness module inherits from the ModuleInterface with a float output type
 // this module has one submodule, TotalAmplitude
-class Noisiness : public ModuleInterface<float>
-{
+class Noisiness : public ModuleInterface<float> {
 private:
     // submodules are made private so they cannot be accessed outside of the parent module
 
@@ -51,7 +50,7 @@ public:
     {
         totalAmp.doAnalysis(input); // perform analysis with the TotalAmplitude submodule
         float total = totalAmp.getOutput(); // retrieve the output of the TotalAmplitude submodule
-        
+
         float entropy = 0;
         // for each bin, calculate the contribution to the overall entropy
         for (int i = lowerBinBound; i < upperBinBound; i++) {
@@ -64,14 +63,14 @@ public:
             }
         }
 
-        // Normalize the entropy normalized to a 0-1 scale
+        // Normalize the entropy to a 0.-1. scale
         output = entropy / log2(upperBinBound - lowerBinBound);
 
         // if debug is enabled, print the output to the serial console
         if (debugMode & DEBUG_ENABLE) {
             Serial.printf("===NOISINESS===\n");
-            if(debugMode & DEBUG_VERBOSE) { 
-                printModuleInfo(); 
+            if (debugMode & DEBUG_VERBOSE) {
+                printModuleInfo();
             }
             Serial.printf("Noise: %f\n", output);
             Serial.printf("===============\n");

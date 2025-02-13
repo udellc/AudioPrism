@@ -2,7 +2,7 @@
 #define Analysis_Module_h
 
 #include <math.h>
-#include <AudioLab.h>
+#include <Arduino.h>
 
 #define CURR_WINDOW 0
 #define PREV_WINDOW 1
