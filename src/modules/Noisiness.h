@@ -46,18 +46,18 @@ public:
         this->addSubmodule(&totalAmp); // register the TotalAmplitude submodule
     }
 
-    void doAnalysis(const float* curr, const float* prev = 0)
+    void doAnalysis(const float** input)
     {
-        totalAmp.doAnalysis(curr, prev); // perform analysis with the TotalAmplitude submodule
+        totalAmp.doAnalysis(input); // perform analysis with the TotalAmplitude submodule
         float total = totalAmp.getOutput(); // retrieve the output of the TotalAmplitude submodule
 
         float entropy = 0;
         // for each bin, calculate the contribution to the overall entropy
         for (int i = lowerBinBound; i < upperBinBound; i++) {
             // if the amplitude of the current bin is zero, skip it (log2(0) is undefined)
-            if (curr[i] > 0) {
+            if (input[CURR_WINDOW][i] > 0) {
                 // assign a probability to each bin based on its amplitude
-                float p = curr[i] / total;
+                float p = input[CURR_WINDOW][i] / total;
                 // calculate the contribution of this bin to the entropy
                 entropy -= p * log2(p);
             }
