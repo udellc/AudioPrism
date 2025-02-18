@@ -4,8 +4,8 @@
 #include <math.h>
 #include <Arduino.h>
 
-#define CURR_WINDOW 0
-#define PREV_WINDOW 1
+#define CURR_WINDOW 7
+#define PREV_WINDOW 6
 
 #define DEBUG_ENABLE    0x01
 #define DEBUG_VERBOSE   0x02
