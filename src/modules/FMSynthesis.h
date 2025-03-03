@@ -23,7 +23,7 @@ public:
     FMSynthesis(int sampleRate = 44100,
                 float carrierFrequency = 440.0f,
                 float modulatorFrequency = 220.0f,
-                float modulationIndex = 1.0f,
+                float modulationIndex = 2.0f,
                 float amplitude = 1.0f)
       : sampleRate(sampleRate),
         carrierFrequency(carrierFrequency),
