@@ -4,8 +4,8 @@
 #include <math.h>
 #include <Arduino.h>
 
-#define CURR_WINDOW 0
-#define PREV_WINDOW 1
+#define CURR_WINDOW 7
+#define PREV_WINDOW 6
 
 #define DEBUG_ENABLE    0x01
 #define DEBUG_VERBOSE   0x02
@@ -36,7 +36,7 @@ protected:
 
 public:
     // pure virtual function to be implemented by dervied classes
-    virtual void doAnalysis(const float* curr, const float* prev = 0) = 0;
+    virtual void doAnalysis(const float** input) = 0;
 
     // set the window size of the analysis module
     // must be a positive power of 2

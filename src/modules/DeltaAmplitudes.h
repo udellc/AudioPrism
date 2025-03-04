@@ -28,15 +28,11 @@ public:
         delete[] deltaAmplitudes;
     }
 
-    void doAnalysis(const float* curr, const float* prev = 0)
+    void doAnalysis(const float** input)
     {
-        if (prev == 0) {
-            Serial.printf("Error: DeltaAmplitudes needs a previous window\n");
-            return;
-        }
         // iterate through FFT data and store the change in amplitudes between current and previous window
         for (int i = lowerBinBound; i < upperBinBound; i++) {
-            deltaAmplitudes[i] = abs(curr[i] - prev[i]);
+            deltaAmplitudes[i] = abs(input[CURR_WINDOW][i] - input[PREV_WINDOW][i]);
         }
 
         output = deltaAmplitudes;

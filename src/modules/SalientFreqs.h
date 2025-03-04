@@ -67,9 +67,9 @@ public:
 
     // finds the n (numFreqs) bins with highest change in amplitude, stored in salientFreqs[]
     // input is assumed to be a 2D array of FFT data passed in from the Vibrosonics class
-    void doAnalysis(const float* curr, const float* prev = 0)
+    void doAnalysis(const float** input)
     {
-        deltaAmps.doAnalysis(curr, prev);
+      deltaAmps.doAnalysis(input);
         amplitudes = deltaAmps.getOutput(); // copy amplitudes
 
         // iterate through amplitudes to find the maximum(s)
