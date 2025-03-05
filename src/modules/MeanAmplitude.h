@@ -38,10 +38,10 @@ public:
     // doAnalysis() is called by the analysis manager
     // the totalamplitude submodule is invoked to calculate the total amplitude of the current window
     // the mean amplitude is calculated from the total amplitude and the number of bins in the selected frequency range
-    void doAnalysis(const float** input)
+    void doAnalysis()
     {
         // perform analysis on the totalamplitude module
-        totalAmp.doAnalysis(input);
+        totalAmp.doAnalysis();
 
         // retrieve the output of the totalamplitude module
         float total = totalAmp.getOutput();

@@ -122,21 +122,21 @@ public:
     // if more than maxNumPeaks peaks are found, the smallest peaks are removed with trimPeaks later
     // if fewer than maxNumPeaks peaks are found, the remaining peaks are padded with zeros
     // this function should only be called after resetPeaksArrays()
-    void findPeaks(const float** input)
+    void findPeaks()
     {
+        float* windowData = spectrogram->getCurrentWindow();
         // iterate through the frequency range, excluding the first and last bins
         for (int i = lowerBinBound + 1; i < upperBinBound; i++) {
             // if the current bin is a peak, store its frequency and amplitude
-            if(input[CURR_WINDOW][i] > input[CURR_WINDOW][i - 1] && 
-               input[CURR_WINDOW][i] > input[CURR_WINDOW][i + 1])
-            {
+            if (windowData[i] > windowData[i - 1]
+                && windowData[i] > windowData[i + 1]) {
                 // store the frequency of the peak
                 // the index is multiplied by freqRes to convert the bin number to a frequency value
                 // freqRes is the frequency width of each bin
                 outputFrequencies[numPeaks] = i * freqRes;
 
                 // store the amplitude of the peak
-                outputAmplitudes[numPeaks] = input[CURR_WINDOW][i];
+                outputAmplitudes[numPeaks] = windowData[i];
 
                 // increment the number of peaks found to reflect the addition of this peak
                 numPeaks++;
@@ -214,10 +214,10 @@ public:
     // this is the function called by the analysis manager to perform the analysis
     // the output is a 2d array of floats, where output[0] is an array of frequencies and output[1] is an array of amplitudes
     // the output is indexed by peak number, and is always in order of lowest freq peak to highest freq peak
-    void doAnalysis(const float** input)
+    void doAnalysis()
     {
         resetPeaksArrays();
-        findPeaks(input);
+        findPeaks();
         trimPeaks();
         storePeaks();
 
