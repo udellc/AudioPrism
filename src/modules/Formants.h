@@ -183,10 +183,9 @@ public:
         }
 
         // output the character of the best matched vowel
-        output = vowel_to_character(formant_vowel);
-        Serial.printf("%c\n", output);
-    }
 
+        output = vowel_to_character(formant_vowel);
+    }
 };
 
 #endif
