@@ -22,8 +22,7 @@
 #include <math.h>
 
 #include "../AnalysisModule.h"
-#include "MaxAmplitude.h"
-#include "MeanAmplitude.h"
+#include "TotalAmplitude.h"
 
 // the Noisiness module inherits from the ModuleInterface with a float output type
 // this module has one submodule, TotalAmplitude
