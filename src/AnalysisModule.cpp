@@ -1,34 +1,34 @@
 #include "AnalysisModule.h"
 
-void AnalysisModule::setWindowSize(int size)
+void AnalysisModule::setWindowSize(int windowSize)
 {
     // window size must be a positive power of 2 to perform FFT
     // the condition (size & (size-1)) == 0 checks if 'size' is a power of 2
-    if (size < 0 || (size & (size - 1)) != 0) {
+    if (windowSize < 0 || (windowSize & (windowSize - 1)) != 0) {
         Serial.printf("Error: Window size must be a positive power of 2.\n");
         return;
     }
 
     // update dependent constants
-    windowSizeBy2 = size >> 1;
-    freqRes = float(sampleRate) / float(size);
-    freqWidth = float(size) / float(sampleRate);
+    windowSizeBy2 = windowSize >> 1;
+    freqRes = float(sampleRate) / float(windowSize);
+    freqWidth = float(windowSize) / float(sampleRate);
 
     // if a non-default lower bound has been set, update it to the closest index under the new audio context
     if (lowerBinBound != 0) {
-        lowerBinBound *= float(size) / float(windowSize);
+        lowerBinBound *= float(windowSize) / float(windowSize);
     }
 
     // if a non-default upper bound has been set, update it the closest index under the new audio context
     if (upperBinBound != windowSize >> 1) {
-        upperBinBound *= float(size) / float(windowSize);
-        upperBinBound = min(upperBinBound, size >> 1);
+        upperBinBound *= float(windowSize) / float(windowSize);
+        upperBinBound = min(upperBinBound, windowSize >> 1);
     } else {
-        upperBinBound = size >> 1;
+        upperBinBound = windowSize >> 1;
     }
 
     // update window size
-    windowSize = size;
+    this->windowSize = windowSize;
 
     // recursive propagate window size change to submodules
     for (int i = 0; i < numSubmodules; i++) {
@@ -36,21 +36,21 @@ void AnalysisModule::setWindowSize(int size)
     }
 }
 
-void AnalysisModule::setSampleRate(const int rate)
+void AnalysisModule::setSampleRate(const int sampleRate)
 {
     // sample rate must be a positive value
-    if (rate < 0) {
+    if (sampleRate < 0) {
         Serial.printf("Error: Sample rate must be a positive number.\n");
         return;
     }
 
     // if a non-default lower bound has been set, update it to the closest index under the new audio context
     if (lowerBinBound != 0) {
-        lowerBinBound *= float(sampleRate) / float(rate);
+        lowerBinBound *= float(sampleRate) / float(sampleRate);
     }
     // if a non-default upper bound has been set, update it to the closest index under the new audio context
     if (upperBinBound != windowSizeBy2) {
-        upperBinBound *= float(sampleRate) / float(rate);
+        upperBinBound *= float(sampleRate) / float(sampleRate);
         upperBinBound = min(upperBinBound, windowSizeBy2);
     }
 
@@ -59,7 +59,7 @@ void AnalysisModule::setSampleRate(const int rate)
     freqWidth = float(windowSize) / float(sampleRate);
 
     // update sample rate
-    sampleRate = rate;
+    this->sampleRate = sampleRate;
 
     // recursively propagate sample rate change to submodules
     for (int i = 0; i < numSubmodules; i++) {
@@ -78,6 +78,7 @@ void AnalysisModule::addSubmodule(AnalysisModule* module)
     // set module parameters
     module->setWindowSize(windowSize);
     module->setSampleRate(sampleRate);
+    module->setSpectrogram(spectrogram);
     module->setAnalysisRangeByBin(lowerBinBound, upperBinBound);
 
     // create new larger array for modules

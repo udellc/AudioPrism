@@ -2,6 +2,8 @@
 #define Audio_Prism_h
 
 #include "AnalysisModule.h"
+#include "ModuleGroup.h"
+#include "Spectrogram.h"
 
 #include "modules/BreadSlicer.h"
 #include "modules/Centroid.h"

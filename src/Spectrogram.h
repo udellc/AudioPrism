@@ -1,4 +1,4 @@
-/**
+/*
  * @file
  * Contains the Spectrogram class definition.
  */
@@ -9,6 +9,8 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstring>
+
+#include "Config.h"
 
 /**
  * Spectrogram holds the frequency domain data over multiple time windows.
@@ -31,28 +33,15 @@ public:
      * Creates a Spectrogram with a buffer to hold data.
      *
      * Allocates a buffer to hold data for the specified number of windows,
-     * with the specified number of frequency bins in each window. Initializes
-     * the current index to 0.
+     * with the specified number of frequency bins in each window. Each window
+     * will contain a number of frequency bins equal half the WINDOW_SIZE.
+     * Initializes the current index to 0.
      *
      * @param numWindows The number of time windows the Spectrogram holds.
-     * @param numBins The number of frequency bins in each window.
      */
-    Spectrogram(const uint16_t numWindows, const uint16_t numBins);
+    Spectrogram(const uint16_t numWindows);
 
     ~Spectrogram();
-
-    /**
-     * Set the Spectrogram's data buffer.
-     *
-     * Updates the Spectrogram's data buffer, number of windows, and number of
-     * bins. Allows for the user to allocate their own memory for the
-     * Spectrogram's buffer.
-     *
-     * @param buffer Pointer to the Spectrogram's data buffer.
-     * @param numWindows The number of time windows the Spectrogram holds.
-     * @param numBin The number of frequency bins in each window.
-     */
-    void setBuffer(T* buffer, const uint16_t numWindows, const uint16_t numBins);
 
     T* getBuffer() const { return this->buffer; };
 
@@ -120,21 +109,14 @@ Spectrogram<T>::Spectrogram()
 };
 
 template <typename T>
-Spectrogram<T>::Spectrogram(const uint16_t numWindows, const uint16_t numBins)
+Spectrogram<T>::Spectrogram(const uint16_t numWindows)
 {
+    uint16_t numBins = WINDOW_SIZE >> 1;
     this->buffer = new T[numWindows * numBins];
     this->numWindows = numWindows;
     this->numBins = numBins;
     this->currIndex = 0;
 }
-
-template <typename T>
-void Spectrogram<T>::setBuffer(T* buffer, const uint16_t numWindows, const uint16_t numBins)
-{
-    this->buffer = buffer;
-    this->numWindows = numWindows;
-    this->numBins = numBins;
-};
 
 template <typename T>
 Spectrogram<T>::~Spectrogram()
@@ -170,8 +152,9 @@ template <typename T>
 void Spectrogram<T>::pushWindow(const T* data)
 {
     this->currIndex++;
-    if (this->currIndex == this->numWindows)
+    if (this->currIndex == this->numWindows) {
         this->currIndex = 0;
+    }
 
     T* windowBuffer = this->buffer + (this->currIndex * this->numBins);
     memcpy(windowBuffer, data, this->numBins * sizeof(T));

@@ -1,12 +1,11 @@
 #ifndef ANALYSIS_MODULE_H
 #define ANALYSIS_MODULE_H
 
-#include "Spectrogram.h"
 #include <Arduino.h>
 #include <math.h>
 
-#define CURR_WINDOW 7
-#define PREV_WINDOW 6
+#include "Config.h"
+#include "Spectrogram.h"
 
 #define DEBUG_ENABLE 0x01
 #define DEBUG_VERBOSE 0x02
@@ -15,8 +14,8 @@
 class AnalysisModule {
 protected:
     // audio context
-    int sampleRate = 8192;
-    int windowSize = 256;
+    int sampleRate = SAMPLE_RATE;
+    int windowSize = WINDOW_SIZE;
 
     // dependent constants
     int windowSizeBy2 = windowSize >> 1;
@@ -27,11 +26,11 @@ protected:
     int lowerBinBound = 0;
     int upperBinBound = windowSizeBy2;
 
-    Spectrogram<float>* spectrogram;
+    Spectrogram<float>* spectrogram = NULL;
 
     // reference to submodules (used to automatically propagate parameters)
     int numSubmodules = 0;
-    AnalysisModule** submodules;
+    AnalysisModule** submodules = NULL;
 
     // debug mode for an analysis module
     int debugMode = 0x00;
