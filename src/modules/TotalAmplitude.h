@@ -19,16 +19,17 @@ public:
     // it finds the sum of the amplitudes of the bins in the selected frequency range
     // the sum is stored in the module's output variable
     // input is a 2D array that contains the stored FFT history
-    void doAnalysis(const float** input)
+    void doAnalysis()
     {
+        float* windowData = spectrogram->getCurrentWindow();
+
         // initialize total to 0, the minimum possible amplitude sum
         float total = 0.0;
 
         // iterate through the bins in the selected frequency range, adding the amplitude of each bin to the total
-        for(int i=lowerBinBound; i<upperBinBound; i++)
-        {
-          //total += curWindow[i];
-          total += input[CURR_WINDOW][i];
+        for (int i = lowerBinBound; i < upperBinBound; i++) {
+            // total += curWindow[i];
+            total += windowData[i];
         }
 
         // store the total amplitude in the output variable
