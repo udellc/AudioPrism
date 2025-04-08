@@ -11,8 +11,8 @@ void AnalysisModule::setWindowSize(int windowSize)
 
     // update dependent constants
     windowSizeBy2 = windowSize >> 1;
-    freqRes = float(sampleRate) / float(windowSize);
-    freqWidth = float(windowSize) / float(sampleRate);
+    freqRes       = float(sampleRate) / float(windowSize);
+    freqWidth     = float(windowSize) / float(sampleRate);
 
     // if a non-default lower bound has been set, update it to the closest index under the new audio context
     if (lowerBinBound != 0) {
@@ -55,7 +55,7 @@ void AnalysisModule::setSampleRate(const int sampleRate)
     }
 
     // update dependent constants
-    freqRes = float(sampleRate) / float(windowSize);
+    freqRes   = float(sampleRate) / float(windowSize);
     freqWidth = float(windowSize) / float(sampleRate);
 
     // update sample rate
@@ -67,7 +67,7 @@ void AnalysisModule::setSampleRate(const int sampleRate)
     }
 }
 
-void AnalysisModule::setSpectrogram(Spectrogram<float>* spectrogram)
+void AnalysisModule::setSpectrogram(Spectrogram* spectrogram)
 {
     this->spectrogram = spectrogram;
 }

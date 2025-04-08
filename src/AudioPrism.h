@@ -16,6 +16,6 @@
 #include "modules/SalientFreqs.h"
 #include "modules/TotalAmplitude.h"
 #include "modules/VocalDetection.h"
-#include "temp/CrossCorrelation.h"
+#include "modules/experimental/CrossCorrelation.h"
 
 #endif // Audio_Prism_h

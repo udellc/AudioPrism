@@ -6,11 +6,8 @@
 #ifndef SPECTROGRAM_H
 #define SPECTROGRAM_H
 
-#include <cstddef>
 #include <cstdint>
 #include <cstring>
-
-#include "Config.h"
 
 /**
  * Spectrogram holds the frequency domain data over multiple time windows.
@@ -19,7 +16,6 @@
  * frequency domain data. Pushing new windows of data will overwrite the oldest
  * window stored. It requires the buffer data to be allocated by the user.
  */
-template <typename T>
 class Spectrogram {
 public:
     /**
@@ -43,7 +39,7 @@ public:
 
     ~Spectrogram();
 
-    T* getBuffer() const { return this->buffer; };
+    float* getBuffer() const { return this->buffer; };
 
     uint16_t getNumBins() const { return this->numBins; };
 
@@ -60,21 +56,21 @@ public:
      * @param relativeIndex Index relative to the current.
      * @return Array of frequency domain data
      */
-    T* getWindowAt(int relativeIndex) const;
+    float* getWindowAt(int relativeIndex) const;
 
     /**
      * Gets the most recent Spectrogram window data.
      *
      * @return Array of frequency domain data
      */
-    T* getCurrentWindow() const;
+    float* getCurrentWindow() const;
 
     /**
      * Gets the previous Spectrogram window data.
      *
      * @return Array of frequency domain data
      */
-    T* getPreviousWindow() const;
+    float* getPreviousWindow() const;
 
     /**
      * Pushes a new window to the Spectrogram.
@@ -85,7 +81,7 @@ public:
      *
      * @param data Pointer to the window's frequency domain data.
      */
-    void pushWindow(const T* data);
+    void pushWindow(const float* data);
 
     /**
      * Clears the Spectrogram's data buffer and resets the current index.
@@ -93,80 +89,10 @@ public:
     void clearBuffer();
 
 private:
-    T* buffer;
+    float*   buffer;
     uint16_t numWindows;
     uint16_t numBins;
     uint16_t currIndex;
-};
-
-template <typename T>
-Spectrogram<T>::Spectrogram()
-{
-    this->buffer = NULL;
-    this->numWindows = 0;
-    this->numBins = 0;
-    this->currIndex = 0;
-};
-
-template <typename T>
-Spectrogram<T>::Spectrogram(const uint16_t numWindows)
-{
-    uint16_t numBins = WINDOW_SIZE >> 1;
-    this->buffer = new T[numWindows * numBins];
-    this->numWindows = numWindows;
-    this->numBins = numBins;
-    this->currIndex = 0;
-}
-
-template <typename T>
-Spectrogram<T>::~Spectrogram()
-{
-    delete[] this->buffer;
-    this->buffer = NULL;
-};
-
-template <typename T>
-T* Spectrogram<T>::getWindowAt(int relativeIndex) const
-{
-    // ensure that modulus math will work for negative values:
-    while (relativeIndex < 0) {
-        relativeIndex += this->numWindows;
-    }
-    uint16_t index = (this->currIndex + relativeIndex) % this->numWindows;
-    return this->buffer + (index * this->numBins);
-};
-
-template <typename T>
-T* Spectrogram<T>::getCurrentWindow() const
-{
-    return this->buffer + (this->currIndex * this->numBins);
-};
-
-template <typename T>
-T* Spectrogram<T>::getPreviousWindow() const
-{
-    return this->buffer + ((this->currIndex - 1) * this->numBins);
-};
-
-template <typename T>
-void Spectrogram<T>::pushWindow(const T* data)
-{
-    this->currIndex++;
-    if (this->currIndex == this->numWindows) {
-        this->currIndex = 0;
-    }
-
-    T* windowBuffer = this->buffer + (this->currIndex * this->numBins);
-    memcpy(windowBuffer, data, this->numBins * sizeof(T));
-};
-
-template <typename T>
-void Spectrogram<T>::clearBuffer()
-{
-    for (int i = 0; i < numWindows * numBins; i++) {
-        buffer[i] = 0;
-    }
-    this->currIndex = 0;
 };
 
 #endif // SPECTROGRAM

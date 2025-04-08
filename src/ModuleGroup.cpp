@@ -1,14 +1,14 @@
 #include "ModuleGroup.h"
 
-ModuleGroup::ModuleGroup(Spectrogram<float>* spectrogram)
+ModuleGroup::ModuleGroup(Spectrogram* spectrogram)
 {
     this->spectrogram = spectrogram;
 }
 
-ModuleGroup::ModuleGroup(Spectrogram<float>* spectrogram, int lowerFreq, int upperFreq)
+ModuleGroup::ModuleGroup(Spectrogram* spectrogram, int lowerFreq, int upperFreq)
 {
-    this->lowerFreq = lowerFreq;
-    this->upperFreq = upperFreq;
+    this->lowerFreq   = lowerFreq;
+    this->upperFreq   = upperFreq;
     this->spectrogram = spectrogram;
 }
 
@@ -26,15 +26,6 @@ void ModuleGroup::addModule(AnalysisModule* module, int lowerFreq, int upperFreq
     module->setAnalysisRangeByFreq(lowerFreq, upperFreq);
 
     this->modules.push_back(module);
-}
-
-void ModuleGroup::setSpectrogram(Spectrogram<float>* Spectrogram)
-{
-    this->spectrogram = spectrogram;
-
-    for (AnalysisModule* module : this->modules) {
-        module->setSpectrogram(spectrogram);
-    }
 }
 
 void ModuleGroup::runAnalysis()

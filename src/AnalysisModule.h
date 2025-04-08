@@ -1,3 +1,8 @@
+/*
+ * @file
+ * Contains the AnalysisModule class definition.
+ */
+
 #ifndef ANALYSIS_MODULE_H
 #define ANALYSIS_MODULE_H
 
@@ -7,8 +12,8 @@
 #include "Config.h"
 #include "Spectrogram.h"
 
-#define DEBUG_ENABLE 0x01
-#define DEBUG_VERBOSE 0x02
+#define DEBUG_ENABLE    0x01
+#define DEBUG_VERBOSE   0x02
 #define DEBUG_RECURSIVE 0x04
 
 class AnalysisModule {
@@ -18,19 +23,19 @@ protected:
     int windowSize = WINDOW_SIZE;
 
     // dependent constants
-    int windowSizeBy2 = windowSize >> 1;
-    float freqRes = float(sampleRate) / float(windowSize);
-    float freqWidth = float(windowSize) / float(sampleRate);
+    int   windowSizeBy2 = windowSize >> 1;
+    float freqRes       = float(sampleRate) / float(windowSize);
+    float freqWidth     = float(windowSize) / float(sampleRate);
 
     // frequency range (by bin index)
     int lowerBinBound = 0;
     int upperBinBound = windowSizeBy2;
 
-    Spectrogram<float>* spectrogram = NULL;
+    Spectrogram* spectrogram = NULL;
 
     // reference to submodules (used to automatically propagate parameters)
-    int numSubmodules = 0;
-    AnalysisModule** submodules = NULL;
+    int              numSubmodules = 0;
+    AnalysisModule** submodules    = NULL;
 
     // debug mode for an analysis module
     int debugMode = 0x00;
@@ -47,7 +52,7 @@ public:
     void setSampleRate(const int sampleRate);
 
     // set the spectrogram to use as input
-    void setSpectrogram(Spectrogram<float>* spectrogram);
+    void setSpectrogram(Spectrogram* spectrogram);
 
     // if a module needs submodules, call this function in the parent module's constructor
     // this is necessary to automatically propagate base class parameters to submodules

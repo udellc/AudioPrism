@@ -12,7 +12,7 @@
 #define Vocal_Detection_h
 
 #include "../AnalysisModule.h"
-#include "../temp/CrossCorrelation.h"
+#include "./experimental/CrossCorrelation.h"
 
 #include <cmath>
 #include <cstdint>
@@ -58,18 +58,18 @@ public:
         uint16_t input_magnitudes[8][windowSizeBy2 + 1];
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < windowSizeBy2 + 1; j++) {
-                float* windowData = spectrogram->getWindowAt(-i);
+                float* windowData      = spectrogram->getWindowAt(-i);
                 input_magnitudes[i][j] = windowData[j];
             }
         }
         // correlate each template and change output according to the highest threshold value
         float highest = 0.001;
-        output = -1;
+        output        = -1;
         for (int i = 0; i < 5; i++) {
             float cur = data[i].correlate((uint16_t*)input_magnitudes, 0, 8);
             Serial.printf("%f,", cur);
             if (cur > highest) {
-                output = i;
+                output  = i;
                 highest = cur;
             }
         }
