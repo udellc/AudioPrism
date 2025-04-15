@@ -2,6 +2,7 @@ name: Publish Documentation to Github Pages
 on:
   release:
     types: [released]
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
