@@ -1,6 +1,7 @@
 #include "Spectrogram.h"
 #include "Config.h"
 
+// make default to two windows, allow resizing
 Spectrogram::Spectrogram()
 {
     this->buffer     = NULL;
