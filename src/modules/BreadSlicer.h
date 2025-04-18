@@ -47,8 +47,11 @@ public:
     {
         int _nyquist = sampleRate >> 1; // nyquist frequency is 1/2 the sampleRate
 
+        // validate band boundaries are increasing and within valid range
         for (int i = 0; i < numBands; i++) { // check if each band is greater than the previous and less than next
-            if (!((frequencyBands[i] >= 0 && frequencyBands[i] <= _nyquist) && (frequencyBands[i] < frequencyBands[i + 1] && frequencyBands[i + 1] <= _nyquist))) {
+            if (!((frequencyBands[i] >= 0 && frequencyBands[i] <= _nyquist) && 
+                (frequencyBands[i] < frequencyBands[i + 1] && frequencyBands[i + 1] <= _nyquist))) //band order and next band within valid range
+            {
                 Serial.println("BreadSlicer setBands() fail! Invalid bands!");
                 return;
             }
@@ -87,13 +90,15 @@ public:
         // finds the total amplitude of each band by summing the bins within each band
         // then stores that value in output
         for (int i = this->bandIndexes[0]; i <= this->bandIndexes[this->numBands]; i++) {
+            // if still within the band, add amp to _bandSum
             if (i < this->bandIndexes[_bandIndex]) {
                 _bandSum += windowData[i];
             } else {
+                // if not within band, store sum of amplitudes for the band in output array
                 this->output[_bandIndex - 1] = _bandSum;
                 _bandIndex += 1;
                 _bandSum = 0;
-                i -= 1;
+                i -= 1; // Decrease i to stay within the band range during the next loop iteration
             }
         }
 
