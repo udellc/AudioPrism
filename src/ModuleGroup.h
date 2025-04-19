@@ -40,10 +40,22 @@ public:
     void addModule(AnalysisModule* module);
 
     /**
+     * Add a module to the group, overriding the frequency range and spectrogram.
+     *
+     * The added module will analyze a separate spectrogram from the rest of
+     * the group, all other relevant properties will be inherited from the
+     * group.
+     *
+     * @param module A pointer to the module to add.
+     * @param spectrogram A pointer to the spectrogram to analyze.
+     */
+    void addModule(AnalysisModule* module, Spectrogram* spectrogram);
+
+    /**
      * Add a module to the group, overriding the frequency range.
      *
      * The added module will have its own frequency analysis range, all other
-     * relevant roperties will be inherited from the group.
+     * relevant properties will be inherited from the group.
      *
      * @param module A pointer to the module to add.
      * @param lowerFreq The lower frequency bound (Hz).
