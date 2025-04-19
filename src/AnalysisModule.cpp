@@ -31,8 +31,8 @@ void AnalysisModule::setWindowSize(int windowSize)
     this->windowSize = windowSize;
 
     // recursive propagate window size change to submodules
-    for (int i = 0; i < numSubmodules; i++) {
-        submodules[i]->setWindowSize(windowSize);
+    for (AnalysisModule* submodule : submodules) {
+        submodule->setWindowSize(windowSize);
     }
 }
 
@@ -62,14 +62,19 @@ void AnalysisModule::setSampleRate(const int sampleRate)
     this->sampleRate = sampleRate;
 
     // recursively propagate sample rate change to submodules
-    for (int i = 0; i < numSubmodules; i++) {
-        submodules[i]->setSampleRate(sampleRate);
+    for (AnalysisModule* submodule : submodules) {
+        submodule->setSampleRate(sampleRate);
     }
 }
 
 void AnalysisModule::setSpectrogram(Spectrogram* spectrogram)
 {
     this->spectrogram = spectrogram;
+
+    // recursively propagate spectrogram change to submodules
+    for (AnalysisModule* submodule : submodules) {
+        submodule->setSpectrogram(spectrogram);
+    }
 }
 
 void AnalysisModule::addSubmodule(AnalysisModule* module)
@@ -81,19 +86,7 @@ void AnalysisModule::addSubmodule(AnalysisModule* module)
     module->setSpectrogram(spectrogram);
     module->setAnalysisRangeByBin(lowerBinBound, upperBinBound);
 
-    // create new larger array for modules
-    numSubmodules++;
-    AnalysisModule** newSubmodules = new AnalysisModule*[numSubmodules];
-
-    // copy modules over and add new module
-    for (int i = 0; i < numSubmodules - 1; i++) {
-        newSubmodules[i] = submodules[i];
-    }
-    newSubmodules[numSubmodules - 1] = module;
-
-    // free old modules array and store reference to new modules array
-    delete[] submodules;
-    submodules = newSubmodules;
+    submodules.push_back(module);
 }
 
 void AnalysisModule::setAnalysisRangeByFreq(int lowerFreq, int upperFreq)
@@ -108,8 +101,8 @@ void AnalysisModule::setAnalysisRangeByFreq(int lowerFreq, int upperFreq)
     lowerBinBound = round(lowerFreq * freqWidth);
     upperBinBound = round(upperFreq * freqWidth);
 
-    for (int i = 0; i < numSubmodules; i++) {
-        submodules[i]->setAnalysisRangeByBin(lowerBinBound, upperBinBound);
+    for (AnalysisModule* submodule : submodules) {
+        submodule->setAnalysisRangeByBin(lowerBinBound, upperBinBound);
     }
 }
 
@@ -125,8 +118,8 @@ void AnalysisModule::setAnalysisRangeByBin(int lowerBin, int upperBin)
     lowerBinBound = lowerBin;
     upperBinBound = upperBin;
 
-    for (int i = 0; i < numSubmodules; i++) {
-        submodules[i]->setAnalysisRangeByBin(lowerBinBound, upperBinBound);
+    for (AnalysisModule* submodule : submodules) {
+        submodule->setAnalysisRangeByBin(lowerBinBound, upperBinBound);
     }
 }
 
@@ -137,14 +130,14 @@ void AnalysisModule::setDebugMode(int mode)
 
     // if recursive flag is set, propagate debug mode to submodules
     if (mode & DEBUG_RECURSIVE) {
-        for (int i = 0; i < numSubmodules; i++) {
-            submodules[i]->setDebugMode(mode);
+        for (AnalysisModule* submodule : submodules) {
+            submodule->setDebugMode(mode);
         }
     }
     // if recursive flag is not set, disable debug mode for submodules
     else {
-        for (int i = 0; i < numSubmodules; i++) {
-            submodules[i]->setDebugMode(~DEBUG_ENABLE);
+        for (AnalysisModule* submodule : submodules) {
+            submodule->setDebugMode(~DEBUG_ENABLE);
         }
     }
 }
@@ -155,5 +148,5 @@ void AnalysisModule::printModuleInfo()
     Serial.printf("Window Size: %d\n", windowSize);
     Serial.printf("Lower Bin Bound: %d (%d Hz)\n", lowerBinBound, lowerBinBound * sampleRate / windowSize);
     Serial.printf("Upper Bin Bound: %d (%d Hz)\n", upperBinBound, upperBinBound * sampleRate / windowSize);
-    Serial.printf("Number of Submodules: %d\n", numSubmodules);
+    Serial.printf("Number of Submodules: %d\n", submodules.size());
 }
