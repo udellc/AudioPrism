@@ -1,0 +1,25 @@
+<map id="src/modules/VocalDetection.h" name="src/modules/VocalDetection.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="479,5,674,31"/>
+<area shape="rect" id="Node000002" href="$_analysis_module_8h.html" title=" " alt="" coords="196,79,328,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="523,34,331,78,329,72,522,29"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="476,226,536,252"/>
+<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="566,33,549,54,533,80,522,114,515,149,509,211,503,210,509,149,517,113,529,78,544,51,562,30"/>
+<area shape="rect" id="Node000010" href="$_cross_correlation_8h.html" title=" " alt="" coords="543,79,754,105"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="590,29,627,66,623,70,586,33"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="778,79,836,105"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="616,29,764,74,763,80,615,34"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,153,81,178"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="225,108,96,150,94,145,224,103"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="105,153,165,178"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="241,108,171,147,168,142,239,103"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="189,153,246,178"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="257,106,235,141,231,138,252,103"/>
+<area shape="rect" id="Node000006" href="$_config_8h.html" title=" " alt="" coords="271,153,338,178"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="271,104,292,138,287,141,266,106"/>
+<area shape="rect" id="Node000007" href="$_spectrogram_8h.html" title=" " alt="" coords="362,153,468,178"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="289,103,376,143,374,148,287,108"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="432,177,480,215,477,219,429,181"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="385,226,445,252"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="418,179,418,211,412,211,412,179"/>
+<area shape="poly" id="edge10_Node000010_Node000008" title=" " alt="" coords="639,107,530,217,526,213,635,103"/>
+</map>

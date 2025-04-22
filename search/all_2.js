@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['calculate_5fdistance_0',['calculate_distance',['../class_formants.html#aab728b177772fe6fc5252b3077c9abb9',1,'Formants']]],
+  ['centroid_1',['Centroid',['../class_centroid.html',1,'Centroid'],['../index.html#autotoc_md22',1,'Centroid']]],
+  ['centroid_2',['centroid',['../class_centroid.html#aa01e8324a615012000e88a3ba4c52bf1',1,'Centroid']]],
+  ['centroid_2eh_3',['Centroid.h',['../_centroid_8h.html',1,'']]],
+  ['changenumfreqs_4',['changeNumFreqs',['../class_salient_freqs.html#a0a7905d30d635e60f809d8340add2b8e',1,'SalientFreqs']]],
+  ['class_5',['Class',['../index.html#autotoc_md49',1,'AnalysisModule Class'],['../index.html#autotoc_md55',1,'ModuleInterface Class']]],
+  ['class_20hierarchy_20overview_6',['Class Hierarchy Overview',['../index.html#autotoc_md48',1,'']]],
+  ['classes_7',['Classes',['../index.html#autotoc_md47',1,'']]],
+  ['clearbuffer_8',['clearBuffer',['../class_spectrogram.html#aded566af483fb92e0e5ae0327f68eaef',1,'Spectrogram']]],
+  ['clone_20the_20repository_20recommended_9',['Clone the Repository (recommended)',['../index.html#autotoc_md5',1,'']]],
+  ['composite_20module_10',['Creating a Composite Module',['../index.html#autotoc_md60',1,'']]],
+  ['config_2eh_11',['Config.h',['../_config_8h.html',1,'']]],
+  ['configuration_12',['Configuration',['../index.html#autotoc_md7',1,'']]],
+  ['contents_13',['Table of Contents',['../index.html#autotoc_md1',1,'']]],
+  ['correlate_14',['correlate',['../class_cross_correlation.html#a7e7f89ee935d4ee30c4380c2db2e161b',1,'CrossCorrelation']]],
+  ['creating_20a_20composite_20module_15',['Creating a Composite Module',['../index.html#autotoc_md60',1,'']]],
+  ['creating_20an_20atonic_20module_16',['Creating an Atonic Module',['../index.html#autotoc_md59',1,'']]],
+  ['creating_20modules_17',['Creating Modules',['../index.html#autotoc_md58',1,'']]],
+  ['crosscorrelation_18',['CrossCorrelation',['../class_cross_correlation.html',1,'CrossCorrelation'],['../class_cross_correlation.html#a9d30cfc2867e99410c7728941edc9e2f',1,'CrossCorrelation::CrossCorrelation()'],['../class_cross_correlation.html#a154b5622c7eef9b7ea8f8b8fd3d2c603',1,'CrossCorrelation::CrossCorrelation(uint16_t sampleRate, uint16_t windowSize)']]],
+  ['crosscorrelation_2ecpp_19',['CrossCorrelation.cpp',['../_cross_correlation_8cpp.html',1,'']]],
+  ['crosscorrelation_2eh_20',['CrossCorrelation.h',['../_cross_correlation_8h.html',1,'']]],
+  ['ctenor_21',['CTENOR',['../_formants_8h.html#a74a0e19547efaa94858800528353feac',1,'Formants.h']]]
+];

@@ -1,0 +1,21 @@
+<map id="src/modules/BreadSlicer.h" name="src/modules/BreadSlicer.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="190,5,363,31"/>
+<area shape="rect" id="Node000002" href="$_analysis_module_8h.html" title=" " alt="" coords="152,79,284,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="269,33,239,69,235,65,265,30"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="308,79,365,105"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="288,30,319,65,314,69,284,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,153,81,178"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="189,108,88,149,86,144,187,103"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="105,153,165,178"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="205,107,162,144,159,140,202,103"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="189,153,246,178"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="220,105,220,137,215,137,215,105"/>
+<area shape="rect" id="Node000006" href="$_config_8h.html" title=" " alt="" coords="271,153,338,178"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="234,103,280,141,277,145,231,107"/>
+<area shape="rect" id="Node000007" href="$_spectrogram_8h.html" title=" " alt="" coords="362,153,468,178"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="252,103,368,144,366,150,250,108"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="342,226,402,252"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="410,180,390,214,385,211,406,177"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="426,226,486,252"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="424,177,444,211,439,214,420,180"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="VocalDetection" name="VocalDetection">
+<area shape="rect" id="Node000001" title=" " alt="" coords="26,153,135,178"/>
+<area shape="rect" id="Node000002" href="$class_module_interface.html" title=" " alt="" coords="5,79,156,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,120,83,152,78,152,78,120"/>
+<area shape="rect" id="Node000003" href="$class_analysis_module.html" title=" " alt="" coords="24,5,137,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="83,46,83,79,78,79,78,46"/>
+</map>

@@ -1,0 +1,32 @@
+<map id="src/modules/PercussionDetection.h" name="src/modules/PercussionDetection.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="224,5,450,31"/>
+<area shape="rect" id="Node000002" href="$_analysis_module_8h.html" title=" " alt="" coords="229,226,362,252"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="323,33,273,82,247,116,227,154,224,166,227,177,242,198,262,215,258,219,238,202,222,179,219,166,222,152,242,113,269,78,320,29"/>
+<area shape="rect" id="Node000010" href="$_delta_amplitudes_8h.html" title=" " alt="" coords="447,79,573,105"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="367,29,468,70,466,75,365,34"/>
+<area shape="rect" id="Node000012" href="$_noisiness_8h.html" title=" " alt="" coords="334,79,423,105"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="346,30,366,64,361,67,341,33"/>
+<area shape="rect" id="Node000013" href="$_total_amplitude_8h.html" title=" " alt="" coords="236,153,355,178"/>
+<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="336,32,306,138,301,137,331,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="154,300,229,326"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="279,255,223,293,220,289,276,250"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="427,300,487,326"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="324,250,417,291,414,296,322,255"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="254,300,311,326"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="296,253,290,285,285,284,291,252"/>
+<area shape="rect" id="Node000006" href="$_config_8h.html" title=" " alt="" coords="335,300,402,326"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="309,250,348,287,344,291,306,254"/>
+<area shape="rect" id="Node000007" href="$_spectrogram_8h.html" title=" " alt="" coords="24,300,130,326"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="259,255,129,297,128,292,258,250"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="5,374,66,399"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="72,327,52,362,48,359,68,325"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="89,374,150,399"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="86,325,107,359,102,362,82,327"/>
+<area shape="poly" id="edge10_Node000010_Node000002" title=" " alt="" coords="495,107,390,181,329,220,326,216,387,176,492,103"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="531,153,588,178"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="521,103,545,138,540,141,516,106"/>
+<area shape="poly" id="edge14_Node000012_Node000002" title=" " alt="" coords="382,105,380,140,376,160,368,180,351,202,331,220,327,215,348,198,364,177,371,159,375,139,376,105"/>
+<area shape="poly" id="edge13_Node000012_Node000004" title=" " alt="" coords="385,104,450,285,445,287,380,106"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="366,107,323,144,319,140,362,103"/>
+<area shape="poly" id="edge16_Node000013_Node000002" title=" " alt="" coords="298,179,298,211,293,211,293,179"/>
+</map>

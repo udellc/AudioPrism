@@ -1,0 +1,11 @@
+<map id="src/modules/DeltaAmplitudes.h" name="src/modules/DeltaAmplitudes.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="36,5,237,31"/>
+<area shape="rect" id="Node000002" href="$_audio_prism_8h.html" title=" " alt="" coords="76,153,196,178"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,39,37,56,13,80,9,92,10,103,15,113,25,122,54,138,88,150,86,155,52,142,22,126,11,116,5,104,3,91,9,78,34,52,65,34"/>
+<area shape="rect" id="Node000003" href="$_percussion_detection_8h.html" title=" " alt="" coords="23,79,249,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="139,46,139,79,134,79,134,46"/>
+<area shape="rect" id="Node000004" href="$_salient_freqs_8h.html" title=" " alt="" coords="273,79,453,105"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="190,34,325,76,323,81,188,39"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="139,120,139,152,134,152,134,120"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="311,112,176,155,174,150,309,107"/>
+</map>
