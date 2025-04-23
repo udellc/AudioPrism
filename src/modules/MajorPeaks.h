@@ -13,19 +13,23 @@
 #define Major_Peaks_h
 
 #define MP_FREQ 0
-#define MP_AMP 1
+#define MP_AMP  1
 
 #include "../AnalysisModule.h"
 
+/**
+ * @ingroup AnalysisModules
+ * Finds the N largest peaks in the current window.
+ */
 class MajorPeaks : public ModuleInterface<float**> {
 private:
     int maxNumPeaks = 4; // default number of peaks to find
-    int numPeaks = 0; // number of peaks found this iteration
+    int numPeaks    = 0; // number of peaks found this iteration
 
     // temporary storage for calculating the output
-    int outputLength = windowSizeBy2 >> 1;
+    int    outputLength      = windowSizeBy2 >> 1;
     float* outputFrequencies = new float[windowSizeBy2 >> 1];
-    float* outputAmplitudes = new float[windowSizeBy2 >> 1];
+    float* outputAmplitudes  = new float[windowSizeBy2 >> 1];
 
 public:
     // default constructor the sets the number of peaks to 4
@@ -39,9 +43,9 @@ public:
         // output[MP_AMP] is an array of amplitudes, indexed by peak number
         // peaks are always stored in order of increasing frequency
         // if there are fewer than maxNumPeaks peaks, the remaining elements are padded with zeros
-        output = new float*[2];
+        output          = new float*[2];
         output[MP_FREQ] = new float[maxNumPeaks];
-        output[MP_AMP] = new float[maxNumPeaks];
+        output[MP_AMP]  = new float[maxNumPeaks];
     }
 
     // constructor with optional parameter to set the number of peaks to find
@@ -55,9 +59,9 @@ public:
         // output[MP_AMP] is an array of amplitudes, indexed by peak number
         // peaks are always stored in order of increasing frequency
         // if there are fewer than maxNumPeaks peaks, the remaining elements are padded with zeros
-        output = new float*[2];
+        output          = new float*[2];
         output[MP_FREQ] = new float[maxNumPeaks];
-        output[MP_AMP] = new float[maxNumPeaks];
+        output[MP_AMP]  = new float[maxNumPeaks];
     }
 
     // destructor
@@ -66,8 +70,8 @@ public:
     {
         // free memory allocated for output arrays
         delete[] output[MP_FREQ]; // free the array of frequencies
-        delete[] output[MP_AMP]; // free the array of amplitudes
-        delete[] output; // free the array managing the arrays of frequencies and amplitudes
+        delete[] output[MP_AMP];  // free the array of amplitudes
+        delete[] output;          // free the array managing the arrays of frequencies and amplitudes
 
         // free temporary storage
         delete[] outputFrequencies;
@@ -78,7 +82,7 @@ public:
     {
         // free all previous allocated memory
         delete[] output[MP_FREQ]; // free the array of frequencies
-        delete[] output[MP_AMP]; // free the array of amplitudes
+        delete[] output[MP_AMP];  // free the array of amplitudes
         delete[] output;
 
         // restrict the number of peaks to find to n
@@ -89,9 +93,9 @@ public:
         // output[1] is an array of amplitudes, indexed by peak number
         // peaks are always stored in order of increasing frequency
         // if there are fewer than maxNumPeaks peaks, the remaining elements are padded with zeros
-        output = new float*[2];
+        output          = new float*[2];
         output[MP_FREQ] = new float[maxNumPeaks];
-        output[MP_AMP] = new float[maxNumPeaks];
+        output[MP_AMP]  = new float[maxNumPeaks];
     }
 
     // reset peaks arrays
@@ -106,13 +110,13 @@ public:
             delete[] outputFrequencies;
             delete[] outputAmplitudes;
             outputFrequencies = new float[windowSizeBy2 >> 1];
-            outputAmplitudes = new float[windowSizeBy2 >> 1];
+            outputAmplitudes  = new float[windowSizeBy2 >> 1];
         }
 
         // zero out the output arrays
         for (int i = 0; i < windowSizeBy2 >> 1; i++) {
             outputFrequencies[i] = 0;
-            outputAmplitudes[i] = 0;
+            outputAmplitudes[i]  = 0;
         }
     }
 
@@ -152,14 +156,14 @@ public:
     {
         // loop until numPeaks <= maxNumPeaks, removing the smallest peak each iteration
         while (numPeaks > maxNumPeaks) {
-            float minAmp = outputAmplitudes[0];
-            int minIndex = 0;
+            float minAmp   = outputAmplitudes[0];
+            int   minIndex = 0;
 
             // iterate through the peaks, storing the index of the peak with the smallest amplitude
             // the peak at this index will be removed in the next step
             for (int i = 1; i < numPeaks; i++) {
                 if (outputAmplitudes[i] < minAmp) {
-                    minAmp = outputAmplitudes[i];
+                    minAmp   = outputAmplitudes[i];
                     minIndex = i;
                 }
             }
@@ -168,7 +172,7 @@ public:
             // removal is done by shifting all elements after the removed peak one index to the left
             for (int i = minIndex; i < numPeaks - 1; i++) {
                 outputFrequencies[i] = outputFrequencies[i + 1];
-                outputAmplitudes[i] = outputAmplitudes[i + 1];
+                outputAmplitudes[i]  = outputAmplitudes[i + 1];
             }
             numPeaks--;
         }
@@ -184,10 +188,10 @@ public:
             // if there are fewer than maxNumPeaks peaks, pad array with zeros
             if (i < numPeaks) {
                 output[MP_FREQ][i] = outputFrequencies[i];
-                output[MP_AMP][i] = outputAmplitudes[i];
+                output[MP_AMP][i]  = outputAmplitudes[i];
             } else {
                 output[MP_FREQ][i] = 0;
-                output[MP_AMP][i] = 0;
+                output[MP_AMP][i]  = 0;
             }
         }
     }
@@ -214,23 +218,7 @@ public:
     // this is the function called by the analysis manager to perform the analysis
     // the output is a 2d array of floats, where output[0] is an array of frequencies and output[1] is an array of amplitudes
     // the output is indexed by peak number, and is always in order of lowest freq peak to highest freq peak
-    void doAnalysis()
-    {
-        resetPeaksArrays();
-        findPeaks();
-        trimPeaks();
-        storePeaks();
-
-        // if debug is enabled, print the output to the serial console
-        if (debugMode & DEBUG_ENABLE) {
-            Serial.printf("===MAJORPEAKS===\n");
-            if (debugMode & DEBUG_VERBOSE) {
-                printModuleInfo();
-            }
-            printOutput();
-            Serial.printf("================\n");
-        }
-    }
+    void doAnalysis();
 };
 
 #endif
