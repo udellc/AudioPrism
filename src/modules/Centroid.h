@@ -21,22 +21,25 @@
 class Centroid : public ModuleInterface<float> {
 public:
     float centroid;
-    int freqResBy2 = freqRes / 2;
+    int freqResBy2 = freqRes / 2; // divide freqRes by 2 to get the center value
 
-    void doAnalysis()
+    void doAnalysis(const float** input)
     {
-        float* windowData = spectrogram->getCurrentWindow();
-
         // get the sum of amplitudes and sum of frequencies*amplitudes
-        float ampSum = 0;
+        float ampSum = 0; // total amp across bins 
         float freqAmpSum = 0;
         int amp, freq;
+        // calculate center frequency of the bin
+        // i * freqRes gives lower edge, adding freqResBy2 gives center
         for (int i = lowerBinBound; i < upperBinBound; i++) {
-            amp = windowData[i];
+            amp = input[CURR_WINDOW][i];
             freq = (i * freqRes + freqResBy2); // use the center frequency of a bin
-            ampSum += amp;
-            freqAmpSum += freq * amp;
+            ampSum += amp; // get total amp
+            freqAmpSum += freq * amp; // get total freq * amp (weighted sum) 
         }
+        // if ampSum 0, set centroid to 0 -- this means no signal 
+        // otherwise divide weighted frequency sum by total amplitude -- "center of mass"
+        // lower centroid tends to be darker bassier sounds, higher centroids tend to be brighter sounds
         centroid = (ampSum == 0) ? 0 : (freqAmpSum / ampSum);
         output = centroid;
 
