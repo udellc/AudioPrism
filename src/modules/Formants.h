@@ -4,7 +4,7 @@
 #include <math.h>
 #include <float.h>
 #include "../AnalysisModule.h"
-// #include "MajorPeaks.h"
+#include "MajorPeaks.h"
 
 // Frequency Normalization (true/false):
 // Enabled: Compare fpeaks by relative frequency
@@ -12,12 +12,12 @@
 //      -- all lists of frequencies get divided by their highest frequency member
 //      -- example: {100, 200, 400, 800, 1500} -> {0.066, 0.133, 0.266, 0.533, 1}
 // Disabled: Compare fpeaks by absolute frequency 
-#define FREQUENCY_NORMALIZATION true 
+#define FREQUENCY_NORMALIZATION false
 
 // Number of fpeaks to match against (MUST BE 2-5, 3+ RECOMMENDED):
 // The first fpeaks are typically more important
 // Lower NUM_FPEAK values may make matching more robust to noise
-#define NUM_FPEAKS 3
+#define NUM_FPEAKS 5
 
 #define FPEAK_PENALTY 0.9
 
@@ -76,6 +76,11 @@ public:
 class Formants : public ModuleInterface<char>
 {
 private:
+    // The number of formant peaks to use in the analysis (between 2-5)
+    int num_fpeaks = 5;
+
+
+    
     MajorPeaks peak_finder = MajorPeaks(5);
 
     float bass[5][5] = {{600.0, 1040.0, 2250.0, 2450.0, 2750.0}, {400, 1620, 2400, 2800, 3100}, {250, 1750, 2600, 3050, 3340}, {400, 750, 2400, 2600, 2900}, {350, 600, 2400, 2675, 2900}};
@@ -90,15 +95,17 @@ public:
     Formants () {
         this->addSubmodule(&peak_finder);
         for(int i = 0; i<5; i++){
-            vocals.formant_table[i][0].set_profile(bass[i]);
-            vocals.formant_table[i][1].set_profile(tenor[i]);
-            vocals.formant_table[i][2].set_profile(ctenor[i]);
-            vocals.formant_table[i][3].set_profile(alto[i]);
-            vocals.formant_table[i][4].set_profile(soprano[i]);
+            formant_table[i][0].set_profile(bass[i]);
+            formant_table[i][1].set_profile(tenor[i]);
+            formant_table[i][2].set_profile(ctenor[i]);
+            formant_table[i][3].set_profile(alto[i]);
+            formant_table[i][4].set_profile(soprano[i]);
         }
     }
 
-    char vowel_to_character(int vowel) {
+    char vowel_to_character(int vowel, float distance) {
+        if (distance > 100) 
+            return '-';
         switch(vowel) {
             case 0:
                 return 'a';
@@ -115,16 +122,17 @@ public:
         }
     }
 
-    float calculate_distance(FormantProfile *profile, float **found_peaks) {
+    float calculate_distance(FormantProfile *profile, float *found_peaks) {
         // initialize distance to 0
         // a partial sum is added to distance each iteration of the for loop
         float distance = 0;
     
         // calculate partial sum for 5 peaks
-        for(int fpeak=0; fpeak<NUM_FPEAKS; fpeak++){
+        for(int fpeak=0; fpeak < num_fpeaks; fpeak++){
             // calculate distance between measured peak and profile peak
             // 1. take the absolute difference in frequency between peaks
-            float d = abs(profile->frequency[fpeak] - found_peaks[0][fpeak]);
+            
+            float d = abs(profile->frequency[fpeak] - found_peaks[fpeak]);
             // 2. if difference is within bandwidth, set distance to 0
             //d = std::max((float) 0.0, (float) d - profile->bandwidth[fpeak]);    
             // 3. square the distance
@@ -144,11 +152,11 @@ public:
         return (float) pow(distance, 0.5);
     }
 
-    int interpolateAroundPeak(float *data, int indexOfPeak, int sampleRate, int windowSize) {
+    int interpolateAroundPeak(const float *data, int indexOfPeak, int sampleRate, int windowSize) {
         float _freqRes = sampleRate * 1.0 / windowSize;
         float prePeak = indexOfPeak == 0 ? 0.0 : data[indexOfPeak - 1];
         float atPeak = data[indexOfPeak];
-        float postPeak = indexOfPeak == vapi.windowSizeBy2 ? 0.0 : data[indexOfPeak + 1];
+        float postPeak = indexOfPeak == windowSizeBy2 ? 0.0 : data[indexOfPeak + 1];
         // summing around the index of maximum amplitude to normalize magnitudeOfChange
         float peakSum = prePeak + atPeak + postPeak;
         // interpolating the direction and magnitude of change, and normalizing from -1.0 to 1.0
@@ -156,6 +164,11 @@ public:
     
         // return interpolated frequency
         return int(round((float(indexOfPeak) + magnitudeOfChange) * _freqRes));
+    }
+
+    void setNumPeaks(int peaks){
+        if (peaks <= 5 && peaks >=2)
+            this->num_fpeaks = peaks;
     }
 
     void doAnalysis(const float **input) {
@@ -182,12 +195,11 @@ public:
                 found_peaks[0][i] /= divisor;
             }
         }
-        int formants[5] = {0, 0, 0, 0, 0};
+        float formants[5] = {0, 0, 0, 0, 0};
         for(int i=0; i<5; i++) {
             formants[i] = interpolateAroundPeak(input[CURR_WINDOW], round(int(found_peaks[0][i] * freqWidth)), sampleRate, windowSize);
-            Serial.printf("%f ", found_peaks[0][i]);
         }
-        Serial.printf("\n");
+        
 
         // initalize variables used to save the best match
         float lowest_distance = FLT_MAX;
@@ -211,8 +223,7 @@ public:
         }
 
         // output the character of the best matched vowel
-
-        output = vowel_to_character(formant_vowel);
+        output = vowel_to_character(formant_vowel, lowest_distance);
     }
 };
 
