@@ -1,16 +1,5 @@
-//============================================================================
-// MODULE INFORMATION
-//============================================================================
-// Name        : MajorPeaks
-// Return Type : float** (array of frequency and amplitude pairs)
-// Description : MajorPeaks finds the N largest peaks in the current window
-//               and returns an array of tuples containing the frequency and
-//               amplitude of each peak. If there are fewer than N peaks, the
-//               remaining elements in the array are padded with zeros.
-//============================================================================
-
-#ifndef Major_Peaks_h
-#define Major_Peaks_h
+#ifndef MAJOR_PEAKS_H
+#define MAJOR_PEAKS_H
 
 #define MP_FREQ 0
 #define MP_AMP  1
@@ -19,18 +8,14 @@
 
 /**
  * @ingroup AnalysisModules
- * Finds the N largest peaks in the current window.
+ *
+ * @brief Finds the N largest amplitude peaks in the current window.
+ *
+ * Ouptuts an array of tuples containing the frequency and amplitude of each
+ * peak. If there are fewer than N peaks, the remaining elements in the array
+ * are padded with zeros.
  */
 class MajorPeaks : public ModuleInterface<float**> {
-private:
-    int maxNumPeaks = 4; // default number of peaks to find
-    int numPeaks    = 0; // number of peaks found this iteration
-
-    // temporary storage for calculating the output
-    int    outputLength      = windowSizeBy2 >> 1;
-    float* outputFrequencies = new float[windowSizeBy2 >> 1];
-    float* outputAmplitudes  = new float[windowSizeBy2 >> 1];
-
 public:
     // default constructor the sets the number of peaks to 4
     MajorPeaks();
@@ -42,7 +27,24 @@ public:
     // frees memory allocated for the output arrays and temporary storage
     ~MajorPeaks();
 
-    void setNumPeaks(int n);
+    // perform the 4 step analysis
+    // 1. resetPeaksArrays() to clear the temporary storage and output arrays, and reset the number of peaks found
+    // 2. findPeaks() to find all peaks in the current window (up to windowSizeBy2>>1 peaks)
+    // 3. trimPeaks() to remove the smallest peaks until numPeaks <= maxNumPeaks
+    // 4. storePeaks() to copy peaks from temporary storage to the actual output arrays
+    // this is the function called by the analysis manager to perform the analysis
+    // the output is a 2d array of floats, where output[0] is an array of frequencies and output[1] is an array of amplitudes
+    // the output is indexed by peak number, and is always in order of lowest freq peak to highest freq peak
+    void doAnalysis();
+
+private:
+    int maxNumPeaks = 4; // default number of peaks to find
+    int numPeaks    = 0; // number of peaks found this iteration
+
+    // temporary storage for calculating the output
+    int    outputLength      = windowSizeBy2 >> 1;
+    float* outputFrequencies = new float[windowSizeBy2 >> 1];
+    float* outputAmplitudes  = new float[windowSizeBy2 >> 1];
 
     // reset peaks arrays
     // this function is called at the beginning of each call to perform analysis
@@ -71,16 +73,6 @@ public:
 
     // for demo/debugging purposes
     void printOutput();
-
-    // perform the 4 step analysis
-    // 1. resetPeaksArrays() to clear the temporary storage and output arrays, and reset the number of peaks found
-    // 2. findPeaks() to find all peaks in the current window (up to windowSizeBy2>>1 peaks)
-    // 3. trimPeaks() to remove the smallest peaks until numPeaks <= maxNumPeaks
-    // 4. storePeaks() to copy peaks from temporary storage to the actual output arrays
-    // this is the function called by the analysis manager to perform the analysis
-    // the output is a 2d array of floats, where output[0] is an array of frequencies and output[1] is an array of amplitudes
-    // the output is indexed by peak number, and is always in order of lowest freq peak to highest freq peak
-    void doAnalysis();
 };
 
-#endif
+#endif // MAJOR_PEAKS_H

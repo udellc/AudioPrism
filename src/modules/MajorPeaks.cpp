@@ -42,26 +42,6 @@ MajorPeaks::~MajorPeaks()
     delete[] outputAmplitudes;
 }
 
-void MajorPeaks::setNumPeaks(int n)
-{
-    // free all previous allocated memory
-    delete[] output[MP_FREQ]; // free the array of frequencies
-    delete[] output[MP_AMP];  // free the array of amplitudes
-    delete[] output;
-
-    // restrict the number of peaks to find to n
-    maxNumPeaks = n;
-
-    // allocate memory for output array
-    // output[0] is an array of frequencies, indexed by peak number
-    // output[1] is an array of amplitudes, indexed by peak number
-    // peaks are always stored in order of increasing frequency
-    // if there are fewer than maxNumPeaks peaks, the remaining elements are padded with zeros
-    output          = new float*[2];
-    output[MP_FREQ] = new float[maxNumPeaks];
-    output[MP_AMP]  = new float[maxNumPeaks];
-}
-
 void MajorPeaks::resetPeaksArrays()
 {
     numPeaks = 0; // reset the number of peaks to zero
