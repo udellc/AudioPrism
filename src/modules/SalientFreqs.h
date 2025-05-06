@@ -81,19 +81,21 @@ public:
         direction = dir;
     }
 
-    void checkDirection(const float** input, int idx) {
-        if (direction == 1 && input[CURR_WINDOW][idx] > input[PREV_WINDOW][idx])
+    bool checkDirection(int idx) {
+        float *current_window = spectrogram->getCurrentWindow();
+        float *prev_window = spectrogram->getPreviousWindow();
+        if (direction == 1 && current_window[idx] > prev_window[idx])
             return false;
-        if (direction == 2 && input[CURR_WINDOW][idx] < input[PREV_WINDOW][idx])
+        if (direction == 2 && current_window[idx] < prev_window[idx])
             return false;
-        return true
+        return true;
     }
 
     // finds the n (numFreqs) bins with highest change in amplitude, stored in salientFreqs[]
     // input is assumed to be a 2D array of FFT data passed in from the Vibrosonics class
     void doAnalysis()
     {
-        deltaAmps.doAnalysis(input);
+        deltaAmps.doAnalysis();
         amplitudes = deltaAmps.getOutput(); // copy amplitudes
 
         // iterate through amplitudes to find the maximum(s)
@@ -102,7 +104,7 @@ public:
         for (int i = 0; i < numFreqs; i++) {
             for (int j = lowerBinBound; j < upperBinBound; j++) {
                 if (amplitudes[j] > currMaxAmp) {
-                    if(checkDirection(input, j)){
+                    if(checkDirection(j)){
                         currMaxAmp = amplitudes[j];
                         currMaxAmpIdx = j;
                     }
