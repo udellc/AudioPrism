@@ -12,7 +12,7 @@
 //      -- all lists of frequencies get divided by their highest frequency member
 //      -- example: {100, 200, 400, 800, 1500} -> {0.066, 0.133, 0.266, 0.533, 1}
 // Disabled: Compare fpeaks by absolute frequency 
-#define FREQUENCY_NORMALIZATION true 
+#define FREQUENCY_NORMALIZATION false
 
 // Number of fpeaks to match against (MUST BE 2-5, 3+ RECOMMENDED):
 // The first fpeaks are typically more important
@@ -90,11 +90,11 @@ public:
     Formants () {
         this->addSubmodule(&peak_finder);
         for(int i = 0; i<5; i++){
-            vocals.formant_table[i][0].set_profile(bass[i]);
-            vocals.formant_table[i][1].set_profile(tenor[i]);
-            vocals.formant_table[i][2].set_profile(ctenor[i]);
-            vocals.formant_table[i][3].set_profile(alto[i]);
-            vocals.formant_table[i][4].set_profile(soprano[i]);
+            formant_table[i][0].set_profile(bass[i]);
+            formant_table[i][1].set_profile(tenor[i]);
+            formant_table[i][2].set_profile(ctenor[i]);
+            formant_table[i][3].set_profile(alto[i]);
+            formant_table[i][4].set_profile(soprano[i]);
         }
     }
 
@@ -148,7 +148,7 @@ public:
         float _freqRes = sampleRate * 1.0 / windowSize;
         float prePeak = indexOfPeak == 0 ? 0.0 : data[indexOfPeak - 1];
         float atPeak = data[indexOfPeak];
-        float postPeak = indexOfPeak == vapi.windowSizeBy2 ? 0.0 : data[indexOfPeak + 1];
+        float postPeak = indexOfPeak == windowSizeBy2 ? 0.0 : data[indexOfPeak + 1];
         // summing around the index of maximum amplitude to normalize magnitudeOfChange
         float peakSum = prePeak + atPeak + postPeak;
         // interpolating the direction and magnitude of change, and normalizing from -1.0 to 1.0
