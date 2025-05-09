@@ -28,11 +28,14 @@ public:
         delete[] deltaAmplitudes;
     }
 
-    void doAnalysis(const float** input)
+    void doAnalysis()
     {
+        float* currWindowData = spectrogram->getCurrentWindow();
+        float* prevWindowData = spectrogram->getPreviousWindow();
+
         // iterate through FFT data and store the change in amplitudes between current and previous window
         for (int i = lowerBinBound; i < upperBinBound; i++) {
-            deltaAmplitudes[i] = abs(input[CURR_WINDOW][i] - input[PREV_WINDOW][i]);
+            deltaAmplitudes[i] = abs(currWindowData[i] - prevWindowData[i]);
         }
 
         output = deltaAmplitudes;

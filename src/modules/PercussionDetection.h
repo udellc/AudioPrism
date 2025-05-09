@@ -140,12 +140,12 @@ public:
             noise_threshold = new_threshold;
     }
 
-    void doAnalysis(const float** input)
+    void doAnalysis()
     {
         // run the submodules' analysses
-        totalAmp.doAnalysis(input);
-        deltaAmp.doAnalysis(input);
-        noise.doAnalysis(input);
+        totalAmp.doAnalysis();
+        deltaAmp.doAnalysis();
+        noise.doAnalysis();
 
         // retrieve the outputs of the submodules
         float total = totalAmp.getOutput();

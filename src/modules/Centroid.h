@@ -23,14 +23,16 @@ public:
     float centroid;
     int freqResBy2 = freqRes / 2;
 
-    void doAnalysis(const float** input)
+    void doAnalysis()
     {
+        float* windowData = spectrogram->getCurrentWindow();
+
         // get the sum of amplitudes and sum of frequencies*amplitudes
         float ampSum = 0;
         float freqAmpSum = 0;
         int amp, freq;
         for (int i = lowerBinBound; i < upperBinBound; i++) {
-            amp = input[CURR_WINDOW][i];
+            amp = windowData[i];
             freq = (i * freqRes + freqResBy2); // use the center frequency of a bin
             ampSum += amp;
             freqAmpSum += freq * amp;

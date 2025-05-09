@@ -4,6 +4,8 @@
 #include "SpectralTools.h"
 
 #include "AnalysisModule.h"
+#include "ModuleGroup.h"
+#include "Spectrogram.h"
 
 #include "modules/BreadSlicer.h"
 #include "modules/Centroid.h"
@@ -16,5 +18,7 @@
 #include "modules/SalientFreqs.h"
 #include "modules/TotalAmplitude.h"
 #include "modules/Formants.h"
+#include "modules/VocalDetection.h"
+#include "modules/experimental/CrossCorrelation.h"
 
 #endif // AUDIO_PRISM_H
