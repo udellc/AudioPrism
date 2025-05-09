@@ -1,5 +1,7 @@
-#ifndef Audio_Prism_h
-#define Audio_Prism_h
+#ifndef AUDIO_PRISM_H
+#define AUDIO_PRISM_H
+
+#include "SpectralTools.h"
 
 #include "AnalysisModule.h"
 #include "ModuleGroup.h"
@@ -15,7 +17,8 @@
 #include "modules/PercussionDetection.h"
 #include "modules/SalientFreqs.h"
 #include "modules/TotalAmplitude.h"
+#include "modules/Formants.h"
 #include "modules/VocalDetection.h"
 #include "modules/experimental/CrossCorrelation.h"
 
-#endif // Audio_Prism_h
+#endif // AUDIO_PRISM_H
