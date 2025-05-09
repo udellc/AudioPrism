@@ -1,5 +1,7 @@
-#ifndef Audio_Prism_h
-#define Audio_Prism_h
+#ifndef AUDIO_PRISM_H
+#define AUDIO_PRISM_H
+
+#include "SpectralTools.h"
 
 #include "AnalysisModule.h"
 
@@ -15,5 +17,4 @@
 #include "modules/TotalAmplitude.h"
 #include "modules/Formants.h"
 
-
-#endif // Audio_Prism_h
+#endif // AUDIO_PRISM_H
