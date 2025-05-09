@@ -36,6 +36,7 @@
 #define ALTO    3
 #define SOPRANO 4
 
+
 // vowel macros
 #define VOWEL_A 0
 #define VOWEL_E 1
@@ -49,20 +50,7 @@ public:
     // float *bandwidth;
 
     // copy references to stored data
-    void set_profile(float* freqs /*, float *bandwidth*/)
-    {
-        frequency = freqs;
-        // bandwidth = bandwidth;
-
-        // if frequency normalizaiton is disabled, return early
-        if (FREQUENCY_NORMALIZATION) {
-            // normalize frequencies by dividing by highest frequency
-            for (int i = 0; i < 5; i++) {
-                frequency[i] /= frequency[4];
-                // bandwidth[i] /= frequency[4];
-            }
-        }
-    }
+    void set_profile(float* freqs /*, float *bandwidth*/);
 };
 
 //============================================================================
@@ -92,6 +80,7 @@ private:
 
 public:
     FormantProfile formant_table[5][5];
+
 
     Formants()
     {

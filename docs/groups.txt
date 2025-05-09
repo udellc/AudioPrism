@@ -1,0 +1,9 @@
+/**
+ * @defgroup AnalysisModules Analysis Modules
+ * @brief The base analysis module class and the derived modules.
+ * 
+ * Detailed description.
+ * @{
+ */
+
+/** @} */
