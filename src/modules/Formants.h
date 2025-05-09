@@ -18,7 +18,7 @@
 // Number of fpeaks to match against (MUST BE 2-5, 3+ RECOMMENDED):
 // The first fpeaks are typically more important
 // Lower NUM_FPEAK values may make matching more robust to noise
-#define NUM_FPEAKS 3
+#define NUM_FPEAKS 5
 
 #define FPEAK_PENALTY 0.9
 
@@ -30,10 +30,10 @@
 // The formant table stores frequency, amplitude, and bandwidth data for each vowel in each vocal register
 
 // vocal register macros
-#define BASS    0
-#define TENOR   1
-#define CTENOR  2
-#define ALTO    3
+#define BASS 0
+#define TENOR 1
+#define CTENOR 2
+#define ALTO 3
 #define SOPRANO 3
 
 // vowel macros
@@ -85,13 +85,6 @@ public:
     Formants()
     {
         this->addSubmodule(&peak_finder);
-        for (int i = 0; i < 5; i++) {
-            vocals.formant_table[i][0].set_profile(bass[i]);
-            vocals.formant_table[i][1].set_profile(tenor[i]);
-            vocals.formant_table[i][2].set_profile(ctenor[i]);
-            vocals.formant_table[i][3].set_profile(alto[i]);
-            vocals.formant_table[i][4].set_profile(soprano[i]);
-        }
     }
 
     char vowel_to_character(int vowel)
@@ -146,6 +139,7 @@ public:
 
     void doAnalysis()
     {
+
         // find the f peaks in the data
         peak_finder.doAnalysis();
         float** found_peaks = peak_finder.getOutput();
@@ -179,21 +173,21 @@ public:
 
         // initalize variables used to save the best match
         float lowest_distance = FLT_MAX;
-        int   vocal_register  = -1;
-        int   formant_vowel   = -1;
+        int vocal_register = -1;
+        int formant_vowel = -1;
 
         // compare the f peaks against stored formant profiles
         for (int reg = BASS; reg < SOPRANO + 1; reg++) {
             for (int vow = VOWEL_A; vow < VOWEL_U + 1; vow++) {
 
                 // calculate distance
-                float distance = calculate_distance(&formant_table[reg][vow], formants);
+                float distance = calculate_distance(&formant_table[reg][vow], found_peaks);
 
                 // if distance is lowest seen so far, update best match information
                 if (distance < lowest_distance) {
                     lowest_distance = distance;
-                    vocal_register  = reg;
-                    formant_vowel   = vow;
+                    vocal_register = reg;
+                    formant_vowel = vow;
                 }
             }
         }
