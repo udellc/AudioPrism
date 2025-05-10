@@ -5,6 +5,8 @@
 #include <cstdlib>
 #include <vector>
 
+#include "Config.h"
+
 namespace AudioPrism {
 
 inline float sum(const float* windowData, int lowerBinBound, int upperBinBound)
@@ -72,12 +74,12 @@ inline float flux(const float* currWindow, const float* prevWindow,
 inline float entropy(const float* windowData, int lowerBinBound, int upperBinBound)
 {
     float entropy  = 0.;
-    float totalAmp = sum(windowData, lowerBinBound, upperBinBound) + 1e-10;
+    float totalAmp = sum(windowData, lowerBinBound, upperBinBound);
     for (int i = lowerBinBound; i < upperBinBound; ++i) {
         // p is the spectral density of the bin, or the percent of the total
         // amplitude it containts. For calculating entropy, it is helpful to
         // think of this as the probability of the bin containing energy.
-        float p = windowData[i] / totalAmp;
+        float p = (windowData[i] + 1e-12) / (totalAmp + 1e-10);
         // Calculate the entropy addition of each bin:
         //
         // -log(p) is the 'self-information' of the bin. It is a measure of how
@@ -101,10 +103,32 @@ inline float entropy(const float* windowData, int lowerBinBound, int upperBinBou
 inline float energy(const float* windowData, int lowerBinBound, int upperBinBound)
 {
     float energy = 0.;
-    for (int i = lowerBinBound; i < upperBinBound; i++) {
+    for (int i = lowerBinBound; i < upperBinBound; ++i) {
         energy += windowData[i] * windowData[i];
     }
     return energy;
+}
+
+/**
+ * Smoothes the window data over time, using the waited sum of:
+ * (1 - smoothingFactor) smoothedData + (smoothingFactor) windowData.
+ *
+ * @param newWindow The array containing new input data.
+ * @param windowData Input/Output array for the smoothed spectrum data.
+ * @param smoothingFactor The ratio to smooth the old and new data by.
+ *
+ * commenting this here for now: try doing this over a spectrogram, it would
+ * need at least one window to do the same thing, but more could be used to
+ * smooth over real data instead of the continuously smoothed data
+ */
+inline void smooth_window_over_time(const float* windowData, float* smoothedData,
+    float smoothingFactor = 0.05)
+{
+    for (int i = 0; i < (WINDOW_SIZE >> 1); ++i) {
+        float new_weight = smoothingFactor * windowData[i];
+        float old_weight = (1 - smoothingFactor) * smoothedData[i];
+        smoothedData[i]  = new_weight + old_weight;
+    }
 }
 
 } // AudioPrism

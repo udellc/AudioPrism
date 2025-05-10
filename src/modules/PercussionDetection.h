@@ -50,14 +50,14 @@
 class PercussionDetection : public ModuleInterface<bool> {
 private:
     // the loudness threshold is the minimum amplitude required for a window to be considered percussive
-    float energy_threshold = 18000000.0;
+    float energy_threshold = 1800000.0;
 
     // the delta threshold is the minimum change in amplitude required for a window to be considered percussive
     // by default, the delta threshold is correlated with the loudness threshold by a multiplicative factor 0.8
     float flux_threshold = 0.5;
 
     // the noise threshold is the minimum noisiness required for a window to be considered percussive
-    float entropy_threshold = 0.85; // possible range: 0.0 to 1.0
+    float entropy_threshold = 0.75; // possible range: 0.0 to 1.0
 
 public:
     PercussionDetection() { }
