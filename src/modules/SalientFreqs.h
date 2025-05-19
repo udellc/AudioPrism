@@ -31,10 +31,8 @@ public:
         salientFreqs = new int[numFreqs];
         this->addSubmodule(&deltaAmps);
 
-        for (int i = 0; i < numFreqs; i++) {
-            salientFreqs[i] = -1;
-        }
-    }
+    SalientFreqs(int n);
+
 
     /* Constructor that takes in a value to set the number of max change in amplitudes*/
     SalientFreqs(int n, int dir)
@@ -69,12 +67,7 @@ public:
     }
 
     // change the amount of salient frequencies to be found
-    void changeNumFreqs(int newSize)
-    {
-        numFreqs = newSize;
-        delete[] salientFreqs;
-        salientFreqs = new int[numFreqs];
-    }
+    void changeNumFreqs(int newSize);
 
     // change the direction of salient frequencies
     void changeDirction(int dir) {
@@ -130,7 +123,6 @@ public:
             Serial.printf("\n==========================\n");
         }
     }
-
 };
 
 #endif
