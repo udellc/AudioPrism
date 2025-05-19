@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- BEGIN opengraph metadata -->
     <meta property="og:title" content="AudioPrism" />
-    <meta property="og:description" content="An audio frequency spectrum analysis library for Arduino." />
+    <meta property="og:description" content="Arduino Audio Spectrum Analysis Library" />
     <meta property="og:url" content="https://github.com/udellc/AudioPrism" />
     <!-- END opengraph metadata -->
     <!-- BEGIN twitter metadata -->
@@ -46,7 +46,7 @@
                 <td id="projectalign" style="padding-left: 0.5em;">
                     <div id="projectname">AudioPrism
                     </div>
-                    <div id="projectbrief">An audio frequency spectrum analysis library for Arduino.</div>
+                    <div id="projectbrief">Arduino Audio Spectrum Analysis Library</div>
                 </td>
             </tr>
             </tbody>
@@ -117,7 +117,7 @@ $(function(){initNavTree('_noisiness_8h_source.html',''); initResizable(true); }
   <div class="headertitle"><div class="title">Noisiness.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_noisiness_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//============================================================================</span></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//============================================================================</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// MODULE INFORMATION</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//============================================================================</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// Name        : Noisiness</span></div>
@@ -140,8 +140,8 @@ $(function(){initNavTree('_noisiness_8h_source.html',''); initResizable(true); }
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;math.h&gt;</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="_analysis_module_8h.html">../AnalysisModule.h</a>&quot;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="_total_amplitude_8h.html">TotalAmplitude.h</a>&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;../AnalysisModule.h&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;TotalAmplitude.h&quot;</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">// the Noisiness module inherits from the ModuleInterface with a float output type</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">// this module has one submodule, TotalAmplitude</span></div>
@@ -160,76 +160,24 @@ $(function(){initNavTree('_noisiness_8h_source.html',''); initResizable(true); }
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// a constructor is necessary for modules containing submodules</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">// submodules must be registered with the parent in the constructor</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// registering submodules with a parent module allows automatic propagation of the parent&#39;s window bounds to the submodules</span></div>
-<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="class_noisiness.html#a2480d287e093f9f7176ce5f9bf15d8f9">   43</a></span>    <a class="code hl_function" href="class_noisiness.html#a2480d287e093f9f7176ce5f9bf15d8f9">Noisiness</a>()</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        this-&gt;<a class="code hl_function" href="class_analysis_module.html#abe55bbc24f1494298db8da804956550a">addSubmodule</a>(&amp;totalAmp); <span class="comment">// register the TotalAmplitude submodule</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_function" href="class_noisiness.html#a2480d287e093f9f7176ce5f9bf15d8f9">Noisiness</a>();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_noisiness.html#a68c1ae16825d8db9b7351bbe90cb45e6">doAnalysis</a>();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>};</div>
 </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="class_noisiness.html#a68c1ae16825d8db9b7351bbe90cb45e6">   48</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_noisiness.html#a68c1ae16825d8db9b7351bbe90cb45e6">doAnalysis</a>()</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        totalAmp.<a class="code hl_function" href="class_total_amplitude.html#ae1395ed11428d542bf96ee3b3f659ccc">doAnalysis</a>(); <span class="comment">// perform analysis with the TotalAmplitude submodule</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordtype">float</span> total = totalAmp.<a class="code hl_function" href="class_module_interface.html#a0ffe78dd2ef66b26ad2d1e4e1ad1d147">getOutput</a>(); <span class="comment">// retrieve the output of the TotalAmplitude submodule</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordtype">float</span>* windowData = <a class="code hl_variable" href="class_analysis_module.html#a8c0ae89c0fb0d058951cc70fbc46effd">spectrogram</a>-&gt;<a class="code hl_function" href="class_spectrogram.html#a9931c0a608d93de1746769fac8a95a16">getCurrentWindow</a>();</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordtype">float</span> entropy = 0;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="comment">// for each bin, calculate the contribution to the overall entropy</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <a class="code hl_variable" href="class_analysis_module.html#a0f61e8ab33723678073e9702cb41ba78">lowerBinBound</a>; i &lt; <a class="code hl_variable" href="class_analysis_module.html#a66f31529e4a15d9c0907209427d84c36">upperBinBound</a>; i++) {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="comment">// if the amplitude of the current bin is zero, skip it (log2(0) is undefined)</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordflow">if</span> (windowData[i] &gt; 0) {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                <span class="comment">// assign a probability to each bin based on its amplitude</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                <span class="keywordtype">float</span> p = windowData[i] / total;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                <span class="comment">// calculate the contribution of this bin to the entropy</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                entropy -= p * log2(p);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            }</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        }</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="comment">// Normalize the entropy to a 0.-1. scale</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <a class="code hl_variable" href="class_module_interface.html#afc854044b6ee90aa6298553f754255d0">output</a> = entropy / log2(<a class="code hl_variable" href="class_analysis_module.html#a66f31529e4a15d9c0907209427d84c36">upperBinBound</a> - <a class="code hl_variable" href="class_analysis_module.html#a0f61e8ab33723678073e9702cb41ba78">lowerBinBound</a>);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="comment">// if debug is enabled, print the output to the serial console</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_analysis_module.html#a87e94533168c5a4b0147243907bb6ece">debugMode</a> &amp; <a class="code hl_define" href="_analysis_module_8h.html#a92f1452fef4b184124fa2334beb53a60">DEBUG_ENABLE</a>) {</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            Serial.printf(<span class="stringliteral">&quot;===NOISINESS===\n&quot;</span>);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_analysis_module.html#a87e94533168c5a4b0147243907bb6ece">debugMode</a> &amp; <a class="code hl_define" href="_analysis_module_8h.html#acdea1a21961362dc76e7459f64bbb054">DEBUG_VERBOSE</a>) {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                <a class="code hl_function" href="class_analysis_module.html#a5c395cd13c79fb9fbb10eecd79dac611">printModuleInfo</a>();</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            }</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            Serial.printf(<span class="stringliteral">&quot;Noise: %f\n&quot;</span>, <a class="code hl_variable" href="class_module_interface.html#afc854044b6ee90aa6298553f754255d0">output</a>);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            Serial.printf(<span class="stringliteral">&quot;===============\n&quot;</span>);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        }</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    }</div>
-</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>};</div>
-</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a_analysis_module_8h_html"><div class="ttname"><a href="_analysis_module_8h.html">AnalysisModule.h</a></div></div>
-<div class="ttc" id="a_analysis_module_8h_html_a92f1452fef4b184124fa2334beb53a60"><div class="ttname"><a href="_analysis_module_8h.html#a92f1452fef4b184124fa2334beb53a60">DEBUG_ENABLE</a></div><div class="ttdeci">#define DEBUG_ENABLE</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:16</div></div>
-<div class="ttc" id="a_analysis_module_8h_html_acdea1a21961362dc76e7459f64bbb054"><div class="ttname"><a href="_analysis_module_8h.html#acdea1a21961362dc76e7459f64bbb054">DEBUG_VERBOSE</a></div><div class="ttdeci">#define DEBUG_VERBOSE</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:17</div></div>
-<div class="ttc" id="a_total_amplitude_8h_html"><div class="ttname"><a href="_total_amplitude_8h.html">TotalAmplitude.h</a></div></div>
-<div class="ttc" id="aclass_analysis_module_html_a0f61e8ab33723678073e9702cb41ba78"><div class="ttname"><a href="class_analysis_module.html#a0f61e8ab33723678073e9702cb41ba78">AnalysisModule::lowerBinBound</a></div><div class="ttdeci">int lowerBinBound</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:32</div></div>
-<div class="ttc" id="aclass_analysis_module_html_a5c395cd13c79fb9fbb10eecd79dac611"><div class="ttname"><a href="class_analysis_module.html#a5c395cd13c79fb9fbb10eecd79dac611">AnalysisModule::printModuleInfo</a></div><div class="ttdeci">void printModuleInfo()</div><div class="ttdef"><b>Definition</b> AnalysisModule.cpp:145</div></div>
-<div class="ttc" id="aclass_analysis_module_html_a66f31529e4a15d9c0907209427d84c36"><div class="ttname"><a href="class_analysis_module.html#a66f31529e4a15d9c0907209427d84c36">AnalysisModule::upperBinBound</a></div><div class="ttdeci">int upperBinBound</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:33</div></div>
-<div class="ttc" id="aclass_analysis_module_html_a87e94533168c5a4b0147243907bb6ece"><div class="ttname"><a href="class_analysis_module.html#a87e94533168c5a4b0147243907bb6ece">AnalysisModule::debugMode</a></div><div class="ttdeci">int debugMode</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:41</div></div>
-<div class="ttc" id="aclass_analysis_module_html_a8c0ae89c0fb0d058951cc70fbc46effd"><div class="ttname"><a href="class_analysis_module.html#a8c0ae89c0fb0d058951cc70fbc46effd">AnalysisModule::spectrogram</a></div><div class="ttdeci">Spectrogram * spectrogram</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:35</div></div>
-<div class="ttc" id="aclass_analysis_module_html_abe55bbc24f1494298db8da804956550a"><div class="ttname"><a href="class_analysis_module.html#abe55bbc24f1494298db8da804956550a">AnalysisModule::addSubmodule</a></div><div class="ttdeci">void addSubmodule(AnalysisModule *module)</div><div class="ttdef"><b>Definition</b> AnalysisModule.cpp:80</div></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_module_interface_html"><div class="ttname"><a href="class_module_interface.html">ModuleInterface</a></div><div class="ttdef"><b>Definition</b> AnalysisModule.h:74</div></div>
-<div class="ttc" id="aclass_module_interface_html_a0ffe78dd2ef66b26ad2d1e4e1ad1d147"><div class="ttname"><a href="class_module_interface.html#a0ffe78dd2ef66b26ad2d1e4e1ad1d147">ModuleInterface::getOutput</a></div><div class="ttdeci">T getOutput()</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:79</div></div>
-<div class="ttc" id="aclass_module_interface_html_afc854044b6ee90aa6298553f754255d0"><div class="ttname"><a href="class_module_interface.html#afc854044b6ee90aa6298553f754255d0">ModuleInterface&lt; float &gt;::output</a></div><div class="ttdeci">float output</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:76</div></div>
 <div class="ttc" id="aclass_noisiness_html"><div class="ttname"><a href="class_noisiness.html">Noisiness</a></div><div class="ttdef"><b>Definition</b> Noisiness.h:29</div></div>
-<div class="ttc" id="aclass_noisiness_html_a2480d287e093f9f7176ce5f9bf15d8f9"><div class="ttname"><a href="class_noisiness.html#a2480d287e093f9f7176ce5f9bf15d8f9">Noisiness::Noisiness</a></div><div class="ttdeci">Noisiness()</div><div class="ttdef"><b>Definition</b> Noisiness.h:43</div></div>
-<div class="ttc" id="aclass_noisiness_html_a68c1ae16825d8db9b7351bbe90cb45e6"><div class="ttname"><a href="class_noisiness.html#a68c1ae16825d8db9b7351bbe90cb45e6">Noisiness::doAnalysis</a></div><div class="ttdeci">void doAnalysis()</div><div class="ttdef"><b>Definition</b> Noisiness.h:48</div></div>
-<div class="ttc" id="aclass_spectrogram_html_a9931c0a608d93de1746769fac8a95a16"><div class="ttname"><a href="class_spectrogram.html#a9931c0a608d93de1746769fac8a95a16">Spectrogram::getCurrentWindow</a></div><div class="ttdeci">float * getCurrentWindow() const</div><div class="ttdef"><b>Definition</b> Spectrogram.cpp:38</div></div>
+<div class="ttc" id="aclass_noisiness_html_a2480d287e093f9f7176ce5f9bf15d8f9"><div class="ttname"><a href="class_noisiness.html#a2480d287e093f9f7176ce5f9bf15d8f9">Noisiness::Noisiness</a></div><div class="ttdeci">Noisiness()</div><div class="ttdef"><b>Definition</b> Noisiness.cpp:3</div></div>
+<div class="ttc" id="aclass_noisiness_html_a68c1ae16825d8db9b7351bbe90cb45e6"><div class="ttname"><a href="class_noisiness.html#a68c1ae16825d8db9b7351bbe90cb45e6">Noisiness::doAnalysis</a></div><div class="ttdeci">void doAnalysis()</div><div class="ttdef"><b>Definition</b> Noisiness.cpp:8</div></div>
 <div class="ttc" id="aclass_total_amplitude_html"><div class="ttname"><a href="class_total_amplitude.html">TotalAmplitude</a></div><div class="ttdef"><b>Definition</b> TotalAmplitude.h:16</div></div>
-<div class="ttc" id="aclass_total_amplitude_html_ae1395ed11428d542bf96ee3b3f659ccc"><div class="ttname"><a href="class_total_amplitude.html#ae1395ed11428d542bf96ee3b3f659ccc">TotalAmplitude::doAnalysis</a></div><div class="ttdeci">void doAnalysis()</div><div class="ttdef"><b>Definition</b> TotalAmplitude.h:22</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><a class="el" href="_noisiness_8h.html">Noisiness.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><b>Noisiness.h</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

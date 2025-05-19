@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- BEGIN opengraph metadata -->
     <meta property="og:title" content="AudioPrism" />
-    <meta property="og:description" content="An audio frequency spectrum analysis library for Arduino." />
+    <meta property="og:description" content="Arduino Audio Spectrum Analysis Library" />
     <meta property="og:url" content="https://github.com/udellc/AudioPrism" />
     <!-- END opengraph metadata -->
     <!-- BEGIN twitter metadata -->
@@ -46,7 +46,7 @@
                 <td id="projectalign" style="padding-left: 0.5em;">
                     <div id="projectname">AudioPrism
                     </div>
-                    <div id="projectbrief">An audio frequency spectrum analysis library for Arduino.</div>
+                    <div id="projectbrief">Arduino Audio Spectrum Analysis Library</div>
                 </td>
             </tr>
             </tbody>
@@ -114,11 +114,11 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">AudioPrism </div></div>
+  <div class="headertitle"><div class="title"><a class="el" href="namespace_audio_prism.html">AudioPrism</a> </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a></p>
-<p>AudioPrism is an Arduino-based audio analysis library for interpreting the results of Fourier transforms. Premade spectral analysis tools are provided for identifying prominent frequencies, classifying the periodicity of a signal, detecting transients, and more. AudioPrism is flexible and expandible; the object-oriented structure of the library provides a chasis to implement custom analysis modules on. This document explains how to install and use AudioPrism's provided tools and how to create audio analysis tools within the AudioPrism framework. </p>
+<p><a class="el" href="namespace_audio_prism.html">AudioPrism</a> is an Arduino-based audio analysis library for interpreting the results of Fourier transforms. Premade spectral analysis tools are provided for identifying prominent frequencies, classifying the periodicity of a signal, detecting transients, and more. <a class="el" href="namespace_audio_prism.html">AudioPrism</a> is flexible and expandible; the object-oriented structure of the library provides a chasis to implement custom analysis modules on. This document explains how to install and use <a class="el" href="namespace_audio_prism.html">AudioPrism</a>'s provided tools and how to create audio analysis tools within the <a class="el" href="namespace_audio_prism.html">AudioPrism</a> framework. </p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Table of Contents</h1>
 <ul>
@@ -135,7 +135,7 @@ Table of Contents</h1>
 <li><a class="el" href="class_centroid.html">Centroid</a></li>
 <li><a class="el" href="class_noisiness.html">Noisiness</a></li>
 <li><a class="el" href="class_delta_amplitudes.html">DeltaAmplitudes</a></li>
-<li><a class="el" href="class_salient_freqs.html">SalientFreqs</a></li>
+<li>SalientFreqs</li>
 <li><a class="el" href="class_percussion_detection.html">PercussionDetection</a></li>
 <li><a class="el" href="class_major_peaks.html">MajorPeaks</a></li>
 <li><a class="el" href="class_bread_slicer.html">BreadSlicer</a></li>
@@ -159,23 +159,23 @@ Table of Contents</h1>
 Getting Started</h1>
 <h2><a class="anchor" id="autotoc_md3"></a>
 Prerequisites</h2>
-<p>AudioPrism is an Arduino library intended for use in <a href="https://www.arduino.cc/en/software">ArduinoIDE</a> and on Arduino / Arduino-compatible boards. AudioPrism may be used in other environments and C++ projects, but setup information and tutorial steps will pertain to Arduino and ArduinoIDE.</p>
-<p>The AudioPrism library provides analysis tools that operate on the results of a Fourier transform; it does not provide a way to perform a fourier transform on data. There are free external libraries for Arduino that offer this functionality:</p><ul>
+<p><a class="el" href="namespace_audio_prism.html">AudioPrism</a> is an Arduino library intended for use in <a href="https://www.arduino.cc/en/software">ArduinoIDE</a> and on Arduino / Arduino-compatible boards. <a class="el" href="namespace_audio_prism.html">AudioPrism</a> may be used in other environments and C++ projects, but setup information and tutorial steps will pertain to Arduino and ArduinoIDE.</p>
+<p>The <a class="el" href="namespace_audio_prism.html">AudioPrism</a> library provides analysis tools that operate on the results of a Fourier transform; it does not provide a way to perform a fourier transform on data. There are free external libraries for Arduino that offer this functionality:</p><ul>
 <li><a href="https://www.arduino.cc/reference/en/libraries/arduinofft/">ArduinoFFT</a> (recommended)</li>
 <li><a href="https://projecthub.arduino.cc/abhilashpatel121/easyfft-fast-fourier-transform-fft-for-arduino-03724d">EasyFFT</a></li>
 </ul>
 <h2><a class="anchor" id="autotoc_md4"></a>
 Installation</h2>
-<p>Installing AudioPrism is as simple as copying the repository into ArduinoIDE's 'libraries' folder. The 'libraries' folder is located at <code>Documents\Arduino\libraries</code> on both Windows and MacOS. Below are two methods to download and install AudioPrism. </p>
+<p>Installing <a class="el" href="namespace_audio_prism.html">AudioPrism</a> is as simple as copying the repository into ArduinoIDE's 'libraries' folder. The 'libraries' folder is located at <code>Documents\Arduino\libraries</code> on both Windows and MacOS. Below are two methods to download and install <a class="el" href="namespace_audio_prism.html">AudioPrism</a>. </p>
 <h3><a class="anchor" id="autotoc_md5"></a>
 Clone the Repository (recommended)</h3>
 <p>Cloning the repository with git is recommended to stay up-to-date with changes. Inside a shell, navigate to the ArduinoIDE 'libraries' folder and run <code>git clone ___</code>. </p>
 <h3><a class="anchor" id="autotoc_md6"></a>
 Download as a .zip</h3>
-<p>Instead of cloning the repository, you can download AudioPrism's files as a .zip. Download AudioPrism as a .zip, extract the files, and place them in the ArduinoIDE 'libraries' folder. This is not the recommended approach, as it makes it more difficult to receive updates.</p>
+<p>Instead of cloning the repository, you can download <a class="el" href="namespace_audio_prism.html">AudioPrism</a>'s files as a .zip. Download <a class="el" href="namespace_audio_prism.html">AudioPrism</a> as a .zip, extract the files, and place them in the ArduinoIDE 'libraries' folder. This is not the recommended approach, as it makes it more difficult to receive updates.</p>
 <h2><a class="anchor" id="autotoc_md7"></a>
 Configuration</h2>
-<p>With the AudioPrism library installed, you can include it in your Arduino Sketch in .cpp, .h, or .ino files with <code>#include &lt;AudioPrism&gt;</code>. To get proper analysis results from modules in AudioPrism, you must provide the audio sample rate and the FFT window size used to generate the frequency domain information that will be input to the modules. These constants are necessary to the function of AudioPrism modules, as the audio sample rate and FFT window size are used to calculate the frequencies associated with each bin of a frequency spectrum resulting from the FFT operation; failing to synchronize these constants between your external FFT library and AudioPrism will render the analysis results of AudioPrism useless.</p>
+<p>With the <a class="el" href="namespace_audio_prism.html">AudioPrism</a> library installed, you can include it in your Arduino Sketch in .cpp, .h, or .ino files with <code>#include &lt;<a class="el" href="namespace_audio_prism.html">AudioPrism</a>&gt;</code>. To get proper analysis results from modules in <a class="el" href="namespace_audio_prism.html">AudioPrism</a>, you must provide the audio sample rate and the FFT window size used to generate the frequency domain information that will be input to the modules. These constants are necessary to the function of <a class="el" href="namespace_audio_prism.html">AudioPrism</a> modules, as the audio sample rate and FFT window size are used to calculate the frequencies associated with each bin of a frequency spectrum resulting from the FFT operation; failing to synchronize these constants between your external FFT library and <a class="el" href="namespace_audio_prism.html">AudioPrism</a> will render the analysis results of <a class="el" href="namespace_audio_prism.html">AudioPrism</a> useless.</p>
 <h2><a class="anchor" id="autotoc_md8"></a>
 Example</h2>
 <div class="fragment"><div class="line"> ++</div>
@@ -259,16 +259,15 @@ Return Type</h3>
 <p><code>getOutput()</code> returns a reference to an array of float values, representing the change in amplitude for each bin in a frequency spectrum. The size of this array is equal to the size of the input array. The memory for this array is allocated by <a class="el" href="class_delta_amplitudes.html">DeltaAmplitudes</a>' default constructor and is freed by <a class="el" href="class_delta_amplitudes.html">DeltaAmplitudes</a>' default destructor.</p>
 <h2><a class="anchor" id="autotoc_md32"></a>
 SalientFreqs</h2>
-<p>The <a class="el" href="class_salient_freqs.html">SalientFreqs</a> module finds the <code>n</code> bins with the greatest change in amplitude from one audio spectrum to another. By default, <a class="el" href="class_salient_freqs.html">SalientFreqs</a> finds the three bins with the greatest change in amplitude. </p>
+<p>The SalientFreqs module finds the <code>n</code> bins with the greatest change in amplitude from one audio spectrum to another. By default, SalientFreqs finds the three bins with the greatest change in amplitude. </p>
 <h3><a class="anchor" id="autotoc_md33"></a>
 Parameters</h3>
-<p><code>numFreqs</code>, the number of salient frequencies to find, can be set by using the parameterized constructor <code><a class="el" href="class_salient_freqs.html">SalientFreqs(int n)</a></code> or by invoking the member function <code>.changeNumFreqs(int n)</code>. The default value for numFreqs, set when using the default constructor, is 3. </p><div class="fragment"><div class="line"> ++</div>
+<p><code>numFreqs</code>, the number of salient frequencies to find, can be set by using the parameterized constructor <code>SalientFreqs(int n)</code> or by invoking the member function <code>.changeNumFreqs(int n)</code>. The default value for numFreqs, set when using the default constructor, is 3. </p><div class="fragment"><div class="line"> ++</div>
 <div class="line"><span class="comment">// set numFreqs with the constructor</span></div>
-<div class="line"><a class="code hl_class" href="class_salient_freqs.html">SalientFreqs</a> sal_freqs = <a class="code hl_class" href="class_salient_freqs.html">SalientFreqs</a>(8); <span class="comment">// set numFreqs to 8</span></div>
-<div class="ttc" id="aclass_salient_freqs_html"><div class="ttname"><a href="class_salient_freqs.html">SalientFreqs</a></div><div class="ttdef"><b>Definition</b> SalientFreqs.h:19</div></div>
+<div class="line">SalientFreqs sal_freqs = SalientFreqs(8); <span class="comment">// set numFreqs to 8</span></div>
 </div><!-- fragment --> <div class="fragment"><div class="line"> ++</div>
 <div class="line"><span class="comment">// change numFreqs after construction</span></div>
-<div class="line"><a class="code hl_class" href="class_salient_freqs.html">SalientFreqs</a> sal_freqs = <a class="code hl_class" href="class_salient_freqs.html">SalientFreqs</a>(); <span class="comment">// default numFreqs value: 3</span></div>
+<div class="line">SalientFreqs sal_freqs = SalientFreqs(); <span class="comment">// default numFreqs value: 3</span></div>
 <div class="line">sal_freqs.setNumFreqs(8);                <span class="comment">// set numFreqs to 8</span></div>
 </div><!-- fragment --> <h4><a class="anchor" id="autotoc_md34"></a>
 Return Type</h4>
@@ -283,17 +282,17 @@ Parameters</h3>
 <div class="line"><a class="code hl_class" href="class_percussion_detection.html">PercussionDetection</a> pd = <a class="code hl_class" href="class_percussion_detection.html">PercussionDetection</a>(); <span class="comment">// default loudness threshold: 300</span></div>
 <div class="line">pd.<a class="code hl_function" href="class_percussion_detection.html#a61c99551d648059664adab3a36e4c050">setLoudnessThreshold</a>(200); <span class="comment">// change loudness threshold to 200</span></div>
 <div class="ttc" id="aclass_percussion_detection_html"><div class="ttname"><a href="class_percussion_detection.html">PercussionDetection</a></div><div class="ttdef"><b>Definition</b> PercussionDetection.h:52</div></div>
-<div class="ttc" id="aclass_percussion_detection_html_a61c99551d648059664adab3a36e4c050"><div class="ttname"><a href="class_percussion_detection.html#a61c99551d648059664adab3a36e4c050">PercussionDetection::setLoudnessThreshold</a></div><div class="ttdeci">void setLoudnessThreshold(float new_threshold)</div><div class="ttdef"><b>Definition</b> PercussionDetection.h:111</div></div>
+<div class="ttc" id="aclass_percussion_detection_html_a61c99551d648059664adab3a36e4c050"><div class="ttname"><a href="class_percussion_detection.html#a61c99551d648059664adab3a36e4c050">PercussionDetection::setLoudnessThreshold</a></div><div class="ttdeci">void setLoudnessThreshold(float new_threshold)</div><div class="ttdef"><b>Definition</b> PercussionDetection.cpp:25</div></div>
 </div><!-- fragment --></li>
 <li><code>delta_threshold</code> is a float value representing the change in amplitude from one moment to another required to satisfy the change-in-volume condition. Setting this threshold defines how sharply a transient must spike up in volume to be detected. <div class="fragment"><div class="line"> ++</div>
 <div class="line"><a class="code hl_class" href="class_percussion_detection.html">PercussionDetection</a> pd = <a class="code hl_class" href="class_percussion_detection.html">PercussionDetection</a>(); <span class="comment">// default delta threshold: 150</span></div>
 <div class="line">pd.<a class="code hl_function" href="class_percussion_detection.html#af7c52c6fa44af8b2e5dd5f03d3587aa2">setDeltaThreshold</a>(200); <span class="comment">// raise delta threshold to 200</span></div>
-<div class="ttc" id="aclass_percussion_detection_html_af7c52c6fa44af8b2e5dd5f03d3587aa2"><div class="ttname"><a href="class_percussion_detection.html#af7c52c6fa44af8b2e5dd5f03d3587aa2">PercussionDetection::setDeltaThreshold</a></div><div class="ttdeci">void setDeltaThreshold(float new_threshold)</div><div class="ttdef"><b>Definition</b> PercussionDetection.h:122</div></div>
+<div class="ttc" id="aclass_percussion_detection_html_af7c52c6fa44af8b2e5dd5f03d3587aa2"><div class="ttname"><a href="class_percussion_detection.html#af7c52c6fa44af8b2e5dd5f03d3587aa2">PercussionDetection::setDeltaThreshold</a></div><div class="ttdeci">void setDeltaThreshold(float new_threshold)</div><div class="ttdef"><b>Definition</b> PercussionDetection.cpp:33</div></div>
 </div><!-- fragment --></li>
 <li><code>noisiness_threshold</code> is a 0-1 float value representing the instantaneous spectral entropy required to satisfy the noisiness condition. Setting this threshold defines how percussive (with high spectral entropy taken as an indicator of percussiveness) a transient must be to be detected. Visit the <a class="el" href="class_noisiness.html">Noisiness</a> module for further explanation of spectral entropy. <div class="fragment"><div class="line"> ++</div>
 <div class="line"><a class="code hl_class" href="class_percussion_detection.html">PercussionDetection</a> pd = <a class="code hl_class" href="class_percussion_detection.html">PercussionDetection</a>(); <span class="comment">// default noisiness threshold: 0.7</span></div>
 <div class="line">pd.<a class="code hl_function" href="class_percussion_detection.html#a3b03b35ecb271ecc7f28a56c6d8d536f">setNoisinessThreshold</a>(0.2); <span class="comment">// lower noisiness threshold to 0.2</span></div>
-<div class="ttc" id="aclass_percussion_detection_html_a3b03b35ecb271ecc7f28a56c6d8d536f"><div class="ttname"><a href="class_percussion_detection.html#a3b03b35ecb271ecc7f28a56c6d8d536f">PercussionDetection::setNoisinessThreshold</a></div><div class="ttdeci">void setNoisinessThreshold(float new_threshold)</div><div class="ttdef"><b>Definition</b> PercussionDetection.h:133</div></div>
+<div class="ttc" id="aclass_percussion_detection_html_a3b03b35ecb271ecc7f28a56c6d8d536f"><div class="ttname"><a href="class_percussion_detection.html#a3b03b35ecb271ecc7f28a56c6d8d536f">PercussionDetection::setNoisinessThreshold</a></div><div class="ttdeci">void setNoisinessThreshold(float new_threshold)</div><div class="ttdef"><b>Definition</b> PercussionDetection.cpp:41</div></div>
 </div><!-- fragment --></li>
 </ol>
 <p>These thresholds can be set with the optional constructor <code><a class="el" href="class_percussion_detection.html">PercussionDetection(float loudness_t, float delta_t, float noise_t)</a></code> or by calling the individual member functions <code>.setLousnessThreshold(float loudness_t)</code>, <code>.setDeltaThreshold(float delta_t)</code>, and <code>.setNoisinessThreshold(float noise_t)</code>. Setting any threshold to 0 effectively excludes it from consideration, so <a class="el" href="class_percussion_detection.html">PercussionDetection</a> can be configured to consider only 1 or any combination of 2 factors. </p><div class="fragment"><div class="line"> ++</div>
@@ -314,7 +313,7 @@ Submodules</h3>
 </ol>
 <h2><a class="anchor" id="autotoc_md39"></a>
 MajorPeaks</h2>
-<p><a class="el" href="class_major_peaks.html">MajorPeaks</a> finds the N largest peaks in the current FFT window and returns an array of tuples containing the frequency and amplitude of each peak. If there are fewer than N peaks, the remaining elements in the array are padded with zeros. </p>
+<p><a class="el" href="class_major_peaks.html" title="Finds the N largest amplitude peaks in the current window.">MajorPeaks</a> finds the N largest peaks in the current FFT window and returns an array of tuples containing the frequency and amplitude of each peak. If there are fewer than N peaks, the remaining elements in the array are padded with zeros. </p>
 <h3><a class="anchor" id="autotoc_md40"></a>
 Parameters</h3>
 <ol type="1">
@@ -326,7 +325,7 @@ Return Type</h3>
 <h3><a class="anchor" id="autotoc_md42"></a>
 Example</h3>
 <div class="fragment"><div class="line"> ++</div>
-<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_analysis_module_8h.html">AnalysisModule.h</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;AnalysisModule.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// This Example assumes FFT output is accessible.</span></div>
 <div class="line"><span class="comment">// Check README for more info on handling input, processing the FFT, and synthesizing output.</span></div>
@@ -349,19 +348,16 @@ Example</h3>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Get MajorPeaks data</span></div>
 <div class="line">    <span class="keywordtype">float</span>** peakData = peaks.<a class="code hl_function" href="class_module_interface.html#a0ffe78dd2ef66b26ad2d1e4e1ad1d147">getOutput</a>();</div>
-<div class="line">    <span class="keywordtype">float</span>* peakFrequencies = peaks.<a class="code hl_function" href="class_module_interface.html#a0ffe78dd2ef66b26ad2d1e4e1ad1d147">getOutput</a>()[<a class="code hl_define" href="_major_peaks_8h.html#a4c26e14384ba39fb5ee70097c6b06826">MP_FREQ</a>];  <span class="comment">// just the frequencies</span></div>
-<div class="line">    <span class="keywordtype">float</span>* peakAmplitudes  = peaks.<a class="code hl_function" href="class_module_interface.html#a0ffe78dd2ef66b26ad2d1e4e1ad1d147">getOutput</a>()[<a class="code hl_define" href="_major_peaks_8h.html#aa57f498e257f0878e75a293f9257f353">MP_AMP</a>];   <span class="comment">// just the amplitudes</span></div>
+<div class="line">    <span class="keywordtype">float</span>* peakFrequencies = peaks.<a class="code hl_function" href="class_module_interface.html#a0ffe78dd2ef66b26ad2d1e4e1ad1d147">getOutput</a>()[MP_FREQ];  <span class="comment">// just the frequencies</span></div>
+<div class="line">    <span class="keywordtype">float</span>* peakAmplitudes  = peaks.<a class="code hl_function" href="class_module_interface.html#a0ffe78dd2ef66b26ad2d1e4e1ad1d147">getOutput</a>()[MP_AMP];   <span class="comment">// just the amplitudes</span></div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Manipulate data</span></div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Map outputs</span></div>
 <div class="line">}</div>
-<div class="ttc" id="a_analysis_module_8h_html"><div class="ttname"><a href="_analysis_module_8h.html">AnalysisModule.h</a></div></div>
-<div class="ttc" id="a_major_peaks_8h_html_a4c26e14384ba39fb5ee70097c6b06826"><div class="ttname"><a href="_major_peaks_8h.html#a4c26e14384ba39fb5ee70097c6b06826">MP_FREQ</a></div><div class="ttdeci">#define MP_FREQ</div><div class="ttdef"><b>Definition</b> MajorPeaks.h:15</div></div>
-<div class="ttc" id="a_major_peaks_8h_html_aa57f498e257f0878e75a293f9257f353"><div class="ttname"><a href="_major_peaks_8h.html#aa57f498e257f0878e75a293f9257f353">MP_AMP</a></div><div class="ttdeci">#define MP_AMP</div><div class="ttdef"><b>Definition</b> MajorPeaks.h:16</div></div>
 <div class="ttc" id="aclass_analysis_module_html_a6a2cfd5b3922335e35b243bb503a3319"><div class="ttname"><a href="class_analysis_module.html#a6a2cfd5b3922335e35b243bb503a3319">AnalysisModule::setAnalysisRangeByFreq</a></div><div class="ttdeci">void setAnalysisRangeByFreq(int lowerFreq, int upperFreq)</div><div class="ttdef"><b>Definition</b> AnalysisModule.cpp:92</div></div>
-<div class="ttc" id="aclass_major_peaks_html"><div class="ttname"><a href="class_major_peaks.html">MajorPeaks</a></div><div class="ttdef"><b>Definition</b> MajorPeaks.h:20</div></div>
-<div class="ttc" id="aclass_major_peaks_html_a73cbdd127946c98700572679b241de74"><div class="ttname"><a href="class_major_peaks.html#a73cbdd127946c98700572679b241de74">MajorPeaks::doAnalysis</a></div><div class="ttdeci">void doAnalysis()</div><div class="ttdef"><b>Definition</b> MajorPeaks.h:217</div></div>
+<div class="ttc" id="aclass_major_peaks_html"><div class="ttname"><a href="class_major_peaks.html">MajorPeaks</a></div><div class="ttdoc">Finds the N largest amplitude peaks in the current window.</div><div class="ttdef"><b>Definition</b> MajorPeaks.h:18</div></div>
+<div class="ttc" id="aclass_major_peaks_html_a73cbdd127946c98700572679b241de74"><div class="ttname"><a href="class_major_peaks.html#a73cbdd127946c98700572679b241de74">MajorPeaks::doAnalysis</a></div><div class="ttdeci">void doAnalysis()</div><div class="ttdef"><b>Definition</b> MajorPeaks.cpp:139</div></div>
 <div class="ttc" id="aclass_module_interface_html_a0ffe78dd2ef66b26ad2d1e4e1ad1d147"><div class="ttname"><a href="class_module_interface.html#a0ffe78dd2ef66b26ad2d1e4e1ad1d147">ModuleInterface::getOutput</a></div><div class="ttdeci">T getOutput()</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:79</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md43"></a>
 BreadSlicer</h2>
@@ -378,7 +374,7 @@ Return Type</h3>
 <h3><a class="anchor" id="autotoc_md46"></a>
 Example</h3>
 <div class="fragment"><div class="line"> ++</div>
-<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_analysis_module_8h.html">AnalysisModule.h</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;AnalysisModule.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// This Example assumes FFT output is accessible.</span></div>
 <div class="line"><span class="comment">// Check README for more info on handling input, processing the FFT, and synthesizing output.</span></div>
@@ -413,14 +409,14 @@ Example</h3>
 <div class="line">    <span class="comment">// Map outputs</span></div>
 <div class="line">}</div>
 <div class="ttc" id="aclass_bread_slicer_html"><div class="ttname"><a href="class_bread_slicer.html">BreadSlicer</a></div><div class="ttdef"><b>Definition</b> BreadSlicer.h:17</div></div>
-<div class="ttc" id="aclass_bread_slicer_html_a1e8e03babe663161597cb5fec467cff1"><div class="ttname"><a href="class_bread_slicer.html#a1e8e03babe663161597cb5fec467cff1">BreadSlicer::setBands</a></div><div class="ttdeci">void setBands(int *frequencyBands, int numBands)</div><div class="ttdef"><b>Definition</b> BreadSlicer.h:46</div></div>
-<div class="ttc" id="aclass_bread_slicer_html_a7b34f1f3c7042c37065c414d64a9fa57"><div class="ttname"><a href="class_bread_slicer.html#a7b34f1f3c7042c37065c414d64a9fa57">BreadSlicer::doAnalysis</a></div><div class="ttdeci">void doAnalysis()</div><div class="ttdef"><b>Definition</b> BreadSlicer.h:78</div></div>
+<div class="ttc" id="aclass_bread_slicer_html_a1e8e03babe663161597cb5fec467cff1"><div class="ttname"><a href="class_bread_slicer.html#a1e8e03babe663161597cb5fec467cff1">BreadSlicer::setBands</a></div><div class="ttdeci">void setBands(int *frequencyBands, int numBands)</div><div class="ttdef"><b>Definition</b> BreadSlicer.cpp:19</div></div>
+<div class="ttc" id="aclass_bread_slicer_html_a7b34f1f3c7042c37065c414d64a9fa57"><div class="ttname"><a href="class_bread_slicer.html#a7b34f1f3c7042c37065c414d64a9fa57">BreadSlicer::doAnalysis</a></div><div class="ttdeci">void doAnalysis()</div><div class="ttdef"><b>Definition</b> BreadSlicer.cpp:52</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md47"></a>
 Classes</h1>
-<p>AudioPrism utilizes an object-oriented design to implement its analysis tools to maintain data access control, standardize common parameters and functionality, offer a framework for creating additional modules, and allow the creation of high-order modules composed of other analysis modules. This section describes the relationship between AudioPrism's classes and how to use them to implement analysis modules. </p>
+<p><a class="el" href="namespace_audio_prism.html">AudioPrism</a> utilizes an object-oriented design to implement its analysis tools to maintain data access control, standardize common parameters and functionality, offer a framework for creating additional modules, and allow the creation of high-order modules composed of other analysis modules. This section describes the relationship between <a class="el" href="namespace_audio_prism.html">AudioPrism</a>'s classes and how to use them to implement analysis modules. </p>
 <h2><a class="anchor" id="autotoc_md48"></a>
 Class Hierarchy Overview</h2>
-<p>AudioPrism provides a base class <a class="el" href="class_analysis_module.html">AnalysisModule</a> and a critical component <a class="el" href="class_module_interface.html">ModuleInterface</a>, which are used to implement individual analysis modules, each of which is its own class.</p><ol type="1">
+<p><a class="el" href="namespace_audio_prism.html">AudioPrism</a> provides a base class <a class="el" href="class_analysis_module.html">AnalysisModule</a> and a critical component <a class="el" href="class_module_interface.html">ModuleInterface</a>, which are used to implement individual analysis modules, each of which is its own class.</p><ol type="1">
 <li>The <a class="el" href="class_analysis_module.html">AnalysisModule</a> base class stores the parameters and functions that are common to all analysis modules, as well as the virtual <code>.doAnalysis()</code> function that must be implemented in analysis modules to give them their unique functionality. For details on the base class's data and functions, see AnalysisModule Class.</li>
 <li>The <a class="el" href="class_module_interface.html">ModuleInterface</a> class is a templated class derived from the <a class="el" href="class_analysis_module.html">AnalysisModule</a> base class; it is used to manage analysis modules' output, which can be any data type. For more information about the implementation of and need for this interface, see ModuleInterface Class.</li>
 </ol>

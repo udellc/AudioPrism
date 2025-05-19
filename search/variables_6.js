@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['output_0',['output',['../class_module_interface.html#afc854044b6ee90aa6298553f754255d0',1,'ModuleInterface']]]
+  ['upperbinbound_0',['upperBinBound',['../class_analysis_module.html#a66f31529e4a15d9c0907209427d84c36',1,'AnalysisModule']]]
 ];

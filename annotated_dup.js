@@ -14,7 +14,6 @@ var annotated_dup =
     [ "ModuleInterface", "class_module_interface.html", "class_module_interface" ],
     [ "Noisiness", "class_noisiness.html", "class_noisiness" ],
     [ "PercussionDetection", "class_percussion_detection.html", "class_percussion_detection" ],
-    [ "SalientFreqs", "class_salient_freqs.html", "class_salient_freqs" ],
     [ "Spectrogram", "class_spectrogram.html", "class_spectrogram" ],
     [ "TotalAmplitude", "class_total_amplitude.html", "class_total_amplitude" ],
     [ "VocalDetection", "class_vocal_detection.html", "class_vocal_detection" ]

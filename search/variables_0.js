@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['amplitudes_0',['amplitudes',['../class_salient_freqs.html#aca1c56486cfa6c5f97d159c9ecdd26f3',1,'SalientFreqs']]]
+  ['centroid_0',['centroid',['../class_centroid.html#aa01e8324a615012000e88a3ba4c52bf1',1,'Centroid']]]
 ];

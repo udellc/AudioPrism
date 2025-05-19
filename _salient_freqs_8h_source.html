@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- BEGIN opengraph metadata -->
     <meta property="og:title" content="AudioPrism" />
-    <meta property="og:description" content="An audio frequency spectrum analysis library for Arduino." />
+    <meta property="og:description" content="Arduino Audio Spectrum Analysis Library" />
     <meta property="og:url" content="https://github.com/udellc/AudioPrism" />
     <!-- END opengraph metadata -->
     <!-- BEGIN twitter metadata -->
@@ -46,7 +46,7 @@
                 <td id="projectalign" style="padding-left: 0.5em;">
                     <div id="projectname">AudioPrism
                     </div>
-                    <div id="projectbrief">An audio frequency spectrum analysis library for Arduino.</div>
+                    <div id="projectbrief">Arduino Audio Spectrum Analysis Library</div>
                 </td>
             </tr>
             </tbody>
@@ -117,163 +117,149 @@ $(function(){initNavTree('_salient_freqs_8h_source.html',''); initResizable(true
   <div class="headertitle"><div class="title">SalientFreqs.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_salient_freqs_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//============================================================================</span></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//============================================================================</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// MODULE INFORMATION</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//============================================================================</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// Name        : SalientFreqs</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// Return Type : int* (array of freq. bin indexes with the highest amplitude delta)</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">// Description : SalientFreqs is used to find the n (numFreqs) bin indexes</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">//               with the highest change in amplitude. The output is an array</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">//               of bin indexes, sorted by the magnitude of the change in</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">//               amplitude.</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">//               of bin indexes, sorted based on three directional choices</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">//               direction = (0 = change, 1 = decrease, 2 = increase)</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">//============================================================================</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef Salient_Freqs_h</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define Salient_Freqs_h</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="_analysis_module_8h.html">../AnalysisModule.h</a>&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="_delta_amplitudes_8h.html">DeltaAmplitudes.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;../AnalysisModule.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;DeltaAmplitudes.h&quot;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// SalientFreqs inherits from the ModuleInterface with an int* output type</span></div>
-<div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="class_salient_freqs.html">   19</a></span><span class="keyword">class </span><a class="code hl_class" href="class_salient_freqs.html">SalientFreqs</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_module_interface.html">ModuleInterface</a>&lt;int*&gt; {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">class </span>SalientFreqs : <span class="keyword">public</span> <a class="code hl_class" href="class_module_interface.html">ModuleInterface</a>&lt;int*&gt; {</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="class_salient_freqs.html#a12ba76cf04a35a49a686edc5743a1596">   21</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_salient_freqs.html#a12ba76cf04a35a49a686edc5743a1596">numFreqs</a>;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="class_salient_freqs.html#a515001cf26411023ff897b70453def78">   22</a></span>    <span class="keywordtype">int</span>* <a class="code hl_variable" href="class_salient_freqs.html#a515001cf26411023ff897b70453def78">salientFreqs</a>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="class_salient_freqs.html#aca1c56486cfa6c5f97d159c9ecdd26f3">   23</a></span>    <span class="keywordtype">float</span>* <a class="code hl_variable" href="class_salient_freqs.html#aca1c56486cfa6c5f97d159c9ecdd26f3">amplitudes</a>;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_salient_freqs.html#a4069ebe78c0aa4fc9ac57a7fc55c8b74">   24</a></span>    <a class="code hl_class" href="class_delta_amplitudes.html">DeltaAmplitudes</a> <a class="code hl_variable" href="class_salient_freqs.html#a4069ebe78c0aa4fc9ac57a7fc55c8b74">deltaAmps</a> = <a class="code hl_class" href="class_delta_amplitudes.html">DeltaAmplitudes</a>();</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="class_salient_freqs.html#ad5cbadaf4fc4d2d448dbbdbb1f36f4b5">   26</a></span>    <a class="code hl_function" href="class_salient_freqs.html#ad5cbadaf4fc4d2d448dbbdbb1f36f4b5">SalientFreqs</a>()</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <a class="code hl_variable" href="class_salient_freqs.html#a12ba76cf04a35a49a686edc5743a1596">numFreqs</a> = 3; <span class="comment">// default to finding frequency of max change</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_variable" href="class_salient_freqs.html#a515001cf26411023ff897b70453def78">salientFreqs</a> = <span class="keyword">new</span> <span class="keywordtype">int</span>[<a class="code hl_variable" href="class_salient_freqs.html#a12ba76cf04a35a49a686edc5743a1596">numFreqs</a>];</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        this-&gt;<a class="code hl_function" href="class_analysis_module.html#abe55bbc24f1494298db8da804956550a">addSubmodule</a>(&amp;deltaAmps);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_salient_freqs.html#a12ba76cf04a35a49a686edc5743a1596">numFreqs</a>; i++) {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            <a class="code hl_variable" href="class_salient_freqs.html#a515001cf26411023ff897b70453def78">salientFreqs</a>[i] = -1;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        }</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    }</div>
-</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">int</span> numFreqs;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">int</span> direction;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">int</span>* salientFreqs;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">float</span>* amplitudes;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_class" href="class_delta_amplitudes.html">DeltaAmplitudes</a> deltaAmps = <a class="code hl_class" href="class_delta_amplitudes.html">DeltaAmplitudes</a>();</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    SalientFreqs()</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        numFreqs = 3; <span class="comment">// default to finding frequency of max change</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        direction = 0;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        salientFreqs = <span class="keyword">new</span> <span class="keywordtype">int</span>[numFreqs];</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        this-&gt;<a class="code hl_function" href="class_analysis_module.html#abe55bbc24f1494298db8da804956550a">addSubmodule</a>(&amp;deltaAmps);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    SalientFreqs(<span class="keywordtype">int</span> n);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="class_salient_freqs.html#a8e93d5c3f3b0c2dfc04cb979d7cf1b35">   37</a></span>    <a class="code hl_function" href="class_salient_freqs.html#a8e93d5c3f3b0c2dfc04cb979d7cf1b35">SalientFreqs</a>(<span class="keywordtype">int</span> n)</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">if</span> (n &lt; 0) {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            n = 0;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        }</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">if</span> (n &gt; <a class="code hl_variable" href="class_analysis_module.html#a732b8a308137788b6d4ca1139cc63b97">windowSizeBy2</a>) {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            n = <a class="code hl_variable" href="class_analysis_module.html#a732b8a308137788b6d4ca1139cc63b97">windowSizeBy2</a>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        }</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <a class="code hl_variable" href="class_salient_freqs.html#a12ba76cf04a35a49a686edc5743a1596">numFreqs</a> = n;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_variable" href="class_salient_freqs.html#a515001cf26411023ff897b70453def78">salientFreqs</a> = <span class="keyword">new</span> <span class="keywordtype">int</span>[<a class="code hl_variable" href="class_salient_freqs.html#a12ba76cf04a35a49a686edc5743a1596">numFreqs</a>];</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        this-&gt;<a class="code hl_function" href="class_analysis_module.html#abe55bbc24f1494298db8da804956550a">addSubmodule</a>(&amp;deltaAmps);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_salient_freqs.html#a12ba76cf04a35a49a686edc5743a1596">numFreqs</a>; i++) {</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <a class="code hl_variable" href="class_salient_freqs.html#a515001cf26411023ff897b70453def78">salientFreqs</a>[i] = -1;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        }</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
-</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">/* Constructor that takes in a value to set the number of max change in amplitudes*/</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    SalientFreqs(<span class="keywordtype">int</span> n, <span class="keywordtype">int</span> dir)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="comment">// If n is less than zero set it to zero so that it doesn&#39;t break</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">if</span> (n &lt; 0) {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            n = 0;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="comment">// If n is greater than the bin range given by windowSizeBy2 truncate it</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordflow">if</span> (n &gt; windowSizeBy2) {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            n = <a class="code hl_variable" href="class_analysis_module.html#a732b8a308137788b6d4ca1139cc63b97">windowSizeBy2</a>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        }</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="comment">// If dir isn&#39;t one of the directional choice (0, 1, 2)</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">if</span> (dir &lt; 0 || dir &gt; 2) {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            dir = 0;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        direction = dir;</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="class_salient_freqs.html#a4bf64cc75f54fb3394a539d4617f3679">   55</a></span>    <a class="code hl_function" href="class_salient_freqs.html#a4bf64cc75f54fb3394a539d4617f3679">~SalientFreqs</a>()</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keyword">delete</span>[] <a class="code hl_variable" href="class_salient_freqs.html#a515001cf26411023ff897b70453def78">salientFreqs</a>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
-</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">// change the amount of salient frequencies to be found</span></div>
-<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="class_salient_freqs.html#a0a7905d30d635e60f809d8340add2b8e">   61</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_salient_freqs.html#a0a7905d30d635e60f809d8340add2b8e">changeNumFreqs</a>(<span class="keywordtype">int</span> newSize)</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <a class="code hl_variable" href="class_salient_freqs.html#a12ba76cf04a35a49a686edc5743a1596">numFreqs</a> = newSize;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">delete</span>[] <a class="code hl_variable" href="class_salient_freqs.html#a515001cf26411023ff897b70453def78">salientFreqs</a>;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <a class="code hl_variable" href="class_salient_freqs.html#a515001cf26411023ff897b70453def78">salientFreqs</a> = <span class="keyword">new</span> <span class="keywordtype">int</span>[<a class="code hl_variable" href="class_salient_freqs.html#a12ba76cf04a35a49a686edc5743a1596">numFreqs</a>];</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    }</div>
-</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">// finds the n (numFreqs) bins with highest change in amplitude, stored in salientFreqs[]</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// input is assumed to be a 2D array of FFT data passed in from the Vibrosonics class</span></div>
-<div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="class_salient_freqs.html#a455c8167533a9a95ec2e297894635c58">   70</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_salient_freqs.html#a455c8167533a9a95ec2e297894635c58">doAnalysis</a>()</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    {</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <a class="code hl_variable" href="class_salient_freqs.html#a4069ebe78c0aa4fc9ac57a7fc55c8b74">deltaAmps</a>.<a class="code hl_function" href="class_delta_amplitudes.html#a5d9e21249c3d72f41f704ca6f3caf36f">doAnalysis</a>();</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <a class="code hl_variable" href="class_salient_freqs.html#aca1c56486cfa6c5f97d159c9ecdd26f3">amplitudes</a> = <a class="code hl_variable" href="class_salient_freqs.html#a4069ebe78c0aa4fc9ac57a7fc55c8b74">deltaAmps</a>.<a class="code hl_function" href="class_module_interface.html#a0ffe78dd2ef66b26ad2d1e4e1ad1d147">getOutput</a>(); <span class="comment">// copy amplitudes</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="comment">// iterate through amplitudes to find the maximum(s)</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordtype">int</span> currMaxAmp = 0;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordtype">int</span> currMaxAmpIdx = -1;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_salient_freqs.html#a12ba76cf04a35a49a686edc5743a1596">numFreqs</a>; i++) {</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = <a class="code hl_variable" href="class_analysis_module.html#a0f61e8ab33723678073e9702cb41ba78">lowerBinBound</a>; j &lt; <a class="code hl_variable" href="class_analysis_module.html#a66f31529e4a15d9c0907209427d84c36">upperBinBound</a>; j++) {</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_salient_freqs.html#aca1c56486cfa6c5f97d159c9ecdd26f3">amplitudes</a>[j] &gt; currMaxAmp) {</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                    currMaxAmp = <a class="code hl_variable" href="class_salient_freqs.html#aca1c56486cfa6c5f97d159c9ecdd26f3">amplitudes</a>[j];</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                    currMaxAmpIdx = j;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                }</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            }</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <a class="code hl_variable" href="class_salient_freqs.html#a515001cf26411023ff897b70453def78">salientFreqs</a>[i] = currMaxAmpIdx; <span class="comment">// add the new max amp index to the array</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <a class="code hl_variable" href="class_salient_freqs.html#aca1c56486cfa6c5f97d159c9ecdd26f3">amplitudes</a>[currMaxAmpIdx] = 0; <span class="comment">// set the amp to 0 so it will not be found again</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            currMaxAmp = 0; <span class="comment">// reset iterators</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            currMaxAmpIdx = -1;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        }</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <a class="code hl_variable" href="class_module_interface.html#afc854044b6ee90aa6298553f754255d0">output</a> = <a class="code hl_variable" href="class_salient_freqs.html#a515001cf26411023ff897b70453def78">salientFreqs</a>;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="comment">// if debug is enabled, print the output to the serial console</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_analysis_module.html#a87e94533168c5a4b0147243907bb6ece">debugMode</a> &amp; <a class="code hl_define" href="_analysis_module_8h.html#a92f1452fef4b184124fa2334beb53a60">DEBUG_ENABLE</a>) {</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            Serial.printf(<span class="stringliteral">&quot;===SALIENT_FREQS===\n&quot;</span>);</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_analysis_module.html#a87e94533168c5a4b0147243907bb6ece">debugMode</a> &amp; <a class="code hl_define" href="_analysis_module_8h.html#acdea1a21961362dc76e7459f64bbb054">DEBUG_VERBOSE</a>) {</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                <a class="code hl_function" href="class_analysis_module.html#a5c395cd13c79fb9fbb10eecd79dac611">printModuleInfo</a>();</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            }</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            Serial.printf(<span class="stringliteral">&quot;Salient Freqs: &quot;</span>);</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_salient_freqs.html#a12ba76cf04a35a49a686edc5743a1596">numFreqs</a>; i++) {</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                Serial.printf(<span class="stringliteral">&quot;%d &quot;</span>, <a class="code hl_variable" href="class_salient_freqs.html#a515001cf26411023ff897b70453def78">salientFreqs</a>[i]);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            }</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            Serial.printf(<span class="stringliteral">&quot;\n==========================\n&quot;</span>);</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        }</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    }</div>
-</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="foldopen" id="foldopen00106" data-start="{" data-end="}">
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="class_salient_freqs.html#ab451ddb0fab6d2c685465733a028a559">  106</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_salient_freqs.html#ab451ddb0fab6d2c685465733a028a559">printOutput</a>()</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    {</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    }</div>
-</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>};</div>
-</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a_analysis_module_8h_html"><div class="ttname"><a href="_analysis_module_8h.html">AnalysisModule.h</a></div></div>
-<div class="ttc" id="a_analysis_module_8h_html_a92f1452fef4b184124fa2334beb53a60"><div class="ttname"><a href="_analysis_module_8h.html#a92f1452fef4b184124fa2334beb53a60">DEBUG_ENABLE</a></div><div class="ttdeci">#define DEBUG_ENABLE</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:16</div></div>
-<div class="ttc" id="a_analysis_module_8h_html_acdea1a21961362dc76e7459f64bbb054"><div class="ttname"><a href="_analysis_module_8h.html#acdea1a21961362dc76e7459f64bbb054">DEBUG_VERBOSE</a></div><div class="ttdeci">#define DEBUG_VERBOSE</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:17</div></div>
-<div class="ttc" id="a_delta_amplitudes_8h_html"><div class="ttname"><a href="_delta_amplitudes_8h.html">DeltaAmplitudes.h</a></div></div>
-<div class="ttc" id="aclass_analysis_module_html_a0f61e8ab33723678073e9702cb41ba78"><div class="ttname"><a href="class_analysis_module.html#a0f61e8ab33723678073e9702cb41ba78">AnalysisModule::lowerBinBound</a></div><div class="ttdeci">int lowerBinBound</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:32</div></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        numFreqs = n;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        salientFreqs = <span class="keyword">new</span> <span class="keywordtype">int</span>[numFreqs];</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        this-&gt;<a class="code hl_function" href="class_analysis_module.html#abe55bbc24f1494298db8da804956550a">addSubmodule</a>(&amp;deltaAmps);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; numFreqs; i++) {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            salientFreqs[i] = -1;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    ~SalientFreqs()</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keyword">delete</span>[] salientFreqs;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    }</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// change the amount of salient frequencies to be found</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">void</span> changeNumFreqs(<span class="keywordtype">int</span> newSize);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// change the direction of salient frequencies</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">void</span> changeDirction(<span class="keywordtype">int</span> dir) {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        direction = dir;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordtype">bool</span> checkDirection(<span class="keywordtype">int</span> idx) {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordtype">float</span> *current_window = spectrogram-&gt;getCurrentWindow();</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordtype">float</span> *prev_window = spectrogram-&gt;getPreviousWindow();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">if</span> (direction == 1 &amp;&amp; current_window[idx] &gt; prev_window[idx])</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">if</span> (direction == 2 &amp;&amp; current_window[idx] &lt; prev_window[idx])</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="comment">// finds the n (numFreqs) bins with highest change in amplitude, stored in salientFreqs[]</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="comment">// input is assumed to be a 2D array of FFT data passed in from the Vibrosonics class</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_analysis_module.html#a65bdd26ff9b3a24e98ee37ea35e01fec">doAnalysis</a>()</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        deltaAmps.<a class="code hl_function" href="class_delta_amplitudes.html#a5d9e21249c3d72f41f704ca6f3caf36f">doAnalysis</a>();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        amplitudes = deltaAmps.<a class="code hl_function" href="class_module_interface.html#a0ffe78dd2ef66b26ad2d1e4e1ad1d147">getOutput</a>(); <span class="comment">// copy amplitudes</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="comment">// iterate through amplitudes to find the maximum(s)</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordtype">int</span> currMaxAmp = 0;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordtype">int</span> currMaxAmpIdx = -1;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; numFreqs; i++) {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = lowerBinBound; j &lt; <a class="code hl_variable" href="class_analysis_module.html#a66f31529e4a15d9c0907209427d84c36">upperBinBound</a>; j++) {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                <span class="keywordflow">if</span> (amplitudes[j] &gt; currMaxAmp) {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                    <span class="keywordflow">if</span>(checkDirection(j)){</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                        currMaxAmp = amplitudes[j];</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                        currMaxAmpIdx = j;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                    }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                }</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            salientFreqs[i] = currMaxAmpIdx; <span class="comment">// add the new max amp index to the array</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            amplitudes[currMaxAmpIdx] = 0; <span class="comment">// set the amp to 0 so it will not be found again</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            currMaxAmp = 0; <span class="comment">// reset iterators</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            currMaxAmpIdx = -1;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        }</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        output = salientFreqs;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="comment">// if debug is enabled, print the output to the serial console</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordflow">if</span> (debugMode &amp; DEBUG_ENABLE) {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            Serial.printf(<span class="stringliteral">&quot;===SALIENT_FREQS===\n&quot;</span>);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            <span class="keywordflow">if</span> (debugMode &amp; DEBUG_VERBOSE) {</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                <a class="code hl_function" href="class_analysis_module.html#a5c395cd13c79fb9fbb10eecd79dac611">printModuleInfo</a>();</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            }</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            Serial.printf(<span class="stringliteral">&quot;Salient Freqs: &quot;</span>);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; numFreqs; i++) {</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                Serial.printf(<span class="stringliteral">&quot;%d &quot;</span>, salientFreqs[i]);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            }</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            Serial.printf(<span class="stringliteral">&quot;\n==========================\n&quot;</span>);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        }</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    }</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>};</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_analysis_module_html_a5c395cd13c79fb9fbb10eecd79dac611"><div class="ttname"><a href="class_analysis_module.html#a5c395cd13c79fb9fbb10eecd79dac611">AnalysisModule::printModuleInfo</a></div><div class="ttdeci">void printModuleInfo()</div><div class="ttdef"><b>Definition</b> AnalysisModule.cpp:145</div></div>
+<div class="ttc" id="aclass_analysis_module_html_a65bdd26ff9b3a24e98ee37ea35e01fec"><div class="ttname"><a href="class_analysis_module.html#a65bdd26ff9b3a24e98ee37ea35e01fec">AnalysisModule::doAnalysis</a></div><div class="ttdeci">virtual void doAnalysis()=0</div></div>
 <div class="ttc" id="aclass_analysis_module_html_a66f31529e4a15d9c0907209427d84c36"><div class="ttname"><a href="class_analysis_module.html#a66f31529e4a15d9c0907209427d84c36">AnalysisModule::upperBinBound</a></div><div class="ttdeci">int upperBinBound</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:33</div></div>
 <div class="ttc" id="aclass_analysis_module_html_a732b8a308137788b6d4ca1139cc63b97"><div class="ttname"><a href="class_analysis_module.html#a732b8a308137788b6d4ca1139cc63b97">AnalysisModule::windowSizeBy2</a></div><div class="ttdeci">int windowSizeBy2</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:27</div></div>
-<div class="ttc" id="aclass_analysis_module_html_a87e94533168c5a4b0147243907bb6ece"><div class="ttname"><a href="class_analysis_module.html#a87e94533168c5a4b0147243907bb6ece">AnalysisModule::debugMode</a></div><div class="ttdeci">int debugMode</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:41</div></div>
 <div class="ttc" id="aclass_analysis_module_html_abe55bbc24f1494298db8da804956550a"><div class="ttname"><a href="class_analysis_module.html#abe55bbc24f1494298db8da804956550a">AnalysisModule::addSubmodule</a></div><div class="ttdeci">void addSubmodule(AnalysisModule *module)</div><div class="ttdef"><b>Definition</b> AnalysisModule.cpp:80</div></div>
 <div class="ttc" id="aclass_delta_amplitudes_html"><div class="ttname"><a href="class_delta_amplitudes.html">DeltaAmplitudes</a></div><div class="ttdef"><b>Definition</b> DeltaAmplitudes.h:17</div></div>
-<div class="ttc" id="aclass_delta_amplitudes_html_a5d9e21249c3d72f41f704ca6f3caf36f"><div class="ttname"><a href="class_delta_amplitudes.html#a5d9e21249c3d72f41f704ca6f3caf36f">DeltaAmplitudes::doAnalysis</a></div><div class="ttdeci">void doAnalysis()</div><div class="ttdef"><b>Definition</b> DeltaAmplitudes.h:31</div></div>
+<div class="ttc" id="aclass_delta_amplitudes_html_a5d9e21249c3d72f41f704ca6f3caf36f"><div class="ttname"><a href="class_delta_amplitudes.html#a5d9e21249c3d72f41f704ca6f3caf36f">DeltaAmplitudes::doAnalysis</a></div><div class="ttdeci">void doAnalysis()</div><div class="ttdef"><b>Definition</b> DeltaAmplitudes.cpp:13</div></div>
 <div class="ttc" id="aclass_module_interface_html"><div class="ttname"><a href="class_module_interface.html">ModuleInterface</a></div><div class="ttdef"><b>Definition</b> AnalysisModule.h:74</div></div>
 <div class="ttc" id="aclass_module_interface_html_a0ffe78dd2ef66b26ad2d1e4e1ad1d147"><div class="ttname"><a href="class_module_interface.html#a0ffe78dd2ef66b26ad2d1e4e1ad1d147">ModuleInterface::getOutput</a></div><div class="ttdeci">T getOutput()</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:79</div></div>
-<div class="ttc" id="aclass_module_interface_html_afc854044b6ee90aa6298553f754255d0"><div class="ttname"><a href="class_module_interface.html#afc854044b6ee90aa6298553f754255d0">ModuleInterface&lt; int * &gt;::output</a></div><div class="ttdeci">int * output</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:76</div></div>
-<div class="ttc" id="aclass_salient_freqs_html"><div class="ttname"><a href="class_salient_freqs.html">SalientFreqs</a></div><div class="ttdef"><b>Definition</b> SalientFreqs.h:19</div></div>
-<div class="ttc" id="aclass_salient_freqs_html_a0a7905d30d635e60f809d8340add2b8e"><div class="ttname"><a href="class_salient_freqs.html#a0a7905d30d635e60f809d8340add2b8e">SalientFreqs::changeNumFreqs</a></div><div class="ttdeci">void changeNumFreqs(int newSize)</div><div class="ttdef"><b>Definition</b> SalientFreqs.h:61</div></div>
-<div class="ttc" id="aclass_salient_freqs_html_a12ba76cf04a35a49a686edc5743a1596"><div class="ttname"><a href="class_salient_freqs.html#a12ba76cf04a35a49a686edc5743a1596">SalientFreqs::numFreqs</a></div><div class="ttdeci">int numFreqs</div><div class="ttdef"><b>Definition</b> SalientFreqs.h:21</div></div>
-<div class="ttc" id="aclass_salient_freqs_html_a4069ebe78c0aa4fc9ac57a7fc55c8b74"><div class="ttname"><a href="class_salient_freqs.html#a4069ebe78c0aa4fc9ac57a7fc55c8b74">SalientFreqs::deltaAmps</a></div><div class="ttdeci">DeltaAmplitudes deltaAmps</div><div class="ttdef"><b>Definition</b> SalientFreqs.h:24</div></div>
-<div class="ttc" id="aclass_salient_freqs_html_a455c8167533a9a95ec2e297894635c58"><div class="ttname"><a href="class_salient_freqs.html#a455c8167533a9a95ec2e297894635c58">SalientFreqs::doAnalysis</a></div><div class="ttdeci">void doAnalysis()</div><div class="ttdef"><b>Definition</b> SalientFreqs.h:70</div></div>
-<div class="ttc" id="aclass_salient_freqs_html_a4bf64cc75f54fb3394a539d4617f3679"><div class="ttname"><a href="class_salient_freqs.html#a4bf64cc75f54fb3394a539d4617f3679">SalientFreqs::~SalientFreqs</a></div><div class="ttdeci">~SalientFreqs()</div><div class="ttdef"><b>Definition</b> SalientFreqs.h:55</div></div>
-<div class="ttc" id="aclass_salient_freqs_html_a515001cf26411023ff897b70453def78"><div class="ttname"><a href="class_salient_freqs.html#a515001cf26411023ff897b70453def78">SalientFreqs::salientFreqs</a></div><div class="ttdeci">int * salientFreqs</div><div class="ttdef"><b>Definition</b> SalientFreqs.h:22</div></div>
-<div class="ttc" id="aclass_salient_freqs_html_a8e93d5c3f3b0c2dfc04cb979d7cf1b35"><div class="ttname"><a href="class_salient_freqs.html#a8e93d5c3f3b0c2dfc04cb979d7cf1b35">SalientFreqs::SalientFreqs</a></div><div class="ttdeci">SalientFreqs(int n)</div><div class="ttdef"><b>Definition</b> SalientFreqs.h:37</div></div>
-<div class="ttc" id="aclass_salient_freqs_html_ab451ddb0fab6d2c685465733a028a559"><div class="ttname"><a href="class_salient_freqs.html#ab451ddb0fab6d2c685465733a028a559">SalientFreqs::printOutput</a></div><div class="ttdeci">void printOutput()</div><div class="ttdef"><b>Definition</b> SalientFreqs.h:106</div></div>
-<div class="ttc" id="aclass_salient_freqs_html_aca1c56486cfa6c5f97d159c9ecdd26f3"><div class="ttname"><a href="class_salient_freqs.html#aca1c56486cfa6c5f97d159c9ecdd26f3">SalientFreqs::amplitudes</a></div><div class="ttdeci">float * amplitudes</div><div class="ttdef"><b>Definition</b> SalientFreqs.h:23</div></div>
-<div class="ttc" id="aclass_salient_freqs_html_ad5cbadaf4fc4d2d448dbbdbb1f36f4b5"><div class="ttname"><a href="class_salient_freqs.html#ad5cbadaf4fc4d2d448dbbdbb1f36f4b5">SalientFreqs::SalientFreqs</a></div><div class="ttdeci">SalientFreqs()</div><div class="ttdef"><b>Definition</b> SalientFreqs.h:26</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><a class="el" href="_salient_freqs_8h.html">SalientFreqs.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><b>SalientFreqs.h</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

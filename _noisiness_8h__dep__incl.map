@@ -1,8 +1,0 @@
-<map id="src/modules/Noisiness.h" name="src/modules/Noisiness.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,170,31"/>
-<area shape="rect" id="Node000002" href="$_audio_prism_8h.html" title=" " alt="" coords="27,153,148,178"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,44,51,61,41,80,39,100,47,119,74,150,70,154,43,121,34,100,36,78,46,58,60,40"/>
-<area shape="rect" id="Node000003" href="$_percussion_detection_8h.html" title=" " alt="" coords="50,79,277,105"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="113,40,153,77,149,81,110,44"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="141,117,102,154,98,150,138,114"/>
-</map>

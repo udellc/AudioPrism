@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- BEGIN opengraph metadata -->
     <meta property="og:title" content="AudioPrism" />
-    <meta property="og:description" content="An audio frequency spectrum analysis library for Arduino." />
+    <meta property="og:description" content="Arduino Audio Spectrum Analysis Library" />
     <meta property="og:url" content="https://github.com/udellc/AudioPrism" />
     <!-- END opengraph metadata -->
     <!-- BEGIN twitter metadata -->
@@ -46,7 +46,7 @@
                 <td id="projectalign" style="padding-left: 0.5em;">
                     <div id="projectname">AudioPrism
                     </div>
-                    <div id="projectbrief">An audio frequency spectrum analysis library for Arduino.</div>
+                    <div id="projectbrief">Arduino Audio Spectrum Analysis Library</div>
                 </td>
             </tr>
             </tbody>
@@ -161,9 +161,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afc854044b6ee90aa6298553f754255d0 inherit pro_attribs_class_module_interface" id="r_afc854044b6ee90aa6298553f754255d0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_module_interface.html#afc854044b6ee90aa6298553f754255d0">output</a></td></tr>
 <tr class="separator:afc854044b6ee90aa6298553f754255d0 inherit pro_attribs_class_module_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_analysis_module"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_analysis_module')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_analysis_module.html">AnalysisModule</a></td></tr>
-<tr class="memitem:a06ea0402502580ad5831d080b4716cd7 inherit pro_attribs_class_analysis_module" id="r_a06ea0402502580ad5831d080b4716cd7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_analysis_module.html#a06ea0402502580ad5831d080b4716cd7">sampleRate</a> = <a class="el" href="_config_8h.html#a4b76a0c2859cfd819a343a780070ee2b">SAMPLE_RATE</a></td></tr>
+<tr class="memitem:a06ea0402502580ad5831d080b4716cd7 inherit pro_attribs_class_analysis_module" id="r_a06ea0402502580ad5831d080b4716cd7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_analysis_module.html#a06ea0402502580ad5831d080b4716cd7">sampleRate</a> = SAMPLE_RATE</td></tr>
 <tr class="separator:a06ea0402502580ad5831d080b4716cd7 inherit pro_attribs_class_analysis_module"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a592f8ced5cf13e27d605f90ba988dc49 inherit pro_attribs_class_analysis_module" id="r_a592f8ced5cf13e27d605f90ba988dc49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_analysis_module.html#a592f8ced5cf13e27d605f90ba988dc49">windowSize</a> = <a class="el" href="_config_8h.html#ab3f68d59e815ea166f8c983bc6e85c5b">WINDOW_SIZE</a></td></tr>
+<tr class="memitem:a592f8ced5cf13e27d605f90ba988dc49 inherit pro_attribs_class_analysis_module" id="r_a592f8ced5cf13e27d605f90ba988dc49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_analysis_module.html#a592f8ced5cf13e27d605f90ba988dc49">windowSize</a> = WINDOW_SIZE</td></tr>
 <tr class="separator:a592f8ced5cf13e27d605f90ba988dc49 inherit pro_attribs_class_analysis_module"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a732b8a308137788b6d4ca1139cc63b97 inherit pro_attribs_class_analysis_module" id="r_a732b8a308137788b6d4ca1139cc63b97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_analysis_module.html#a732b8a308137788b6d4ca1139cc63b97">windowSizeBy2</a> = <a class="el" href="class_analysis_module.html#a592f8ced5cf13e27d605f90ba988dc49">windowSize</a> &gt;&gt; 1</td></tr>
 <tr class="separator:a732b8a308137788b6d4ca1139cc63b97 inherit pro_attribs_class_analysis_module"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -188,9 +188,6 @@ Additional Inherited Members</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Noisiness::Noisiness </td>
@@ -199,11 +196,6 @@ Additional Inherited Members</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
@@ -227,7 +219,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -236,8 +228,9 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/modules/<a class="el" href="_noisiness_8h_source.html">Noisiness.h</a></li>
+<li>src/modules/<b>Noisiness.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

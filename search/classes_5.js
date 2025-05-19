@@ -10,6 +10,5 @@ var searchData=
   ['moduleinterface_3c_20float_20_2a_20_3e_7',['ModuleInterface&lt; float * &gt;',['../class_module_interface.html',1,'']]],
   ['moduleinterface_3c_20float_20_2a_2a_20_3e_8',['ModuleInterface&lt; float ** &gt;',['../class_module_interface.html',1,'']]],
   ['moduleinterface_3c_20float_20_3e_9',['ModuleInterface&lt; float &gt;',['../class_module_interface.html',1,'']]],
-  ['moduleinterface_3c_20int_20_2a_20_3e_10',['ModuleInterface&lt; int * &gt;',['../class_module_interface.html',1,'']]],
-  ['moduleinterface_3c_20int_20_3e_11',['ModuleInterface&lt; int &gt;',['../class_module_interface.html',1,'']]]
+  ['moduleinterface_3c_20int_20_3e_10',['ModuleInterface&lt; int &gt;',['../class_module_interface.html',1,'']]]
 ];

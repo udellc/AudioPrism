@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- BEGIN opengraph metadata -->
     <meta property="og:title" content="AudioPrism" />
-    <meta property="og:description" content="An audio frequency spectrum analysis library for Arduino." />
+    <meta property="og:description" content="Arduino Audio Spectrum Analysis Library" />
     <meta property="og:url" content="https://github.com/udellc/AudioPrism" />
     <!-- END opengraph metadata -->
     <!-- BEGIN twitter metadata -->
@@ -46,7 +46,7 @@
                 <td id="projectalign" style="padding-left: 0.5em;">
                     <div id="projectname">AudioPrism
                     </div>
-                    <div id="projectbrief">An audio frequency spectrum analysis library for Arduino.</div>
+                    <div id="projectbrief">Arduino Audio Spectrum Analysis Library</div>
                 </td>
             </tr>
             </tbody>
@@ -133,16 +133,22 @@ Inheritance diagram for Formants:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5e329bcb2bb8c6790410af46e19398ef" id="r_a5e329bcb2bb8c6790410af46e19398ef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e329bcb2bb8c6790410af46e19398ef">Formants</a> ()</td></tr>
 <tr class="separator:a5e329bcb2bb8c6790410af46e19398ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59a7184d4f3efc13fff6fdd85142fd11" id="r_a59a7184d4f3efc13fff6fdd85142fd11"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59a7184d4f3efc13fff6fdd85142fd11">vowel_to_character</a> (int vowel)</td></tr>
-<tr class="separator:a59a7184d4f3efc13fff6fdd85142fd11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab728b177772fe6fc5252b3077c9abb9" id="r_aab728b177772fe6fc5252b3077c9abb9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab728b177772fe6fc5252b3077c9abb9">calculate_distance</a> (<a class="el" href="class_formant_profile.html">FormantProfile</a> *profile, float **found_peaks)</td></tr>
-<tr class="separator:aab728b177772fe6fc5252b3077c9abb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b6b360f49ea3c41160a8211693d57f8" id="r_a3b6b360f49ea3c41160a8211693d57f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b6b360f49ea3c41160a8211693d57f8">doAnalysis</a> ()</td></tr>
-<tr class="separator:a3b6b360f49ea3c41160a8211693d57f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6efb1644a476d0036e9ae2c5a94a7848" id="r_a6efb1644a476d0036e9ae2c5a94a7848"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6efb1644a476d0036e9ae2c5a94a7848">vowel_to_character</a> (int vowel, float distance)</td></tr>
+<tr class="separator:a6efb1644a476d0036e9ae2c5a94a7848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ba1fe63965f4d55e6599f293d059f25" id="r_a1ba1fe63965f4d55e6599f293d059f25"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ba1fe63965f4d55e6599f293d059f25">calculate_distance</a> (<a class="el" href="class_formant_profile.html">FormantProfile</a> *profile, float *found_peaks)</td></tr>
+<tr class="separator:a1ba1fe63965f4d55e6599f293d059f25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaf7f2c4ee41d04e1a26e68b45d60e8d" id="r_aaaf7f2c4ee41d04e1a26e68b45d60e8d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaaf7f2c4ee41d04e1a26e68b45d60e8d">interpolateAroundPeak</a> (const float *data, int indexOfPeak, int <a class="el" href="class_analysis_module.html#a06ea0402502580ad5831d080b4716cd7">sampleRate</a>, int <a class="el" href="class_analysis_module.html#a592f8ced5cf13e27d605f90ba988dc49">windowSize</a>)</td></tr>
+<tr class="separator:aaaf7f2c4ee41d04e1a26e68b45d60e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade0f01a17cbd62cf2da083371fee826e" id="r_ade0f01a17cbd62cf2da083371fee826e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade0f01a17cbd62cf2da083371fee826e">setNumPeaks</a> (int peaks)</td></tr>
+<tr class="separator:ade0f01a17cbd62cf2da083371fee826e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a57871aa3bbe3d9705c5ece883fdaf8" id="r_a3a57871aa3bbe3d9705c5ece883fdaf8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a57871aa3bbe3d9705c5ece883fdaf8">doAnalysis</a> (const float **input)</td></tr>
+<tr class="separator:a3a57871aa3bbe3d9705c5ece883fdaf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_module_interface"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_module_interface')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_module_interface.html">ModuleInterface&lt; char &gt;</a></td></tr>
 <tr class="memitem:a0ffe78dd2ef66b26ad2d1e4e1ad1d147 inherit pub_methods_class_module_interface" id="r_a0ffe78dd2ef66b26ad2d1e4e1ad1d147"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_module_interface.html#a0ffe78dd2ef66b26ad2d1e4e1ad1d147">getOutput</a> ()</td></tr>
 <tr class="separator:a0ffe78dd2ef66b26ad2d1e4e1ad1d147 inherit pub_methods_class_module_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_analysis_module"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_analysis_module')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_analysis_module.html">AnalysisModule</a></td></tr>
+<tr class="memitem:a65bdd26ff9b3a24e98ee37ea35e01fec inherit pub_methods_class_analysis_module" id="r_a65bdd26ff9b3a24e98ee37ea35e01fec"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_analysis_module.html#a65bdd26ff9b3a24e98ee37ea35e01fec">doAnalysis</a> ()=0</td></tr>
+<tr class="separator:a65bdd26ff9b3a24e98ee37ea35e01fec inherit pub_methods_class_analysis_module"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d0100fcbc0ef537f959194f549ddcb2 inherit pub_methods_class_analysis_module" id="r_a7d0100fcbc0ef537f959194f549ddcb2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_analysis_module.html#a7d0100fcbc0ef537f959194f549ddcb2">setWindowSize</a> (const int <a class="el" href="class_analysis_module.html#a592f8ced5cf13e27d605f90ba988dc49">windowSize</a>)</td></tr>
 <tr class="separator:a7d0100fcbc0ef537f959194f549ddcb2 inherit pub_methods_class_analysis_module"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf2327e3946bf913dbc2a2f0944033d4 inherit pub_methods_class_analysis_module" id="r_acf2327e3946bf913dbc2a2f0944033d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_analysis_module.html#acf2327e3946bf913dbc2a2f0944033d4">setSampleRate</a> (const int <a class="el" href="class_analysis_module.html#a06ea0402502580ad5831d080b4716cd7">sampleRate</a>)</td></tr>
@@ -171,9 +177,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afc854044b6ee90aa6298553f754255d0 inherit pro_attribs_class_module_interface" id="r_afc854044b6ee90aa6298553f754255d0"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_module_interface.html#afc854044b6ee90aa6298553f754255d0">output</a></td></tr>
 <tr class="separator:afc854044b6ee90aa6298553f754255d0 inherit pro_attribs_class_module_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_analysis_module"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_analysis_module')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_analysis_module.html">AnalysisModule</a></td></tr>
-<tr class="memitem:a06ea0402502580ad5831d080b4716cd7 inherit pro_attribs_class_analysis_module" id="r_a06ea0402502580ad5831d080b4716cd7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_analysis_module.html#a06ea0402502580ad5831d080b4716cd7">sampleRate</a> = <a class="el" href="_config_8h.html#a4b76a0c2859cfd819a343a780070ee2b">SAMPLE_RATE</a></td></tr>
+<tr class="memitem:a06ea0402502580ad5831d080b4716cd7 inherit pro_attribs_class_analysis_module" id="r_a06ea0402502580ad5831d080b4716cd7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_analysis_module.html#a06ea0402502580ad5831d080b4716cd7">sampleRate</a> = SAMPLE_RATE</td></tr>
 <tr class="separator:a06ea0402502580ad5831d080b4716cd7 inherit pro_attribs_class_analysis_module"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a592f8ced5cf13e27d605f90ba988dc49 inherit pro_attribs_class_analysis_module" id="r_a592f8ced5cf13e27d605f90ba988dc49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_analysis_module.html#a592f8ced5cf13e27d605f90ba988dc49">windowSize</a> = <a class="el" href="_config_8h.html#ab3f68d59e815ea166f8c983bc6e85c5b">WINDOW_SIZE</a></td></tr>
+<tr class="memitem:a592f8ced5cf13e27d605f90ba988dc49 inherit pro_attribs_class_analysis_module" id="r_a592f8ced5cf13e27d605f90ba988dc49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_analysis_module.html#a592f8ced5cf13e27d605f90ba988dc49">windowSize</a> = WINDOW_SIZE</td></tr>
 <tr class="separator:a592f8ced5cf13e27d605f90ba988dc49 inherit pro_attribs_class_analysis_module"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a732b8a308137788b6d4ca1139cc63b97 inherit pro_attribs_class_analysis_module" id="r_a732b8a308137788b6d4ca1139cc63b97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_analysis_module.html#a732b8a308137788b6d4ca1139cc63b97">windowSizeBy2</a> = <a class="el" href="class_analysis_module.html#a592f8ced5cf13e27d605f90ba988dc49">windowSize</a> &gt;&gt; 1</td></tr>
 <tr class="separator:a732b8a308137788b6d4ca1139cc63b97 inherit pro_attribs_class_analysis_module"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -219,8 +225,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aab728b177772fe6fc5252b3077c9abb9" name="aab728b177772fe6fc5252b3077c9abb9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab728b177772fe6fc5252b3077c9abb9">&#9670;&#160;</a></span>calculate_distance()</h2>
+<a id="a1ba1fe63965f4d55e6599f293d059f25" name="a1ba1fe63965f4d55e6599f293d059f25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ba1fe63965f4d55e6599f293d059f25">&#9670;&#160;</a></span>calculate_distance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -236,7 +242,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float **</td>          <td class="paramname"><span class="paramname"><em>found_peaks</em></span>&#160;)</td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>found_peaks</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -248,8 +254,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a3b6b360f49ea3c41160a8211693d57f8" name="a3b6b360f49ea3c41160a8211693d57f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b6b360f49ea3c41160a8211693d57f8">&#9670;&#160;</a></span>doAnalysis()</h2>
+<a id="a3a57871aa3bbe3d9705c5ece883fdaf8" name="a3a57871aa3bbe3d9705c5ece883fdaf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a57871aa3bbe3d9705c5ece883fdaf8">&#9670;&#160;</a></span>doAnalysis()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -260,23 +266,85 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void Formants::doAnalysis </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">const float **</td>          <td class="paramname"><span class="paramname"><em>input</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_analysis_module.html#a65bdd26ff9b3a24e98ee37ea35e01fec">AnalysisModule</a>.</p>
+</div>
+</div>
+<a id="aaaf7f2c4ee41d04e1a26e68b45d60e8d" name="aaaf7f2c4ee41d04e1a26e68b45d60e8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaf7f2c4ee41d04e1a26e68b45d60e8d">&#9670;&#160;</a></span>interpolateAroundPeak()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Formants::interpolateAroundPeak </td>
+          <td>(</td>
+          <td class="paramtype">const float *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>indexOfPeak</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sampleRate</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>windowSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
-<a id="a59a7184d4f3efc13fff6fdd85142fd11" name="a59a7184d4f3efc13fff6fdd85142fd11"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59a7184d4f3efc13fff6fdd85142fd11">&#9670;&#160;</a></span>vowel_to_character()</h2>
+<a id="ade0f01a17cbd62cf2da083371fee826e" name="ade0f01a17cbd62cf2da083371fee826e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade0f01a17cbd62cf2da083371fee826e">&#9670;&#160;</a></span>setNumPeaks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Formants::setNumPeaks </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>peaks</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6efb1644a476d0036e9ae2c5a94a7848" name="a6efb1644a476d0036e9ae2c5a94a7848"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6efb1644a476d0036e9ae2c5a94a7848">&#9670;&#160;</a></span>vowel_to_character()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -287,8 +355,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">char Formants::vowel_to_character </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>vowel</em></span></td><td>)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>vowel</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>distance</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -315,8 +387,9 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/modules/<a class="el" href="_formants_8h_source.html">Formants.h</a></li>
+<li>src/modules/<b>Formants.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

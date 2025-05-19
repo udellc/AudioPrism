@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- BEGIN opengraph metadata -->
     <meta property="og:title" content="AudioPrism" />
-    <meta property="og:description" content="An audio frequency spectrum analysis library for Arduino." />
+    <meta property="og:description" content="Arduino Audio Spectrum Analysis Library" />
     <meta property="og:url" content="https://github.com/udellc/AudioPrism" />
     <!-- END opengraph metadata -->
     <!-- BEGIN twitter metadata -->
@@ -46,7 +46,7 @@
                 <td id="projectalign" style="padding-left: 0.5em;">
                     <div id="projectname">AudioPrism
                     </div>
-                    <div id="projectbrief">An audio frequency spectrum analysis library for Arduino.</div>
+                    <div id="projectbrief">Arduino Audio Spectrum Analysis Library</div>
                 </td>
             </tr>
             </tbody>
@@ -117,7 +117,7 @@ $(function(){initNavTree('_mean_amplitude_8h_source.html',''); initResizable(tru
   <div class="headertitle"><div class="title">MeanAmplitude.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_mean_amplitude_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//============================================================================</span></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//============================================================================</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// MODULE INFORMATION</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//============================================================================</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// Name        : MeanAmplitude</span></div>
@@ -129,8 +129,8 @@ $(function(){initNavTree('_mean_amplitude_8h_source.html',''); initResizable(tru
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifndef Mean_Amplitude_h</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define Mean_Amplitude_h</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="_analysis_module_8h.html">../AnalysisModule.h</a>&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="_total_amplitude_8h.html">TotalAmplitude.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;../AnalysisModule.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;TotalAmplitude.h&quot;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// MeanAmplitude inherits from the ModuleInterface with a float output typ</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">// this module contains one submodule, TotalAmplitude</span></div>
@@ -150,66 +150,26 @@ $(function(){initNavTree('_mean_amplitude_8h_source.html',''); initResizable(tru
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">// a constructor is necessary for modules containing submodules</span></div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="comment">// the submodule must be registered with the parent in the constructor</span></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">// registering a submodule with a parent module allows automatic propagation of the parent&#39;s window bounds to the submodul</span></div>
-<div class="foldopen" id="foldopen00033" data-start="{" data-end="}">
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="class_mean_amplitude.html#ab9ed79dcf26d5120f0526449bf3b122a">   33</a></span>    <a class="code hl_function" href="class_mean_amplitude.html#ab9ed79dcf26d5120f0526449bf3b122a">MeanAmplitude</a>()</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        this-&gt;<a class="code hl_function" href="class_analysis_module.html#abe55bbc24f1494298db8da804956550a">addSubmodule</a>(&amp;totalAmp);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    }</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_function" href="class_mean_amplitude.html#ab9ed79dcf26d5120f0526449bf3b122a">MeanAmplitude</a>();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">// doAnalysis() is called by the analysis manager</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// the totalamplitude submodule is invoked to calculate the total amplitude of the current window</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// the mean amplitude is calculated from the total amplitude and the number of bins in the selected frequency range</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_mean_amplitude.html#ae62ba6b7dd2c037a647b402ec7acd2ab">doAnalysis</a>();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>};</div>
 </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// doAnalysis() is called by the analysis manager</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// the totalamplitude submodule is invoked to calculate the total amplitude of the current window</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// the mean amplitude is calculated from the total amplitude and the number of bins in the selected frequency range</span></div>
-<div class="foldopen" id="foldopen00041" data-start="{" data-end="}">
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="class_mean_amplitude.html#ae62ba6b7dd2c037a647b402ec7acd2ab">   41</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_mean_amplitude.html#ae62ba6b7dd2c037a647b402ec7acd2ab">doAnalysis</a>()</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="comment">// perform analysis on the totalamplitude module</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        totalAmp.<a class="code hl_function" href="class_total_amplitude.html#ae1395ed11428d542bf96ee3b3f659ccc">doAnalysis</a>();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="comment">// retrieve the output of the totalamplitude module</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordtype">float</span> total = totalAmp.<a class="code hl_function" href="class_module_interface.html#a0ffe78dd2ef66b26ad2d1e4e1ad1d147">getOutput</a>();</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="comment">// calculate the mean amplitude by dividing the total amplitude by the number of bins in the selected frequency range</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="comment">// this module&#39;s output can be retrieved by calling getOutput() after analysis</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <a class="code hl_variable" href="class_module_interface.html#afc854044b6ee90aa6298553f754255d0">output</a> = total / (<a class="code hl_variable" href="class_analysis_module.html#a66f31529e4a15d9c0907209427d84c36">upperBinBound</a> - <a class="code hl_variable" href="class_analysis_module.html#a0f61e8ab33723678073e9702cb41ba78">lowerBinBound</a>);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="comment">// if debug is enabled, print the output to the serial console</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_analysis_module.html#a87e94533168c5a4b0147243907bb6ece">debugMode</a> &amp; <a class="code hl_define" href="_analysis_module_8h.html#a92f1452fef4b184124fa2334beb53a60">DEBUG_ENABLE</a>) {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            Serial.printf(<span class="stringliteral">&quot;===MEAN_AMPLITUDE===\n&quot;</span>);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_analysis_module.html#a87e94533168c5a4b0147243907bb6ece">debugMode</a> &amp; <a class="code hl_define" href="_analysis_module_8h.html#acdea1a21961362dc76e7459f64bbb054">DEBUG_VERBOSE</a>) {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                <a class="code hl_function" href="class_analysis_module.html#a5c395cd13c79fb9fbb10eecd79dac611">printModuleInfo</a>();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            }</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            Serial.printf(<span class="stringliteral">&quot;Mean: %f\n&quot;</span>, <a class="code hl_variable" href="class_module_interface.html#afc854044b6ee90aa6298553f754255d0">output</a>);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            Serial.printf(<span class="stringliteral">&quot;====================\n&quot;</span>);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        }</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
-</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>};</div>
-</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a_analysis_module_8h_html"><div class="ttname"><a href="_analysis_module_8h.html">AnalysisModule.h</a></div></div>
-<div class="ttc" id="a_analysis_module_8h_html_a92f1452fef4b184124fa2334beb53a60"><div class="ttname"><a href="_analysis_module_8h.html#a92f1452fef4b184124fa2334beb53a60">DEBUG_ENABLE</a></div><div class="ttdeci">#define DEBUG_ENABLE</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:16</div></div>
-<div class="ttc" id="a_analysis_module_8h_html_acdea1a21961362dc76e7459f64bbb054"><div class="ttname"><a href="_analysis_module_8h.html#acdea1a21961362dc76e7459f64bbb054">DEBUG_VERBOSE</a></div><div class="ttdeci">#define DEBUG_VERBOSE</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:17</div></div>
-<div class="ttc" id="a_total_amplitude_8h_html"><div class="ttname"><a href="_total_amplitude_8h.html">TotalAmplitude.h</a></div></div>
-<div class="ttc" id="aclass_analysis_module_html_a0f61e8ab33723678073e9702cb41ba78"><div class="ttname"><a href="class_analysis_module.html#a0f61e8ab33723678073e9702cb41ba78">AnalysisModule::lowerBinBound</a></div><div class="ttdeci">int lowerBinBound</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:32</div></div>
-<div class="ttc" id="aclass_analysis_module_html_a5c395cd13c79fb9fbb10eecd79dac611"><div class="ttname"><a href="class_analysis_module.html#a5c395cd13c79fb9fbb10eecd79dac611">AnalysisModule::printModuleInfo</a></div><div class="ttdeci">void printModuleInfo()</div><div class="ttdef"><b>Definition</b> AnalysisModule.cpp:145</div></div>
-<div class="ttc" id="aclass_analysis_module_html_a66f31529e4a15d9c0907209427d84c36"><div class="ttname"><a href="class_analysis_module.html#a66f31529e4a15d9c0907209427d84c36">AnalysisModule::upperBinBound</a></div><div class="ttdeci">int upperBinBound</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:33</div></div>
-<div class="ttc" id="aclass_analysis_module_html_a87e94533168c5a4b0147243907bb6ece"><div class="ttname"><a href="class_analysis_module.html#a87e94533168c5a4b0147243907bb6ece">AnalysisModule::debugMode</a></div><div class="ttdeci">int debugMode</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:41</div></div>
-<div class="ttc" id="aclass_analysis_module_html_abe55bbc24f1494298db8da804956550a"><div class="ttname"><a href="class_analysis_module.html#abe55bbc24f1494298db8da804956550a">AnalysisModule::addSubmodule</a></div><div class="ttdeci">void addSubmodule(AnalysisModule *module)</div><div class="ttdef"><b>Definition</b> AnalysisModule.cpp:80</div></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_mean_amplitude_html"><div class="ttname"><a href="class_mean_amplitude.html">MeanAmplitude</a></div><div class="ttdef"><b>Definition</b> MeanAmplitude.h:18</div></div>
-<div class="ttc" id="aclass_mean_amplitude_html_ab9ed79dcf26d5120f0526449bf3b122a"><div class="ttname"><a href="class_mean_amplitude.html#ab9ed79dcf26d5120f0526449bf3b122a">MeanAmplitude::MeanAmplitude</a></div><div class="ttdeci">MeanAmplitude()</div><div class="ttdef"><b>Definition</b> MeanAmplitude.h:33</div></div>
-<div class="ttc" id="aclass_mean_amplitude_html_ae62ba6b7dd2c037a647b402ec7acd2ab"><div class="ttname"><a href="class_mean_amplitude.html#ae62ba6b7dd2c037a647b402ec7acd2ab">MeanAmplitude::doAnalysis</a></div><div class="ttdeci">void doAnalysis()</div><div class="ttdef"><b>Definition</b> MeanAmplitude.h:41</div></div>
+<div class="ttc" id="aclass_mean_amplitude_html_ab9ed79dcf26d5120f0526449bf3b122a"><div class="ttname"><a href="class_mean_amplitude.html#ab9ed79dcf26d5120f0526449bf3b122a">MeanAmplitude::MeanAmplitude</a></div><div class="ttdeci">MeanAmplitude()</div><div class="ttdef"><b>Definition</b> MeanAmplitude.cpp:3</div></div>
+<div class="ttc" id="aclass_mean_amplitude_html_ae62ba6b7dd2c037a647b402ec7acd2ab"><div class="ttname"><a href="class_mean_amplitude.html#ae62ba6b7dd2c037a647b402ec7acd2ab">MeanAmplitude::doAnalysis</a></div><div class="ttdeci">void doAnalysis()</div><div class="ttdef"><b>Definition</b> MeanAmplitude.cpp:11</div></div>
 <div class="ttc" id="aclass_module_interface_html"><div class="ttname"><a href="class_module_interface.html">ModuleInterface</a></div><div class="ttdef"><b>Definition</b> AnalysisModule.h:74</div></div>
-<div class="ttc" id="aclass_module_interface_html_a0ffe78dd2ef66b26ad2d1e4e1ad1d147"><div class="ttname"><a href="class_module_interface.html#a0ffe78dd2ef66b26ad2d1e4e1ad1d147">ModuleInterface::getOutput</a></div><div class="ttdeci">T getOutput()</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:79</div></div>
-<div class="ttc" id="aclass_module_interface_html_afc854044b6ee90aa6298553f754255d0"><div class="ttname"><a href="class_module_interface.html#afc854044b6ee90aa6298553f754255d0">ModuleInterface&lt; float &gt;::output</a></div><div class="ttdeci">float output</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:76</div></div>
 <div class="ttc" id="aclass_total_amplitude_html"><div class="ttname"><a href="class_total_amplitude.html">TotalAmplitude</a></div><div class="ttdef"><b>Definition</b> TotalAmplitude.h:16</div></div>
-<div class="ttc" id="aclass_total_amplitude_html_ae1395ed11428d542bf96ee3b3f659ccc"><div class="ttname"><a href="class_total_amplitude.html#ae1395ed11428d542bf96ee3b3f659ccc">TotalAmplitude::doAnalysis</a></div><div class="ttdeci">void doAnalysis()</div><div class="ttdef"><b>Definition</b> TotalAmplitude.h:22</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><a class="el" href="_mean_amplitude_8h.html">MeanAmplitude.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><b>MeanAmplitude.h</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

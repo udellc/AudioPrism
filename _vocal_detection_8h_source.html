@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- BEGIN opengraph metadata -->
     <meta property="og:title" content="AudioPrism" />
-    <meta property="og:description" content="An audio frequency spectrum analysis library for Arduino." />
+    <meta property="og:description" content="Arduino Audio Spectrum Analysis Library" />
     <meta property="og:url" content="https://github.com/udellc/AudioPrism" />
     <!-- END opengraph metadata -->
     <!-- BEGIN twitter metadata -->
@@ -46,7 +46,7 @@
                 <td id="projectalign" style="padding-left: 0.5em;">
                     <div id="projectname">AudioPrism
                     </div>
-                    <div id="projectbrief">An audio frequency spectrum analysis library for Arduino.</div>
+                    <div id="projectbrief">Arduino Audio Spectrum Analysis Library</div>
                 </td>
             </tr>
             </tbody>
@@ -117,7 +117,7 @@ $(function(){initNavTree('_vocal_detection_8h_source.html',''); initResizable(tr
   <div class="headertitle"><div class="title">VocalDetection.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_vocal_detection_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//============================================================================</span></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//============================================================================</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// MODULE INFORMATION</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//============================================================================</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// Name        : VocalDetection</span></div>
@@ -130,8 +130,8 @@ $(function(){initNavTree('_vocal_detection_8h_source.html',''); initResizable(tr
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef Vocal_Detection_h</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define Vocal_Detection_h</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="_analysis_module_8h.html">../AnalysisModule.h</a>&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="_cross_correlation_8h.html">./experimental/CrossCorrelation.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;../AnalysisModule.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;./experimental/CrossCorrelation.h&quot;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
@@ -158,89 +158,29 @@ $(function(){initNavTree('_vocal_detection_8h_source.html',''); initResizable(tr
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// constructor</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// a constructor is used to initialize the templates so they are ready for use</span></div>
-<div class="foldopen" id="foldopen00041" data-start="{" data-end="}">
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="class_vocal_detection.html#ad39b93e3520ff334f9802c7ffdf95fcc">   41</a></span>    <a class="code hl_function" href="class_vocal_detection.html#ad39b93e3520ff334f9802c7ffdf95fcc">VocalDetection</a>()</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 5; i++) {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            data[i] = <a class="code hl_class" href="class_cross_correlation.html">CrossCorrelation</a>(<a class="code hl_variable" href="class_analysis_module.html#a06ea0402502580ad5831d080b4716cd7">sampleRate</a>, <a class="code hl_variable" href="class_analysis_module.html#a592f8ced5cf13e27d605f90ba988dc49">windowSize</a>);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        }</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        this-&gt;data[0].<a class="code hl_function" href="class_cross_correlation.html#a19e4c34aeb7c11925316597594a64243">setTemplate</a>((uint16_t*)a_temp, 8, 129, <a class="code hl_variable" href="class_analysis_module.html#a0f61e8ab33723678073e9702cb41ba78">lowerBinBound</a>, <a class="code hl_variable" href="class_analysis_module.html#a66f31529e4a15d9c0907209427d84c36">upperBinBound</a>);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        this-&gt;data[1].<a class="code hl_function" href="class_cross_correlation.html#a19e4c34aeb7c11925316597594a64243">setTemplate</a>((uint16_t*)e_temp, 8, 129, <a class="code hl_variable" href="class_analysis_module.html#a0f61e8ab33723678073e9702cb41ba78">lowerBinBound</a>, <a class="code hl_variable" href="class_analysis_module.html#a66f31529e4a15d9c0907209427d84c36">upperBinBound</a>);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        this-&gt;data[2].<a class="code hl_function" href="class_cross_correlation.html#a19e4c34aeb7c11925316597594a64243">setTemplate</a>((uint16_t*)i_temp, 8, 129, <a class="code hl_variable" href="class_analysis_module.html#a0f61e8ab33723678073e9702cb41ba78">lowerBinBound</a>, <a class="code hl_variable" href="class_analysis_module.html#a66f31529e4a15d9c0907209427d84c36">upperBinBound</a>);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        this-&gt;data[3].<a class="code hl_function" href="class_cross_correlation.html#a19e4c34aeb7c11925316597594a64243">setTemplate</a>((uint16_t*)o_temp, 8, 129, <a class="code hl_variable" href="class_analysis_module.html#a0f61e8ab33723678073e9702cb41ba78">lowerBinBound</a>, <a class="code hl_variable" href="class_analysis_module.html#a66f31529e4a15d9c0907209427d84c36">upperBinBound</a>);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        this-&gt;data[4].<a class="code hl_function" href="class_cross_correlation.html#a19e4c34aeb7c11925316597594a64243">setTemplate</a>((uint16_t*)u_temp, 8, 129, <a class="code hl_variable" href="class_analysis_module.html#a0f61e8ab33723678073e9702cb41ba78">lowerBinBound</a>, <a class="code hl_variable" href="class_analysis_module.html#a66f31529e4a15d9c0907209427d84c36">upperBinBound</a>);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_function" href="class_vocal_detection.html#ad39b93e3520ff334f9802c7ffdf95fcc">VocalDetection</a>();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// Take in the 8 most recent sample windows and compares them to the different templates</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">// the threshold that is the highest is what determines the output int.</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">// output = {0: No Vocals, 1: a, 2: e, 3: i, 4: o, 5: u}</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_vocal_detection.html#a603adade2ba488d433cf7a95f2a6c975">doAnalysis</a>();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_vocal_detection.html#a915566e8d651d21986f37d98ad07ed2e">printTemplate</a>();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>};</div>
 </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// Take in the 8 most recent sample windows and compares them to the different templates</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// the threshold that is the highest is what determines the output int.</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// output = {0: No Vocals, 1: a, 2: e, 3: i, 4: o, 5: u}</span></div>
-<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="class_vocal_detection.html#a603adade2ba488d433cf7a95f2a6c975">   55</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_vocal_detection.html#a603adade2ba488d433cf7a95f2a6c975">doAnalysis</a>()</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="comment">// converts input into a uint16_t so it is same type as templates</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        uint16_t input_magnitudes[8][<a class="code hl_variable" href="class_analysis_module.html#a732b8a308137788b6d4ca1139cc63b97">windowSizeBy2</a> + 1];</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 8; i++) {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; <a class="code hl_variable" href="class_analysis_module.html#a732b8a308137788b6d4ca1139cc63b97">windowSizeBy2</a> + 1; j++) {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                <span class="keywordtype">float</span>* windowData      = <a class="code hl_variable" href="class_analysis_module.html#a8c0ae89c0fb0d058951cc70fbc46effd">spectrogram</a>-&gt;<a class="code hl_function" href="class_spectrogram.html#ade264ad89be3466b07be319ecfcc2bac">getWindowAt</a>(-i);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                input_magnitudes[i][j] = windowData[j];</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            }</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        }</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="comment">// correlate each template and change output according to the highest threshold value</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordtype">float</span> highest = 0.001;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <a class="code hl_variable" href="class_module_interface.html#afc854044b6ee90aa6298553f754255d0">output</a>        = -1;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 5; i++) {</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordtype">float</span> cur = data[i].<a class="code hl_function" href="class_cross_correlation.html#a7e7f89ee935d4ee30c4380c2db2e161b">correlate</a>((uint16_t*)input_magnitudes, 0, 8);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            Serial.printf(<span class="stringliteral">&quot;%f,&quot;</span>, cur);</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordflow">if</span> (cur &gt; highest) {</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                <a class="code hl_variable" href="class_module_interface.html#afc854044b6ee90aa6298553f754255d0">output</a>  = i;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                highest = cur;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            }</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        }</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    }</div>
-</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="class_vocal_detection.html#a915566e8d651d21986f37d98ad07ed2e">   78</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_vocal_detection.html#a915566e8d651d21986f37d98ad07ed2e">printTemplate</a>()</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    {</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        Serial.print(<span class="stringliteral">&quot;{&quot;</span>);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 9; i++) {</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            Serial.print(<span class="stringliteral">&quot;{&quot;</span>);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; 256; j++) {</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                Serial.printf(<span class="stringliteral">&quot;%d, &quot;</span>, (<span class="keywordtype">int</span>)a_temp[i][j]);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            }</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            Serial.print(<span class="stringliteral">&quot;}&quot;</span>);</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        }</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        Serial.print(<span class="stringliteral">&quot;}&quot;</span>);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    }</div>
-</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>};</div>
-</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a_analysis_module_8h_html"><div class="ttname"><a href="_analysis_module_8h.html">AnalysisModule.h</a></div></div>
-<div class="ttc" id="a_cross_correlation_8h_html"><div class="ttname"><a href="_cross_correlation_8h.html">CrossCorrelation.h</a></div></div>
-<div class="ttc" id="aclass_analysis_module_html_a06ea0402502580ad5831d080b4716cd7"><div class="ttname"><a href="class_analysis_module.html#a06ea0402502580ad5831d080b4716cd7">AnalysisModule::sampleRate</a></div><div class="ttdeci">int sampleRate</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:23</div></div>
-<div class="ttc" id="aclass_analysis_module_html_a0f61e8ab33723678073e9702cb41ba78"><div class="ttname"><a href="class_analysis_module.html#a0f61e8ab33723678073e9702cb41ba78">AnalysisModule::lowerBinBound</a></div><div class="ttdeci">int lowerBinBound</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:32</div></div>
-<div class="ttc" id="aclass_analysis_module_html_a592f8ced5cf13e27d605f90ba988dc49"><div class="ttname"><a href="class_analysis_module.html#a592f8ced5cf13e27d605f90ba988dc49">AnalysisModule::windowSize</a></div><div class="ttdeci">int windowSize</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:24</div></div>
-<div class="ttc" id="aclass_analysis_module_html_a66f31529e4a15d9c0907209427d84c36"><div class="ttname"><a href="class_analysis_module.html#a66f31529e4a15d9c0907209427d84c36">AnalysisModule::upperBinBound</a></div><div class="ttdeci">int upperBinBound</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:33</div></div>
-<div class="ttc" id="aclass_analysis_module_html_a732b8a308137788b6d4ca1139cc63b97"><div class="ttname"><a href="class_analysis_module.html#a732b8a308137788b6d4ca1139cc63b97">AnalysisModule::windowSizeBy2</a></div><div class="ttdeci">int windowSizeBy2</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:27</div></div>
-<div class="ttc" id="aclass_analysis_module_html_a8c0ae89c0fb0d058951cc70fbc46effd"><div class="ttname"><a href="class_analysis_module.html#a8c0ae89c0fb0d058951cc70fbc46effd">AnalysisModule::spectrogram</a></div><div class="ttdeci">Spectrogram * spectrogram</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:35</div></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_cross_correlation_html"><div class="ttname"><a href="class_cross_correlation.html">CrossCorrelation</a></div><div class="ttdef"><b>Definition</b> CrossCorrelation.h:9</div></div>
-<div class="ttc" id="aclass_cross_correlation_html_a19e4c34aeb7c11925316597594a64243"><div class="ttname"><a href="class_cross_correlation.html#a19e4c34aeb7c11925316597594a64243">CrossCorrelation::setTemplate</a></div><div class="ttdeci">void setTemplate(uint16_t *input, uint16_t numRows, uint16_t numCols, uint16_t frequencyRangeLow, uint16_t frequencyRangeHigh)</div><div class="ttdef"><b>Definition</b> CrossCorrelation.cpp:41</div></div>
-<div class="ttc" id="aclass_cross_correlation_html_a7e7f89ee935d4ee30c4380c2db2e161b"><div class="ttname"><a href="class_cross_correlation.html#a7e7f89ee935d4ee30c4380c2db2e161b">CrossCorrelation::correlate</a></div><div class="ttdeci">float correlate(uint16_t *input, uint16_t inputLatestWindowIndex, uint16_t inputTotalWindows)</div><div class="ttdef"><b>Definition</b> CrossCorrelation.cpp:52</div></div>
 <div class="ttc" id="aclass_module_interface_html"><div class="ttname"><a href="class_module_interface.html">ModuleInterface</a></div><div class="ttdef"><b>Definition</b> AnalysisModule.h:74</div></div>
-<div class="ttc" id="aclass_module_interface_html_afc854044b6ee90aa6298553f754255d0"><div class="ttname"><a href="class_module_interface.html#afc854044b6ee90aa6298553f754255d0">ModuleInterface&lt; int &gt;::output</a></div><div class="ttdeci">int output</div><div class="ttdef"><b>Definition</b> AnalysisModule.h:76</div></div>
-<div class="ttc" id="aclass_spectrogram_html_ade264ad89be3466b07be319ecfcc2bac"><div class="ttname"><a href="class_spectrogram.html#ade264ad89be3466b07be319ecfcc2bac">Spectrogram::getWindowAt</a></div><div class="ttdeci">float * getWindowAt(int relativeIndex) const</div><div class="ttdef"><b>Definition</b> Spectrogram.cpp:28</div></div>
 <div class="ttc" id="aclass_vocal_detection_html"><div class="ttname"><a href="class_vocal_detection.html">VocalDetection</a></div><div class="ttdef"><b>Definition</b> VocalDetection.h:21</div></div>
-<div class="ttc" id="aclass_vocal_detection_html_a603adade2ba488d433cf7a95f2a6c975"><div class="ttname"><a href="class_vocal_detection.html#a603adade2ba488d433cf7a95f2a6c975">VocalDetection::doAnalysis</a></div><div class="ttdeci">void doAnalysis()</div><div class="ttdef"><b>Definition</b> VocalDetection.h:55</div></div>
-<div class="ttc" id="aclass_vocal_detection_html_a915566e8d651d21986f37d98ad07ed2e"><div class="ttname"><a href="class_vocal_detection.html#a915566e8d651d21986f37d98ad07ed2e">VocalDetection::printTemplate</a></div><div class="ttdeci">void printTemplate()</div><div class="ttdef"><b>Definition</b> VocalDetection.h:78</div></div>
-<div class="ttc" id="aclass_vocal_detection_html_ad39b93e3520ff334f9802c7ffdf95fcc"><div class="ttname"><a href="class_vocal_detection.html#ad39b93e3520ff334f9802c7ffdf95fcc">VocalDetection::VocalDetection</a></div><div class="ttdeci">VocalDetection()</div><div class="ttdef"><b>Definition</b> VocalDetection.h:41</div></div>
+<div class="ttc" id="aclass_vocal_detection_html_a603adade2ba488d433cf7a95f2a6c975"><div class="ttname"><a href="class_vocal_detection.html#a603adade2ba488d433cf7a95f2a6c975">VocalDetection::doAnalysis</a></div><div class="ttdeci">void doAnalysis()</div><div class="ttdef"><b>Definition</b> VocalDetection.cpp:15</div></div>
+<div class="ttc" id="aclass_vocal_detection_html_a915566e8d651d21986f37d98ad07ed2e"><div class="ttname"><a href="class_vocal_detection.html#a915566e8d651d21986f37d98ad07ed2e">VocalDetection::printTemplate</a></div><div class="ttdeci">void printTemplate()</div><div class="ttdef"><b>Definition</b> VocalDetection.cpp:38</div></div>
+<div class="ttc" id="aclass_vocal_detection_html_ad39b93e3520ff334f9802c7ffdf95fcc"><div class="ttname"><a href="class_vocal_detection.html#ad39b93e3520ff334f9802c7ffdf95fcc">VocalDetection::VocalDetection</a></div><div class="ttdeci">VocalDetection()</div><div class="ttdef"><b>Definition</b> VocalDetection.cpp:3</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><a class="el" href="_vocal_detection_8h.html">VocalDetection.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><b>VocalDetection.h</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
