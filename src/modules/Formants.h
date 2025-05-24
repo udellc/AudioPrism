@@ -30,11 +30,11 @@
 // The formant table stores frequency, amplitude, and bandwidth data for each vowel in each vocal register
 
 // vocal register macros
-#define BASS 0
-#define TENOR 1
-#define CTENOR 2
-#define ALTO 3
-#define SOPRANO 3
+#define BASS    0
+#define TENOR   1
+#define CTENOR  2
+#define ALTO    3
+#define SOPRANO 4
 
 // vowel macros
 #define VOWEL_A 0
@@ -49,20 +49,7 @@ public:
     // float *bandwidth;
 
     // copy references to stored data
-    void set_profile(float* freqs /*, float *bandwidth*/)
-    {
-        frequency = freqs;
-        // bandwidth = bandwidth;
-
-        // if frequency normalizaiton is disabled, return early
-        if (FREQUENCY_NORMALIZATION) {
-            // normalize frequencies by dividing by highest frequency
-            for (int i = 0; i < 5; i++) {
-                frequency[i] /= frequency[4];
-                // bandwidth[i] /= frequency[4];
-            }
-        }
-    }
+    void set_profile(float* freqs /*, float *bandwidth*/);
 };
 
 //============================================================================
@@ -77,125 +64,31 @@ public:
 //============================================================================
 class Formants : public ModuleInterface<char> {
 private:
+    // The number of formant peaks to use in the analysis (between 2-5)
+    int num_fpeaks = 5;
+
     MajorPeaks peak_finder = MajorPeaks(5);
+
+    float bass[5][5]    = { { 600.0, 1040.0, 2250.0, 2450.0, 2750.0 }, { 400, 1620, 2400, 2800, 3100 }, { 250, 1750, 2600, 3050, 3340 }, { 400, 750, 2400, 2600, 2900 }, { 350, 600, 2400, 2675, 2900 } };
+    float tenor[5][5]   = { { 650, 1080, 2650, 2900, 3250 }, { 400, 1700, 2600, 3200, 3580 }, { 290, 1870, 2800, 3250, 3540 }, { 400, 800, 2600, 2800, 3000 }, { 350, 600, 2700, 2900, 3300 } };
+    float ctenor[5][5]  = { { 660, 1120, 2750, 3000, 3350 }, { 440, 1800, 2700, 3000, 3350 }, { 270, 1850, 2900, 3350, 3590 }, { 430, 820, 2700, 3000, 3300 }, { 370, 630, 2750, 3000, 3400 } };
+    float alto[5][5]    = { { 800, 1150, 2800, 3500, 4950 }, { 400, 1600, 2700, 3300, 4950 }, { 350, 1700, 2700, 3700, 4950 }, { 450, 800, 2830, 3500, 4950 }, { 325, 700, 2530, 3500, 4950 } };
+    float soprano[5][5] = { { 800, 1150, 2900, 3900, 4950 }, { 350, 200, 2800, 3600, 4950 }, { 270, 2140, 2950, 3900, 4950 }, { 450, 800, 2830, 3800, 4950 }, { 325, 700, 2700, 3800, 4950 } };
 
 public:
     FormantProfile formant_table[5][5];
 
-    Formants()
-    {
-        this->addSubmodule(&peak_finder);
-    }
+    Formants();
 
-    char vowel_to_character(int vowel)
-    {
-        switch (vowel) {
-        case 0:
-            return 'a';
-        case 1:
-            return 'e';
-        case 2:
-            return 'i';
-        case 3:
-            return 'o';
-        case 4:
-            return 'u';
-        default:
-            return '-';
-        }
-    }
+    char vowel_to_character(int vowel, float distance);
 
-    float calculate_distance(FormantProfile* profile, float** found_peaks)
-    {
-        // initialize distance to 0
-        // a partial sum is added to distance each iteration of the for loop
-        float distance = 0;
+    float calculate_distance(FormantProfile* profile, float* found_peaks);
 
-        // calculate partial sum for 5 peaks
-        for (int fpeak = 0; fpeak < NUM_FPEAKS; fpeak++) {
-            // calculate distance between measured peak and profile peak
-            // 1. take the absolute difference in frequency between peaks
-            float d = abs(profile->frequency[fpeak] - found_peaks[0][fpeak]);
-            // 2. if difference is within bandwidth, set distance to 0
-            // d = std::max((float) 0.0, (float) d - profile->bandwidth[fpeak]);
-            // 3. square the distance
-            // if frequency normalization is enabled, increase d to prevent underflows
-            if (FREQUENCY_NORMALIZATION) {
-                d *= 1000;
-            }
-            d *= d;
+    int interpolateAroundPeak(const float* data, int indexOfPeak, int sampleRate, int windowSize);
 
-            for (int i = 0; i < fpeak; i++) {
-                d *= (float)FPEAK_PENALTY;
-            }
+    void setNumPeaks(int peaks);
 
-            // add partial sum to total distance
-            distance += d;
-        }
-
-        // take square root of the complete sum
-        return (float)pow(distance, 0.5);
-    }
-
-    void doAnalysis()
-    {
-
-        // find the f peaks in the data
-        peak_finder.doAnalysis();
-        float** found_peaks = peak_finder.getOutput();
-
-        if (found_peaks[0][1] == 0) {
-            output = '-';
-            return;
-        }
-
-        if (FREQUENCY_NORMALIZATION) {
-            int n = 0;
-            // find highest frequency
-            for (int i = 0; i < 5; i++) {
-                if (found_peaks[0][i] != 0) {
-                    n = i;
-                } else {
-                    break;
-                }
-            }
-            float divisor = found_peaks[0][n];
-            // divide entries by highest frequency
-            for (int i = 0; i < n + 1; i++) {
-                found_peaks[0][i] /= divisor;
-            }
-        }
-
-        for (int i = 0; i < 5; i++) {
-            Serial.printf("%f ", found_peaks[0][i]);
-        }
-        Serial.printf("\n");
-
-        // initalize variables used to save the best match
-        float lowest_distance = FLT_MAX;
-        int vocal_register = -1;
-        int formant_vowel = -1;
-
-        // compare the f peaks against stored formant profiles
-        for (int reg = BASS; reg < SOPRANO + 1; reg++) {
-            for (int vow = VOWEL_A; vow < VOWEL_U + 1; vow++) {
-
-                // calculate distance
-                float distance = calculate_distance(&formant_table[reg][vow], found_peaks);
-
-                // if distance is lowest seen so far, update best match information
-                if (distance < lowest_distance) {
-                    lowest_distance = distance;
-                    vocal_register = reg;
-                    formant_vowel = vow;
-                }
-            }
-        }
-
-        // output the character of the best matched vowel
-        output = vowel_to_character(formant_vowel);
-        Serial.printf("%c\n", output);
-    }
+    void doAnalysis();
 };
 
 #endif

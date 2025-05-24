@@ -8,6 +8,7 @@
 
 #include <Arduino.h>
 #include <math.h>
+#include <vector>
 
 #include "Config.h"
 #include "Spectrogram.h"
@@ -34,8 +35,7 @@ protected:
     Spectrogram* spectrogram = NULL;
 
     // reference to submodules (used to automatically propagate parameters)
-    int              numSubmodules = 0;
-    AnalysisModule** submodules    = NULL;
+    std::vector<AnalysisModule*> submodules;
 
     // debug mode for an analysis module
     int debugMode = 0x00;
