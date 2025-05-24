@@ -1,5 +1,6 @@
 #include "Spectrogram.h"
 #include "Config.h"
+#include <cstdint>
 
 // make default to two windows, allow resizing
 Spectrogram::Spectrogram()
@@ -42,7 +43,8 @@ float* Spectrogram::getCurrentWindow() const
 
 float* Spectrogram::getPreviousWindow() const
 {
-    return this->buffer + ((this->currIndex - 1) * this->numBins);
+    uint16_t prev_index = (this->numWindows + this->currIndex - 1) % this->numWindows;
+    return this->buffer + (prev_index * this->numBins);
 };
 
 void Spectrogram::pushWindow(const float* data)

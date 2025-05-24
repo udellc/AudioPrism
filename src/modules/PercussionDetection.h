@@ -32,15 +32,12 @@
 //               percussion or trigger false positives.
 //============================================================================
 
-#ifndef Percussion_Detection_h
-#define Percussion_Detection_h
+#ifndef PERCUSSION_DETECTION_H
+#define PERCUSSION_DETECTION_H
 
 #include "../AnalysisModule.h"
-#include "DeltaAmplitudes.h"
-#include "Noisiness.h"
-#include "TotalAmplitude.h"
-
-// TODO: enable delta analysis when input buffer is fixed
+#include "HardwareSerial.h"
+#include "../SpectralTools.h"
 
 // PercussionDetection inherits from the ModuleInterface with a bool output type
 // this submodule contains three submodules:
@@ -51,58 +48,39 @@
 //              (percussion is expected to be noisier than periodic instruments like synths, pianos, strings, etc.)
 class PercussionDetection : public ModuleInterface<bool> {
 private:
-    // submodules are made private so they cannot be accessed outside of the parent module
-
-    // the TotalAmplitude submodule is taken as an indicator of the overall loudness of the input signal
-    // the output of this submodule is compared against loudness_threshold
-    // percussion is assumed to be louder than most sustained musical elements
-    TotalAmplitude totalAmp = TotalAmplitude();
-
     // the loudness threshold is the minimum amplitude required for a window to be considered percussive
-    float loudness_threshold = 300.0;
-
-    // the DeltaAmplitude submodule outputs the change in loudness between the current and previous windows
-    // the output of this submodule is compared against delta_threshold
-    // percussion is characterized by a sharp increase in loudness, so a high delta amplitude is expected
-    DeltaAmplitudes deltaAmp = DeltaAmplitudes();
+    float energy_threshold = 1800000.0;
 
     // the delta threshold is the minimum change in amplitude required for a window to be considered percussive
     // by default, the delta threshold is correlated with the loudness threshold by a multiplicative factor 0.8
-    float delta_threshold = 0.5 * loudness_threshold;
-
-    // the Noisiness submodule gives an indication of how evenly spread energy is across the frequency spectrum
-    // the output of this submodule is compared against noise_threshold
-    // percussion is expected to be noisy, having energy spread evenly across the audio spectrum
-    Noisiness noise = Noisiness();
+    float flux_threshold = 0.5;
 
     // the noise threshold is the minimum noisiness required for a window to be considered percussive
-    float noise_threshold = 0.7; // possible range: 0.0 to 1.0
+    float entropy_threshold = 0.75; // possible range: 0.0 to 1.0
 
 public:
-    // default constructor
-    // a constructor is necessary for modules containing submodules
-    // all submodules must be registered with the parent in the constructor
-    PercussionDetection();
+    PercussionDetection() { }
 
     // constructor with parameters for the threshold values
     // this funciton sets the threshold values and register the submodules
-    PercussionDetection(float loudness_threshold, float delta_threshold, float noise_threshold);
-
-    // set the loudness threshold
-    // loudness is the immediate total amplitude of the input
-    // setting this threshold defines how loud a transient must be to be detected
-    void setLoudnessThreshold(float new_threshold);
+    PercussionDetection(float flux_threshold, float energy_threshold, float entropy_threshold);
 
     // set the delta threshold
     // delta is the change in amplitude from the previous window to the current one
     // setting this threshold defines how much a transient must spike in volume to be detected
-    void setDeltaThreshold(float new_threshold);
+    void setFluxThreshold(float new_threshold);
+
+    // set the loudness threshold
+    // loudness is the immediate total amplitude of the input
+    // setting this threshold defines how loud a transient must be to be detected
+    void setEnergyThreshold(float new_threshold);
 
     // set the noisiness threshold (0-1)
     // noisiness is the immediate spectral entropy of the input
     // setting this threshold distinguishes percussive from tonal transients
-    void setNoisinessThreshold(float new_threshold);
+    void setEntropyThreshold(float new_threshold);
 
     void doAnalysis();
 };
-#endif
+
+#endif // PERCUSSION_DETECTION_H
