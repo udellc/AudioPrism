@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['salientfreqs_0',['SalientFreqs',['../index.html#autotoc_md32',1,'']]],
+  ['salientfreqs_0',['SalientFreqs',['../class_salient_freqs.html',1,'SalientFreqs'],['../class_salient_freqs.html#ad5cbadaf4fc4d2d448dbbdbb1f36f4b5',1,'SalientFreqs::SalientFreqs()'],['../class_salient_freqs.html#a8e93d5c3f3b0c2dfc04cb979d7cf1b35',1,'SalientFreqs::SalientFreqs(int n)'],['../class_salient_freqs.html#a33325fbe46e1dc4fe82e25037c64b938',1,'SalientFreqs::SalientFreqs(int n, int dir)'],['../index.html#autotoc_md32',1,'SalientFreqs']]],
   ['samplerate_1',['sampleRate',['../class_analysis_module.html#a06ea0402502580ad5831d080b4716cd7',1,'AnalysisModule']]],
   ['set_5fprofile_2',['set_profile',['../class_formant_profile.html#a91ae22bc0f46809f62a69b8cfc8f5428',1,'FormantProfile']]],
   ['setanalaysisrangebyfreq_20bin_3',['setAnalaysisRangeByFreq/Bin',['../index.html#autotoc_md53',1,'']]],
@@ -8,18 +8,18 @@ var searchData=
   ['setanalysisrangebyfreq_5',['setAnalysisRangeByFreq',['../class_analysis_module.html#a6a2cfd5b3922335e35b243bb503a3319',1,'AnalysisModule']]],
   ['setbands_6',['setBands',['../class_bread_slicer.html#a1e8e03babe663161597cb5fec467cff1',1,'BreadSlicer']]],
   ['setdebugmode_7',['setDebugMode',['../class_analysis_module.html#a50752b276c33e40de185f448064b2a09',1,'AnalysisModule']]],
-  ['setdeltathreshold_8',['setDeltaThreshold',['../class_percussion_detection.html#af7c52c6fa44af8b2e5dd5f03d3587aa2',1,'PercussionDetection']]],
-  ['setloudnessthreshold_9',['setLoudnessThreshold',['../class_percussion_detection.html#a61c99551d648059664adab3a36e4c050',1,'PercussionDetection']]],
-  ['setnoisinessthreshold_10',['setNoisinessThreshold',['../class_percussion_detection.html#a3b03b35ecb271ecc7f28a56c6d8d536f',1,'PercussionDetection']]],
+  ['setenergythreshold_8',['setEnergyThreshold',['../class_percussion_detection.html#a29fd1a1b04b693076547b18541c14282',1,'PercussionDetection']]],
+  ['setentropythreshold_9',['setEntropyThreshold',['../class_percussion_detection.html#aca06e6416eb4ee68da26faaefb28b164',1,'PercussionDetection']]],
+  ['setfluxthreshold_10',['setFluxThreshold',['../class_percussion_detection.html#a68ee42a9fd8e902f51bc8e33cca20c34',1,'PercussionDetection']]],
   ['setnumpeaks_11',['setNumPeaks',['../class_formants.html#ade0f01a17cbd62cf2da083371fee826e',1,'Formants']]],
   ['setsamplerate_12',['setSampleRate',['../class_analysis_module.html#acf2327e3946bf913dbc2a2f0944033d4',1,'AnalysisModule']]],
   ['setspectrogram_13',['setSpectrogram',['../class_analysis_module.html#ac551fa530991a57fb068935bd1fbb975',1,'AnalysisModule']]],
-  ['settemplate_14',['setTemplate',['../class_cross_correlation.html#a19e4c34aeb7c11925316597594a64243',1,'CrossCorrelation']]],
-  ['setwindowsize_15',['setWindowSize',['../class_analysis_module.html#a7d0100fcbc0ef537f959194f549ddcb2',1,'AnalysisModule']]],
+  ['setwindowsize_14',['setWindowSize',['../class_analysis_module.html#a7d0100fcbc0ef537f959194f549ddcb2',1,'AnalysisModule']]],
+  ['smooth_5fwindow_5fover_5ftime_15',['smooth_window_over_time',['../namespace_audio_prism.html#a70d40a54a2be293b8692a91a6e6dfb0b',1,'AudioPrism']]],
   ['spectrogram_16',['Spectrogram',['../class_spectrogram.html',1,'Spectrogram'],['../class_spectrogram.html#ae4523300613ab1370fd7ae9bfc71d877',1,'Spectrogram::Spectrogram()'],['../class_spectrogram.html#a0a69ddbf2346cbb67d98addfef9c4f48',1,'Spectrogram::Spectrogram(const uint16_t numWindows)']]],
   ['spectrogram_17',['spectrogram',['../class_analysis_module.html#a8c0ae89c0fb0d058951cc70fbc46effd',1,'AnalysisModule']]],
   ['started_18',['Getting Started',['../index.html#autotoc_md2',1,'']]],
   ['submodules_19',['Submodules',['../index.html#autotoc_md13',1,'Submodules'],['../index.html#autotoc_md17',1,'Submodules'],['../index.html#autotoc_md21',1,'Submodules'],['../index.html#autotoc_md25',1,'Submodules'],['../index.html#autotoc_md38',1,'Submodules']]],
   ['submodules_20',['submodules',['../class_analysis_module.html#a08dc7ef160258e24dd42c8b7886fa5a8',1,'AnalysisModule']]],
-  ['sum_21',['sum',['../namespace_audio_prism.html#a14b093e0d643a96c39e9a2aa039115cb',1,'AudioPrism']]]
+  ['sum_21',['sum',['../namespace_audio_prism.html#a908bc718ad71c5a062e59afe2cf37239',1,'AudioPrism']]]
 ];

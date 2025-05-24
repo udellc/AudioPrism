@@ -21,12 +21,11 @@ var hierarchy =
       [ "ModuleInterface< bool >", "class_module_interface.html", [
         [ "PercussionDetection", "class_percussion_detection.html", null ]
       ] ],
-      [ "ModuleInterface< int >", "class_module_interface.html", [
-        [ "VocalDetection", "class_vocal_detection.html", null ]
+      [ "ModuleInterface< int * >", "class_module_interface.html", [
+        [ "SalientFreqs", "class_salient_freqs.html", null ]
       ] ],
       [ "ModuleInterface< T >", "class_module_interface.html", null ]
     ] ],
-    [ "CrossCorrelation", "class_cross_correlation.html", null ],
     [ "FormantProfile", "class_formant_profile.html", null ],
     [ "ModuleGroup", "class_module_group.html", null ],
     [ "Spectrogram", "class_spectrogram.html", null ]

@@ -132,14 +132,14 @@ Inheritance diagram for PercussionDetection:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab49558ab2247357d09b14ca1188af1af" id="r_ab49558ab2247357d09b14ca1188af1af"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab49558ab2247357d09b14ca1188af1af">PercussionDetection</a> ()</td></tr>
 <tr class="separator:ab49558ab2247357d09b14ca1188af1af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05aa12ce0cef3fdad0c3f666f04f9b6e" id="r_a05aa12ce0cef3fdad0c3f666f04f9b6e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05aa12ce0cef3fdad0c3f666f04f9b6e">PercussionDetection</a> (float loudness_threshold, float delta_threshold, float noise_threshold)</td></tr>
-<tr class="separator:a05aa12ce0cef3fdad0c3f666f04f9b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61c99551d648059664adab3a36e4c050" id="r_a61c99551d648059664adab3a36e4c050"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61c99551d648059664adab3a36e4c050">setLoudnessThreshold</a> (float new_threshold)</td></tr>
-<tr class="separator:a61c99551d648059664adab3a36e4c050"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7c52c6fa44af8b2e5dd5f03d3587aa2" id="r_af7c52c6fa44af8b2e5dd5f03d3587aa2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7c52c6fa44af8b2e5dd5f03d3587aa2">setDeltaThreshold</a> (float new_threshold)</td></tr>
-<tr class="separator:af7c52c6fa44af8b2e5dd5f03d3587aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b03b35ecb271ecc7f28a56c6d8d536f" id="r_a3b03b35ecb271ecc7f28a56c6d8d536f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b03b35ecb271ecc7f28a56c6d8d536f">setNoisinessThreshold</a> (float new_threshold)</td></tr>
-<tr class="separator:a3b03b35ecb271ecc7f28a56c6d8d536f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb964bc2473b97245c601ffc39893851" id="r_abb964bc2473b97245c601ffc39893851"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb964bc2473b97245c601ffc39893851">PercussionDetection</a> (float flux_threshold, float energy_threshold, float entropy_threshold)</td></tr>
+<tr class="separator:abb964bc2473b97245c601ffc39893851"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68ee42a9fd8e902f51bc8e33cca20c34" id="r_a68ee42a9fd8e902f51bc8e33cca20c34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68ee42a9fd8e902f51bc8e33cca20c34">setFluxThreshold</a> (float new_threshold)</td></tr>
+<tr class="separator:a68ee42a9fd8e902f51bc8e33cca20c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29fd1a1b04b693076547b18541c14282" id="r_a29fd1a1b04b693076547b18541c14282"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29fd1a1b04b693076547b18541c14282">setEnergyThreshold</a> (float new_threshold)</td></tr>
+<tr class="separator:a29fd1a1b04b693076547b18541c14282"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca06e6416eb4ee68da26faaefb28b164" id="r_aca06e6416eb4ee68da26faaefb28b164"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca06e6416eb4ee68da26faaefb28b164">setEntropyThreshold</a> (float new_threshold)</td></tr>
+<tr class="separator:aca06e6416eb4ee68da26faaefb28b164"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a521ed4f7a65c6ee001d419b36d329ac9" id="r_a521ed4f7a65c6ee001d419b36d329ac9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a521ed4f7a65c6ee001d419b36d329ac9">doAnalysis</a> ()</td></tr>
 <tr class="separator:a521ed4f7a65c6ee001d419b36d329ac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_module_interface"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_module_interface')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_module_interface.html">ModuleInterface&lt; bool &gt;</a></td></tr>
@@ -196,6 +196,9 @@ Additional Inherited Members</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">PercussionDetection::PercussionDetection </td>
@@ -204,12 +207,17 @@ Additional Inherited Members</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a05aa12ce0cef3fdad0c3f666f04f9b6e" name="a05aa12ce0cef3fdad0c3f666f04f9b6e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05aa12ce0cef3fdad0c3f666f04f9b6e">&#9670;&#160;</a></span>PercussionDetection() <span class="overload">[2/2]</span></h2>
+<a id="abb964bc2473b97245c601ffc39893851" name="abb964bc2473b97245c601ffc39893851"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb964bc2473b97245c601ffc39893851">&#9670;&#160;</a></span>PercussionDetection() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -217,17 +225,17 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">PercussionDetection::PercussionDetection </td>
           <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>loudness_threshold</em></span>, </td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>flux_threshold</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>delta_threshold</em></span>, </td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>energy_threshold</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>noise_threshold</em></span>&#160;)</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>entropy_threshold</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -262,14 +270,14 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="af7c52c6fa44af8b2e5dd5f03d3587aa2" name="af7c52c6fa44af8b2e5dd5f03d3587aa2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7c52c6fa44af8b2e5dd5f03d3587aa2">&#9670;&#160;</a></span>setDeltaThreshold()</h2>
+<a id="a29fd1a1b04b693076547b18541c14282" name="a29fd1a1b04b693076547b18541c14282"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29fd1a1b04b693076547b18541c14282">&#9670;&#160;</a></span>setEnergyThreshold()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void PercussionDetection::setDeltaThreshold </td>
+          <td class="memname">void PercussionDetection::setEnergyThreshold </td>
           <td>(</td>
           <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>new_threshold</em></span></td><td>)</td>
           <td></td>
@@ -279,14 +287,14 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a61c99551d648059664adab3a36e4c050" name="a61c99551d648059664adab3a36e4c050"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61c99551d648059664adab3a36e4c050">&#9670;&#160;</a></span>setLoudnessThreshold()</h2>
+<a id="aca06e6416eb4ee68da26faaefb28b164" name="aca06e6416eb4ee68da26faaefb28b164"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca06e6416eb4ee68da26faaefb28b164">&#9670;&#160;</a></span>setEntropyThreshold()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void PercussionDetection::setLoudnessThreshold </td>
+          <td class="memname">void PercussionDetection::setEntropyThreshold </td>
           <td>(</td>
           <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>new_threshold</em></span></td><td>)</td>
           <td></td>
@@ -296,14 +304,14 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a3b03b35ecb271ecc7f28a56c6d8d536f" name="a3b03b35ecb271ecc7f28a56c6d8d536f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b03b35ecb271ecc7f28a56c6d8d536f">&#9670;&#160;</a></span>setNoisinessThreshold()</h2>
+<a id="a68ee42a9fd8e902f51bc8e33cca20c34" name="a68ee42a9fd8e902f51bc8e33cca20c34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68ee42a9fd8e902f51bc8e33cca20c34">&#9670;&#160;</a></span>setFluxThreshold()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void PercussionDetection::setNoisinessThreshold </td>
+          <td class="memname">void PercussionDetection::setFluxThreshold </td>
           <td>(</td>
           <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>new_threshold</em></span></td><td>)</td>
           <td></td>

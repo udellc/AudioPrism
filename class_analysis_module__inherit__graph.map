@@ -10,7 +10,7 @@
 <area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="134,410,165,410,165,416,134,416"/>
 <area shape="rect" id="Node000015" href="$class_module_interface.html" title=" " alt="" coords="172,449,332,475"/>
 <area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="130,428,200,446,199,451,128,433"/>
-<area shape="rect" id="Node000017" href="$class_module_interface.html" title=" " alt="" coords="177,499,328,524"/>
+<area shape="rect" id="Node000017" href="$class_module_interface.html" title=" " alt="" coords="173,499,332,524"/>
 <area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="91,434,126,461,167,485,194,496,192,501,164,490,123,465,88,438"/>
 <area shape="rect" id="Node000019" href="$class_module_interface.html" title=" " alt="" coords="180,548,324,574"/>
 <area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="80,438,116,487,140,513,167,535,188,545,185,550,164,539,136,517,112,491,76,441"/>
@@ -34,6 +34,6 @@
 <area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="354,410,412,410,412,416,354,416"/>
 <area shape="rect" id="Node000016" href="$class_percussion_detection.html" title=" " alt="" coords="387,449,528,475"/>
 <area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="348,460,387,460,387,465,348,465"/>
-<area shape="rect" id="Node000018" href="$class_vocal_detection.html" title=" " alt="" coords="403,499,512,524"/>
-<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="343,509,402,509,402,514,343,514"/>
+<area shape="rect" id="Node000018" href="$class_salient_freqs.html" title=" " alt="" coords="410,499,505,524"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="347,509,410,509,410,514,347,514"/>
 </map>

@@ -111,8 +111,8 @@
 <g id="Node000016" class="node">
 <title>Node16</title>
 <g id="a_Node000016"><a xlink:href="class_module_interface.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="241.62,-56.25 128.88,-56.25 128.88,-37 241.62,-37 241.62,-56.25"/>
-<text text-anchor="middle" x="185.25" y="-42.75" font-family="Helvetica,sans-Serif" font-size="10.00">ModuleInterface&lt; int &gt;</text>
+<polygon fill="white" stroke="#666666" points="244.62,-56.25 125.88,-56.25 125.88,-37 244.62,-37 244.62,-56.25"/>
+<text text-anchor="middle" x="185.25" y="-42.75" font-family="Helvetica,sans-Serif" font-size="10.00">ModuleInterface&lt; int * &gt;</text>
 </a>
 </g>
 </g>
@@ -326,9 +326,9 @@
 <!-- Node17 -->
 <g id="Node000017" class="node">
 <title>Node17</title>
-<g id="a_Node000017"><a xlink:href="class_vocal_detection.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="380.25,-56.25 298.25,-56.25 298.25,-37 380.25,-37 380.25,-56.25"/>
-<text text-anchor="middle" x="339.25" y="-42.75" font-family="Helvetica,sans-Serif" font-size="10.00">VocalDetection</text>
+<g id="a_Node000017"><a xlink:href="class_salient_freqs.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="374.62,-56.25 303.88,-56.25 303.88,-37 374.62,-37 374.62,-56.25"/>
+<text text-anchor="middle" x="339.25" y="-42.75" font-family="Helvetica,sans-Serif" font-size="10.00">SalientFreqs</text>
 </a>
 </g>
 </g>
@@ -336,8 +336,8 @@
 <g id="edge17_Node000016_Node000017" class="edge">
 <title>Node16&#45;&gt;Node17</title>
 <g id="a_edge17_Node000016_Node000017"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M253.41,-46.62C268.53,-46.62 284.12,-46.62 297.75,-46.62"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="253.5,-43.13 243.5,-46.63 253.5,-50.13 253.5,-43.13"/>
+<path fill="none" stroke="#63b8ff" d="M256.34,-46.62C272.83,-46.62 289.7,-46.62 303.81,-46.62"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="256.53,-43.13 246.53,-46.63 256.53,-50.13 256.53,-43.13"/>
 </a>
 </g>
 </g>

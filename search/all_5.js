@@ -1,7 +1,7 @@
 var searchData=
 [
   ['files_0',['Files',['../index.html#autotoc_md61',1,'']]],
-  ['flux_1',['flux',['../namespace_audio_prism.html#a75354ded4fbffa781d7d847aeac79413',1,'AudioPrism']]],
+  ['flux_1',['flux',['../namespace_audio_prism.html#a3353227335a8bf09e159f0202433d076',1,'AudioPrism']]],
   ['formant_5ftable_2',['formant_table',['../class_formants.html#ad1e28e2ac678043e9ddf992f644882b0',1,'Formants']]],
   ['formantprofile_3',['FormantProfile',['../class_formant_profile.html',1,'']]],
   ['formants_4',['Formants',['../class_formants.html',1,'Formants'],['../class_formants.html#a5e329bcb2bb8c6790410af46e19398ef',1,'Formants::Formants()']]],

@@ -117,84 +117,247 @@ $(function(){initNavTree('_spectral_tools_8h_source.html',''); initResizable(tru
   <div class="headertitle"><div class="title">SpectralTools.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef SPECTRAL_TOOLS</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define SPECTRAL_TOOLS</span></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef SPECTRAL_TOOLS_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define SPECTRAL_TOOLS_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="foldopen" id="foldopen00007" data-start="{" data-end="}">
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="namespace_audio_prism.html">    7</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_audio_prism.html">AudioPrism</a> {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="namespace_audio_prism.html#a14b093e0d643a96c39e9a2aa039115cb">    9</a></span><span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#a14b093e0d643a96c39e9a2aa039115cb">sum</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* windowData, <span class="keywordtype">int</span> lowerBinBound, <span class="keywordtype">int</span> upperBinBound)</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#a14b093e0d643a96c39e9a2aa039115cb">sum</a> = 0.0f;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = lowerBinBound; i &lt; upperBinBound; ++i) {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <a class="code hl_function" href="namespace_audio_prism.html#a14b093e0d643a96c39e9a2aa039115cb">sum</a> += windowData[i];</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    }</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespace_audio_prism.html#a14b093e0d643a96c39e9a2aa039115cb">sum</a>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
-</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// Mean of amplitudes in lowerBinBound, upperBinBound</span></div>
-<div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="namespace_audio_prism.html#abdd8e70c7cce4fa33c82f27dd151d57d">   19</a></span><span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#abdd8e70c7cce4fa33c82f27dd151d57d">mean</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* windowData, <span class="keywordtype">int</span> lowerBinBound, <span class="keywordtype">int</span> upperBinBound)</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">float</span> t = <a class="code hl_function" href="namespace_audio_prism.html#a14b093e0d643a96c39e9a2aa039115cb">sum</a>(windowData, lowerBinBound, upperBinBound);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordflow">return</span> t / float(upperBinBound - lowerBinBound);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
-</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">// Max amplitude in lowerBinBound, upperBinBound</span></div>
-<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="namespace_audio_prism.html#a32b7aef9a2e5670211973ad5918fedb4">   26</a></span><span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#a32b7aef9a2e5670211973ad5918fedb4">max</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* windowData, <span class="keywordtype">int</span> lowerBinBound, <span class="keywordtype">int</span> upperBinBound)</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">float</span> maxVal = 0.0f;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = lowerBinBound; i &lt; upperBinBound; ++i) {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordflow">if</span> (windowData[i] &gt; maxVal) {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            maxVal = windowData[i];</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        }</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;Config.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;HardwareSerial.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="namespace_audio_prism.html">   11</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_audio_prism.html">AudioPrism</a> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespace_audio_prism.html#a908bc718ad71c5a062e59afe2cf37239">   20</a></span><span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#a908bc718ad71c5a062e59afe2cf37239">sum</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* windowData, <span class="keywordtype">int</span> lowerFreq, <span class="keywordtype">int</span> upperFreq)</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordflow">if</span> (lowerFreq &lt; 0 || upperFreq &gt; SAMPLE_RATE &gt;&gt; 1 || lowerFreq &gt; upperFreq) {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    }</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">float</span> freqWidth     = (float)WINDOW_SIZE / (<span class="keywordtype">float</span>)SAMPLE_RATE;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">int</span>   lowerBinBound = round(lowerFreq * freqWidth);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">int</span>   upperBinBound = round(upperFreq * freqWidth);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#a908bc718ad71c5a062e59afe2cf37239">sum</a> = 0.0f;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = lowerBinBound; i &lt; upperBinBound; ++i) {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <a class="code hl_function" href="namespace_audio_prism.html#a908bc718ad71c5a062e59afe2cf37239">sum</a> += windowData[i];</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    }</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">return</span> maxVal;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespace_audio_prism.html#a908bc718ad71c5a062e59afe2cf37239">sum</a>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
 </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">// Sum of absolute delta amplitudes between current and previous window</span></div>
-<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="namespace_audio_prism.html#a75354ded4fbffa781d7d847aeac79413">   38</a></span><span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#a75354ded4fbffa781d7d847aeac79413">flux</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* currWindow, <span class="keyword">const</span> <span class="keywordtype">float</span>* prevWindow,</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">int</span> lowerBinBound, <span class="keywordtype">int</span> upperBinBound)</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>{</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">float</span> sumDelta = 0.0f;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = lowerBinBound; i &lt; upperBinBound; ++i) {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        sumDelta += std::abs(currWindow[i] - prevWindow[i]);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    }</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">return</span> sumDelta;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="namespace_audio_prism.html#a8893a2d615020938bd1d3595d3f67773">   45</a></span><span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#a8893a2d615020938bd1d3595d3f67773">mean</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* windowData, <span class="keywordtype">int</span> lowerFreq, <span class="keywordtype">int</span> upperFreq)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (lowerFreq &lt; 0 || upperFreq &gt; SAMPLE_RATE &gt;&gt; 1 || lowerFreq &gt; upperFreq) {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">float</span> freqWidth     = (float)WINDOW_SIZE / (<span class="keywordtype">float</span>)SAMPLE_RATE;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">int</span>   lowerBinBound = round(lowerFreq * freqWidth);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">int</span>   upperBinBound = round(upperFreq * freqWidth);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">float</span> t = <a class="code hl_function" href="namespace_audio_prism.html#a908bc718ad71c5a062e59afe2cf37239">sum</a>(windowData, lowerFreq, upperFreq);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">return</span> t / float(upperBinBound - lowerBinBound);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>}</div>
 </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// Per-bin delta amplitudes between current and previous window</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">// This one should input the deltas array I think, helper functions should allocate memory</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">// inline std::vector&lt;float&gt; deltaArray(const float* currWindow,</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">//     const float* prevWindow, int lowerBinBound, int upperBinBound)</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">// {</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">//     int                size = upperBinBound - lowerBinBound;</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">//     std::vector&lt;float&gt; deltas;</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">//     for (int i = lowerBinBound; i &lt; upperBinBound; ++i) {</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">//         deltas[i - lowerBinBound] = std::abs(currWindow[i] - prevWindow[i]);</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">//     }</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">//     return deltas;</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">// }</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>} <span class="comment">// AudioPrism</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="namespace_audio_prism.html#adf7a838f2ecfdeca4652258e811a40f0">   66</a></span><span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#adf7a838f2ecfdeca4652258e811a40f0">max</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* windowData, <span class="keywordtype">int</span> lowerFreq, <span class="keywordtype">int</span> upperFreq)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>{</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">if</span> (lowerFreq &lt; 0 || upperFreq &gt; SAMPLE_RATE &gt;&gt; 1 || lowerFreq &gt; upperFreq) {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">float</span> freqWidth     = (float)WINDOW_SIZE / (<span class="keywordtype">float</span>)SAMPLE_RATE;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">int</span>   lowerBinBound = round(lowerFreq * freqWidth);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">int</span>   upperBinBound = round(upperFreq * freqWidth);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">float</span> maxVal = 0.0f;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = lowerBinBound; i &lt; upperBinBound; ++i) {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordflow">if</span> (windowData[i] &gt; maxVal) {</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            maxVal = windowData[i];</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">return</span> maxVal;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>}</div>
 </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#endif </span><span class="comment">// SPECTRAL_TOOLS</span></div>
-<div class="ttc" id="anamespace_audio_prism_html"><div class="ttname"><a href="namespace_audio_prism.html">AudioPrism</a></div><div class="ttdef"><b>Definition</b> SpectralTools.h:7</div></div>
-<div class="ttc" id="anamespace_audio_prism_html_a14b093e0d643a96c39e9a2aa039115cb"><div class="ttname"><a href="namespace_audio_prism.html#a14b093e0d643a96c39e9a2aa039115cb">AudioPrism::sum</a></div><div class="ttdeci">float sum(const float *windowData, int lowerBinBound, int upperBinBound)</div><div class="ttdef"><b>Definition</b> SpectralTools.h:9</div></div>
-<div class="ttc" id="anamespace_audio_prism_html_a32b7aef9a2e5670211973ad5918fedb4"><div class="ttname"><a href="namespace_audio_prism.html#a32b7aef9a2e5670211973ad5918fedb4">AudioPrism::max</a></div><div class="ttdeci">float max(const float *windowData, int lowerBinBound, int upperBinBound)</div><div class="ttdef"><b>Definition</b> SpectralTools.h:26</div></div>
-<div class="ttc" id="anamespace_audio_prism_html_a75354ded4fbffa781d7d847aeac79413"><div class="ttname"><a href="namespace_audio_prism.html#a75354ded4fbffa781d7d847aeac79413">AudioPrism::flux</a></div><div class="ttdeci">float flux(const float *currWindow, const float *prevWindow, int lowerBinBound, int upperBinBound)</div><div class="ttdef"><b>Definition</b> SpectralTools.h:38</div></div>
-<div class="ttc" id="anamespace_audio_prism_html_abdd8e70c7cce4fa33c82f27dd151d57d"><div class="ttname"><a href="namespace_audio_prism.html#abdd8e70c7cce4fa33c82f27dd151d57d">AudioPrism::mean</a></div><div class="ttdeci">float mean(const float *windowData, int lowerBinBound, int upperBinBound)</div><div class="ttdef"><b>Definition</b> SpectralTools.h:19</div></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="foldopen" id="foldopen00094" data-start="{" data-end="}">
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="namespace_audio_prism.html#ac78ee39a6cb40181eedb73a1adeaf431">   94</a></span><span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#ac78ee39a6cb40181eedb73a1adeaf431">energy</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* windowData, <span class="keywordtype">int</span> lowerFreq, <span class="keywordtype">int</span> upperFreq)</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>{</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordflow">if</span> (lowerFreq &lt; 0 || upperFreq &gt; SAMPLE_RATE &gt;&gt; 1 || lowerFreq &gt; upperFreq) {</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    }</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordtype">float</span> freqWidth     = (float)WINDOW_SIZE / (<span class="keywordtype">float</span>)SAMPLE_RATE;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">int</span>   lowerBinBound = round(lowerFreq * freqWidth);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordtype">int</span>   upperBinBound = round(upperFreq * freqWidth);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#ac78ee39a6cb40181eedb73a1adeaf431">energy</a> = 0.;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = lowerBinBound; i &lt; upperBinBound; ++i) {</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <a class="code hl_function" href="namespace_audio_prism.html#ac78ee39a6cb40181eedb73a1adeaf431">energy</a> += windowData[i] * windowData[i];</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespace_audio_prism.html#ac78ee39a6cb40181eedb73a1adeaf431">energy</a>;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
+</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="foldopen" id="foldopen00129" data-start="{" data-end="}">
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="namespace_audio_prism.html#aa03f8104b363190487c83e403a08a43a">  129</a></span><span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#aa03f8104b363190487c83e403a08a43a">entropy</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* windowData, <span class="keywordtype">int</span> lowerFreq, <span class="keywordtype">int</span> upperFreq)</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>{</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordflow">if</span> (lowerFreq &lt; 0 || upperFreq &gt; SAMPLE_RATE &gt;&gt; 1 || lowerFreq &gt; upperFreq) {</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    }</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordtype">float</span> freqWidth     = (float)WINDOW_SIZE / (<span class="keywordtype">float</span>)SAMPLE_RATE;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordtype">int</span>   lowerBinBound = round(lowerFreq * freqWidth);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordtype">int</span>   upperBinBound = round(upperFreq * freqWidth);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#aa03f8104b363190487c83e403a08a43a">entropy</a>  = 0.;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordtype">float</span> totalAmp = <a class="code hl_function" href="namespace_audio_prism.html#a908bc718ad71c5a062e59afe2cf37239">sum</a>(windowData, lowerBinBound, upperBinBound);</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = lowerBinBound; i &lt; upperBinBound; ++i) {</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="comment">// p is the spectral density of the bin, or the percent of the total</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <span class="comment">// amplitude it containts. For calculating entropy, it is helpful to</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <span class="comment">// think of this as the probability of the bin containing energy. The</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        <span class="comment">// small offsets are to avoid division by or log of zero errors.</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="keywordtype">float</span> p = (windowData[i] + 1e-12) / (totalAmp + 1e-10);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        <span class="comment">//</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <span class="comment">// Calculate the entropy addition of each bin:</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        <span class="comment">//</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="comment">// -log(p) is the &#39;self-information&#39; of the bin. It is a measure of how</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="comment">// surprising it is to see energy in that bin. If p is close to 1, then</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="comment">// it is not surprising at all to see energy there, but if it is small</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="comment">// it this value will be greater, meaning it is very suprising to see</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="comment">// energy there. This makes sense as p was calculated as the percent of</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="comment">// the total energy that the bin contains.</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="comment">//</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="comment">// We weight this &#39;self-information&#39; value with the actual percent of</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="comment">// the total amplitude that bin has so that bins with very little energy</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="comment">// do not dominate the entropy value.</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <a class="code hl_function" href="namespace_audio_prism.html#aa03f8104b363190487c83e403a08a43a">entropy</a> += p * -(log2(p));</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    }</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="comment">// normalize the entropy value by the log2 of the number of bins, which is</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="comment">// the maximum possible entropy value.</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespace_audio_prism.html#aa03f8104b363190487c83e403a08a43a">entropy</a> / log2(upperBinBound - lowerBinBound);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>}</div>
+</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">// Per-bin delta amplitudes between current and previous window</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">// This one should input the deltas array I think, math helper functions shouldn&#39;t allocate memory</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">// inline std::vector&lt;float&gt; deltaArray(const float* currWindow,</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="comment">//     const float* prevWindow, int lowerBinBound, int upperBinBound)</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment">// {</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="comment">//     int                size = upperBinBound - lowerBinBound;</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="comment">//     std::vector&lt;float&gt; deltas;</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="comment">//     for (int i = lowerBinBound; i &lt; upperBinBound; ++i) {</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="comment">//         deltas[i - lowerBinBound] = std::abs(currWindow[i] - prevWindow[i]);</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="comment">//     }</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="comment">//     return deltas;</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment">// }</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="foldopen" id="foldopen00193" data-start="{" data-end="}">
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno"><a class="line" href="namespace_audio_prism.html#a3353227335a8bf09e159f0202433d076">  193</a></span><span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#a3353227335a8bf09e159f0202433d076">flux</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* currWindow, <span class="keyword">const</span> <span class="keywordtype">float</span>* prevWindow,</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keywordtype">int</span> lowerFreq, <span class="keywordtype">int</span> upperFreq)</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>{</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <span class="keywordflow">if</span> (lowerFreq &lt; 0 || upperFreq &gt; SAMPLE_RATE &gt;&gt; 1 || lowerFreq &gt; upperFreq) {</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    }</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keywordtype">float</span> freqWidth     = (float)WINDOW_SIZE / (<span class="keywordtype">float</span>)SAMPLE_RATE;</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordtype">int</span>   lowerBinBound = round(lowerFreq * freqWidth);</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    <span class="keywordtype">int</span>   upperBinBound = round(upperFreq * freqWidth);</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#a3353227335a8bf09e159f0202433d076">flux</a> = 0.0f;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = lowerBinBound; i &lt; upperBinBound; ++i) {</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <a class="code hl_function" href="namespace_audio_prism.html#a3353227335a8bf09e159f0202433d076">flux</a> += pow(currWindow[i] - prevWindow[i], 2);</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    }</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespace_audio_prism.html#a3353227335a8bf09e159f0202433d076">flux</a>;</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>}</div>
+</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
+<div class="foldopen" id="foldopen00225" data-start="{" data-end="}">
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno"><a class="line" href="namespace_audio_prism.html#ac9b33f2542243e26c076f24e7b7037da">  225</a></span><span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#ac9b33f2542243e26c076f24e7b7037da">positive_flux</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* currWindow, <span class="keyword">const</span> <span class="keywordtype">float</span>* prevWindow,</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keywordtype">int</span> lowerFreq, <span class="keywordtype">int</span> upperFreq)</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>{</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    <span class="keywordflow">if</span> (lowerFreq &lt; 0 || upperFreq &gt; SAMPLE_RATE &gt;&gt; 1 || lowerFreq &gt; upperFreq) {</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    }</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="keywordtype">float</span> freqWidth     = (float)WINDOW_SIZE / (<span class="keywordtype">float</span>)SAMPLE_RATE;</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    <span class="keywordtype">int</span>   lowerBinBound = round(lowerFreq * freqWidth);</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <span class="keywordtype">int</span>   upperBinBound = round(upperFreq * freqWidth);</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#a3353227335a8bf09e159f0202433d076">flux</a> = 0.0f;</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = lowerBinBound; i &lt; upperBinBound; ++i) {</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        <span class="keywordtype">float</span> pos_diff = currWindow[i] - prevWindow[i];</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <span class="keywordflow">if</span> (pos_diff &lt; 0) {</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>            pos_diff = 0;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        }</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        <a class="code hl_function" href="namespace_audio_prism.html#a3353227335a8bf09e159f0202433d076">flux</a> += pow(pos_diff, 2);</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    }</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespace_audio_prism.html#a3353227335a8bf09e159f0202433d076">flux</a>;</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>}</div>
+</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span> </div>
+<div class="foldopen" id="foldopen00260" data-start="{" data-end="}">
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno"><a class="line" href="namespace_audio_prism.html#ac2860bb25f2e7e735ac36c6c3ecf449b">  260</a></span><span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#ac2860bb25f2e7e735ac36c6c3ecf449b">negative_flux</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* currWindow, <span class="keyword">const</span> <span class="keywordtype">float</span>* prevWindow,</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordtype">int</span> lowerFreq, <span class="keywordtype">int</span> upperFreq)</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>{</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    <span class="keywordflow">if</span> (lowerFreq &lt; 0 || upperFreq &gt; SAMPLE_RATE &gt;&gt; 1 || lowerFreq &gt; upperFreq) {</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    }</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="keywordtype">float</span> freqWidth     = (float)WINDOW_SIZE / (<span class="keywordtype">float</span>)SAMPLE_RATE;</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    <span class="keywordtype">int</span>   lowerBinBound = round(lowerFreq * freqWidth);</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    <span class="keywordtype">int</span>   upperBinBound = round(upperFreq * freqWidth);</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span> </div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="namespace_audio_prism.html#a3353227335a8bf09e159f0202433d076">flux</a> = 0.0f;</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = lowerBinBound; i &lt; upperBinBound; ++i) {</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        <span class="keywordtype">float</span> neg_diff = currWindow[i] - prevWindow[i];</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <span class="keywordflow">if</span> (neg_diff &gt; 0) {</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            neg_diff = 0;</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        }</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        <a class="code hl_function" href="namespace_audio_prism.html#a3353227335a8bf09e159f0202433d076">flux</a> += pow(neg_diff, 2);</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    }</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespace_audio_prism.html#a3353227335a8bf09e159f0202433d076">flux</a>;</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>}</div>
+</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
+<div class="foldopen" id="foldopen00295" data-start="{" data-end="}">
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno"><a class="line" href="namespace_audio_prism.html#a70d40a54a2be293b8692a91a6e6dfb0b">  295</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_audio_prism.html#a70d40a54a2be293b8692a91a6e6dfb0b">smooth_window_over_time</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* windowData, <span class="keywordtype">float</span>* smoothedData,</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>    <span class="keywordtype">float</span> smoothingFactor = 0.05)</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>{</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; (WINDOW_SIZE &gt;&gt; 1); ++i) {</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        <span class="keywordtype">float</span> new_weight = smoothingFactor * windowData[i];</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>        <span class="keywordtype">float</span> old_weight = (1 - smoothingFactor) * smoothedData[i];</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>        smoothedData[i]  = new_weight + old_weight;</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    }</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>}</div>
+</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span> </div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>} <span class="comment">// AudioPrism</span></div>
+</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span> </div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span><span class="preprocessor">#endif </span><span class="comment">// SPECTRAL_TOOLS_H</span></div>
+<div class="ttc" id="anamespace_audio_prism_html"><div class="ttname"><a href="namespace_audio_prism.html">AudioPrism</a></div><div class="ttdef"><b>Definition</b> SpectralTools.h:11</div></div>
+<div class="ttc" id="anamespace_audio_prism_html_a3353227335a8bf09e159f0202433d076"><div class="ttname"><a href="namespace_audio_prism.html#a3353227335a8bf09e159f0202433d076">AudioPrism::flux</a></div><div class="ttdeci">float flux(const float *currWindow, const float *prevWindow, int lowerFreq, int upperFreq)</div><div class="ttdef"><b>Definition</b> SpectralTools.h:193</div></div>
+<div class="ttc" id="anamespace_audio_prism_html_a70d40a54a2be293b8692a91a6e6dfb0b"><div class="ttname"><a href="namespace_audio_prism.html#a70d40a54a2be293b8692a91a6e6dfb0b">AudioPrism::smooth_window_over_time</a></div><div class="ttdeci">void smooth_window_over_time(const float *windowData, float *smoothedData, float smoothingFactor=0.05)</div><div class="ttdef"><b>Definition</b> SpectralTools.h:295</div></div>
+<div class="ttc" id="anamespace_audio_prism_html_a8893a2d615020938bd1d3595d3f67773"><div class="ttname"><a href="namespace_audio_prism.html#a8893a2d615020938bd1d3595d3f67773">AudioPrism::mean</a></div><div class="ttdeci">float mean(const float *windowData, int lowerFreq, int upperFreq)</div><div class="ttdef"><b>Definition</b> SpectralTools.h:45</div></div>
+<div class="ttc" id="anamespace_audio_prism_html_a908bc718ad71c5a062e59afe2cf37239"><div class="ttname"><a href="namespace_audio_prism.html#a908bc718ad71c5a062e59afe2cf37239">AudioPrism::sum</a></div><div class="ttdeci">float sum(const float *windowData, int lowerFreq, int upperFreq)</div><div class="ttdef"><b>Definition</b> SpectralTools.h:20</div></div>
+<div class="ttc" id="anamespace_audio_prism_html_aa03f8104b363190487c83e403a08a43a"><div class="ttname"><a href="namespace_audio_prism.html#aa03f8104b363190487c83e403a08a43a">AudioPrism::entropy</a></div><div class="ttdeci">float entropy(const float *windowData, int lowerFreq, int upperFreq)</div><div class="ttdef"><b>Definition</b> SpectralTools.h:129</div></div>
+<div class="ttc" id="anamespace_audio_prism_html_ac2860bb25f2e7e735ac36c6c3ecf449b"><div class="ttname"><a href="namespace_audio_prism.html#ac2860bb25f2e7e735ac36c6c3ecf449b">AudioPrism::negative_flux</a></div><div class="ttdeci">float negative_flux(const float *currWindow, const float *prevWindow, int lowerFreq, int upperFreq)</div><div class="ttdef"><b>Definition</b> SpectralTools.h:260</div></div>
+<div class="ttc" id="anamespace_audio_prism_html_ac78ee39a6cb40181eedb73a1adeaf431"><div class="ttname"><a href="namespace_audio_prism.html#ac78ee39a6cb40181eedb73a1adeaf431">AudioPrism::energy</a></div><div class="ttdeci">float energy(const float *windowData, int lowerFreq, int upperFreq)</div><div class="ttdef"><b>Definition</b> SpectralTools.h:94</div></div>
+<div class="ttc" id="anamespace_audio_prism_html_ac9b33f2542243e26c076f24e7b7037da"><div class="ttname"><a href="namespace_audio_prism.html#ac9b33f2542243e26c076f24e7b7037da">AudioPrism::positive_flux</a></div><div class="ttdeci">float positive_flux(const float *currWindow, const float *prevWindow, int lowerFreq, int upperFreq)</div><div class="ttdef"><b>Definition</b> SpectralTools.h:225</div></div>
+<div class="ttc" id="anamespace_audio_prism_html_adf7a838f2ecfdeca4652258e811a40f0"><div class="ttname"><a href="namespace_audio_prism.html#adf7a838f2ecfdeca4652258e811a40f0">AudioPrism::max</a></div><div class="ttdeci">float max(const float *windowData, int lowerFreq, int upperFreq)</div><div class="ttdef"><b>Definition</b> SpectralTools.h:66</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

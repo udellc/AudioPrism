@@ -122,18 +122,117 @@ $(function(){initNavTree('namespace_audio_prism.html',''); initResizable(true); 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a14b093e0d643a96c39e9a2aa039115cb" id="r_a14b093e0d643a96c39e9a2aa039115cb"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14b093e0d643a96c39e9a2aa039115cb">sum</a> (const float *windowData, int lowerBinBound, int upperBinBound)</td></tr>
-<tr class="separator:a14b093e0d643a96c39e9a2aa039115cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdd8e70c7cce4fa33c82f27dd151d57d" id="r_abdd8e70c7cce4fa33c82f27dd151d57d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdd8e70c7cce4fa33c82f27dd151d57d">mean</a> (const float *windowData, int lowerBinBound, int upperBinBound)</td></tr>
-<tr class="separator:abdd8e70c7cce4fa33c82f27dd151d57d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32b7aef9a2e5670211973ad5918fedb4" id="r_a32b7aef9a2e5670211973ad5918fedb4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32b7aef9a2e5670211973ad5918fedb4">max</a> (const float *windowData, int lowerBinBound, int upperBinBound)</td></tr>
-<tr class="separator:a32b7aef9a2e5670211973ad5918fedb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75354ded4fbffa781d7d847aeac79413" id="r_a75354ded4fbffa781d7d847aeac79413"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75354ded4fbffa781d7d847aeac79413">flux</a> (const float *currWindow, const float *prevWindow, int lowerBinBound, int upperBinBound)</td></tr>
-<tr class="separator:a75354ded4fbffa781d7d847aeac79413"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a908bc718ad71c5a062e59afe2cf37239" id="r_a908bc718ad71c5a062e59afe2cf37239"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a908bc718ad71c5a062e59afe2cf37239">sum</a> (const float *windowData, int lowerFreq, int upperFreq)</td></tr>
+<tr class="separator:a908bc718ad71c5a062e59afe2cf37239"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8893a2d615020938bd1d3595d3f67773" id="r_a8893a2d615020938bd1d3595d3f67773"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8893a2d615020938bd1d3595d3f67773">mean</a> (const float *windowData, int lowerFreq, int upperFreq)</td></tr>
+<tr class="separator:a8893a2d615020938bd1d3595d3f67773"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf7a838f2ecfdeca4652258e811a40f0" id="r_adf7a838f2ecfdeca4652258e811a40f0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf7a838f2ecfdeca4652258e811a40f0">max</a> (const float *windowData, int lowerFreq, int upperFreq)</td></tr>
+<tr class="separator:adf7a838f2ecfdeca4652258e811a40f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac78ee39a6cb40181eedb73a1adeaf431" id="r_ac78ee39a6cb40181eedb73a1adeaf431"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac78ee39a6cb40181eedb73a1adeaf431">energy</a> (const float *windowData, int lowerFreq, int upperFreq)</td></tr>
+<tr class="separator:ac78ee39a6cb40181eedb73a1adeaf431"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa03f8104b363190487c83e403a08a43a" id="r_aa03f8104b363190487c83e403a08a43a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa03f8104b363190487c83e403a08a43a">entropy</a> (const float *windowData, int lowerFreq, int upperFreq)</td></tr>
+<tr class="separator:aa03f8104b363190487c83e403a08a43a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3353227335a8bf09e159f0202433d076" id="r_a3353227335a8bf09e159f0202433d076"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3353227335a8bf09e159f0202433d076">flux</a> (const float *currWindow, const float *prevWindow, int lowerFreq, int upperFreq)</td></tr>
+<tr class="separator:a3353227335a8bf09e159f0202433d076"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9b33f2542243e26c076f24e7b7037da" id="r_ac9b33f2542243e26c076f24e7b7037da"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9b33f2542243e26c076f24e7b7037da">positive_flux</a> (const float *currWindow, const float *prevWindow, int lowerFreq, int upperFreq)</td></tr>
+<tr class="separator:ac9b33f2542243e26c076f24e7b7037da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2860bb25f2e7e735ac36c6c3ecf449b" id="r_ac2860bb25f2e7e735ac36c6c3ecf449b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2860bb25f2e7e735ac36c6c3ecf449b">negative_flux</a> (const float *currWindow, const float *prevWindow, int lowerFreq, int upperFreq)</td></tr>
+<tr class="separator:ac2860bb25f2e7e735ac36c6c3ecf449b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70d40a54a2be293b8692a91a6e6dfb0b" id="r_a70d40a54a2be293b8692a91a6e6dfb0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70d40a54a2be293b8692a91a6e6dfb0b">smooth_window_over_time</a> (const float *windowData, float *smoothedData, float smoothingFactor=0.05)</td></tr>
+<tr class="separator:a70d40a54a2be293b8692a91a6e6dfb0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a75354ded4fbffa781d7d847aeac79413" name="a75354ded4fbffa781d7d847aeac79413"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75354ded4fbffa781d7d847aeac79413">&#9670;&#160;</a></span>flux()</h2>
+<a id="ac78ee39a6cb40181eedb73a1adeaf431" name="ac78ee39a6cb40181eedb73a1adeaf431"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac78ee39a6cb40181eedb73a1adeaf431">&#9670;&#160;</a></span>energy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float AudioPrism::energy </td>
+          <td>(</td>
+          <td class="paramtype">const float *</td>          <td class="paramname"><span class="paramname"><em>windowData</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>lowerFreq</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upperFreq</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Calculate the total energy of the spectrum over the frequency range.</p>
+<p>Energy is the sum of the square of the amplitude in each bin.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">windowData</td><td>The input spectrum data </td></tr>
+    <tr><td class="paramname">lowerFreq</td><td>The lower frequency bound to analyze </td></tr>
+    <tr><td class="paramname">upperFreq</td><td>The upper frequency bound to analyze </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa03f8104b363190487c83e403a08a43a" name="aa03f8104b363190487c83e403a08a43a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa03f8104b363190487c83e403a08a43a">&#9670;&#160;</a></span>entropy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float AudioPrism::entropy </td>
+          <td>(</td>
+          <td class="paramtype">const float *</td>          <td class="paramname"><span class="paramname"><em>windowData</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>lowerFreq</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upperFreq</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Calculate the entropy of the spectrum over a frequency range.</p>
+<p>Entropy is a measure of the distribution of energy over the spectrum. It is useful to know if a spectrum is periodic or noisy. A measure closer to 0.0 indicates the spectrum is more periodic, meaning a few tones or notes dominate the signal. An entropy value closer to 1.0 indicates noisiness, which is a common element of percussive features like snare drums and high hats.</p>
+<p>To get a better understanding of the calculation, you may find this video helpful: <a href="https://www.youtube.com/watch?v=2s3aJfRr9gE">https://www.youtube.com/watch?v=2s3aJfRr9gE</a></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">windowData</td><td>The input spectrum data </td></tr>
+    <tr><td class="paramname">lowerFreq</td><td>The lower frequency bound to analyze </td></tr>
+    <tr><td class="paramname">upperFreq</td><td>The upper frequency bound to analyze </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3353227335a8bf09e159f0202433d076" name="a3353227335a8bf09e159f0202433d076"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3353227335a8bf09e159f0202433d076">&#9670;&#160;</a></span>flux()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -154,12 +253,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>lowerBinBound</em></span>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>lowerFreq</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upperBinBound</em></span>&#160;)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upperFreq</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -168,11 +267,22 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Computes the spectral flux of a spectrum over a frequency range.</p>
+<p>The spectral flux is the sum of energy change in the current spectrum from the previous. It can be useful to normalize the flux value by the energy sum in this frequency range.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">currWindow</td><td>The current input spectrum data </td></tr>
+    <tr><td class="paramname">prevWindow</td><td>The previous input spectrum data </td></tr>
+    <tr><td class="paramname">lowerFreq</td><td>The lower frequency bound to analyze </td></tr>
+    <tr><td class="paramname">upperFreq</td><td>The upper frequency bound to analyze </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a32b7aef9a2e5670211973ad5918fedb4" name="a32b7aef9a2e5670211973ad5918fedb4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32b7aef9a2e5670211973ad5918fedb4">&#9670;&#160;</a></span>max()</h2>
+<a id="adf7a838f2ecfdeca4652258e811a40f0" name="adf7a838f2ecfdeca4652258e811a40f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf7a838f2ecfdeca4652258e811a40f0">&#9670;&#160;</a></span>max()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -188,12 +298,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>lowerBinBound</em></span>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>lowerFreq</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upperBinBound</em></span>&#160;)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upperFreq</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -202,11 +312,20 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Find the maximum amplitude in a spectrum over a frequency range.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">windowData</td><td>The input spectrum data </td></tr>
+    <tr><td class="paramname">lowerFreq</td><td>The lower frequency bound to analyze </td></tr>
+    <tr><td class="paramname">upperFreq</td><td>The upper frequency bound to analyze </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="abdd8e70c7cce4fa33c82f27dd151d57d" name="abdd8e70c7cce4fa33c82f27dd151d57d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abdd8e70c7cce4fa33c82f27dd151d57d">&#9670;&#160;</a></span>mean()</h2>
+<a id="a8893a2d615020938bd1d3595d3f67773" name="a8893a2d615020938bd1d3595d3f67773"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8893a2d615020938bd1d3595d3f67773">&#9670;&#160;</a></span>mean()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,12 +341,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>lowerBinBound</em></span>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>lowerFreq</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upperBinBound</em></span>&#160;)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upperFreq</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -236,11 +355,164 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Calculate the mean amplitude of the spectrum over a frequency range.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">windowData</td><td>The input spectrum data </td></tr>
+    <tr><td class="paramname">lowerFreq</td><td>The lower frequency bound to analyze </td></tr>
+    <tr><td class="paramname">upperFreq</td><td>The upper frequency bound to analyze </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a14b093e0d643a96c39e9a2aa039115cb" name="a14b093e0d643a96c39e9a2aa039115cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a14b093e0d643a96c39e9a2aa039115cb">&#9670;&#160;</a></span>sum()</h2>
+<a id="ac2860bb25f2e7e735ac36c6c3ecf449b" name="ac2860bb25f2e7e735ac36c6c3ecf449b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2860bb25f2e7e735ac36c6c3ecf449b">&#9670;&#160;</a></span>negative_flux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float AudioPrism::negative_flux </td>
+          <td>(</td>
+          <td class="paramtype">const float *</td>          <td class="paramname"><span class="paramname"><em>currWindow</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float *</td>          <td class="paramname"><span class="paramname"><em>prevWindow</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>lowerFreq</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upperFreq</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Computes the negative spectral flux of a spectrum over a frequency range.</p>
+<p>The negative spectral flux is the sum of energy decreases in the current spectrum compared to the previous. It can be useful to normalize the flux value by the energy sum in this frequency range.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">currWindow</td><td>The current input spectrum data </td></tr>
+    <tr><td class="paramname">prevWindow</td><td>The previous input spectrum data </td></tr>
+    <tr><td class="paramname">lowerFreq</td><td>The lower frequency bound to analyze </td></tr>
+    <tr><td class="paramname">upperFreq</td><td>The upper frequency bound to analyze </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac9b33f2542243e26c076f24e7b7037da" name="ac9b33f2542243e26c076f24e7b7037da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9b33f2542243e26c076f24e7b7037da">&#9670;&#160;</a></span>positive_flux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float AudioPrism::positive_flux </td>
+          <td>(</td>
+          <td class="paramtype">const float *</td>          <td class="paramname"><span class="paramname"><em>currWindow</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float *</td>          <td class="paramname"><span class="paramname"><em>prevWindow</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>lowerFreq</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upperFreq</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Computes the positive spectral flux of a spectrum over a frequency range.</p>
+<p>The positive spectral flux is the sum of energy increases in the current spectrum compared to the previous. Positive flux is useful for detecting onsets in the spectrum. It can be useful to normalize the flux value by the energy sum in this frequency range.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">currWindow</td><td>The current input spectrum data </td></tr>
+    <tr><td class="paramname">prevWindow</td><td>The previous input spectrum data </td></tr>
+    <tr><td class="paramname">lowerFreq</td><td>The lower frequency bound to analyze </td></tr>
+    <tr><td class="paramname">upperFreq</td><td>The upper frequency bound to analyze </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a70d40a54a2be293b8692a91a6e6dfb0b" name="a70d40a54a2be293b8692a91a6e6dfb0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70d40a54a2be293b8692a91a6e6dfb0b">&#9670;&#160;</a></span>smooth_window_over_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioPrism::smooth_window_over_time </td>
+          <td>(</td>
+          <td class="paramtype">const float *</td>          <td class="paramname"><span class="paramname"><em>windowData</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>smoothedData</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>smoothingFactor</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0.05</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Smoothes the window data over time, using the waited sum of: (1 - smoothingFactor) smoothedData + (smoothingFactor) windowData.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newWindow</td><td>The array containing new input data. </td></tr>
+    <tr><td class="paramname">windowData</td><td>Input/Output array for the smoothed spectrum data. </td></tr>
+    <tr><td class="paramname">smoothingFactor</td><td>The ratio to smooth the old and new data by.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>commenting this here for now: try doing this over a spectrogram, it would need at least one window to do the same thing, but more could be used to smooth over real data instead of the continuously smoothed data </p>
+
+</div>
+</div>
+<a id="a908bc718ad71c5a062e59afe2cf37239" name="a908bc718ad71c5a062e59afe2cf37239"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a908bc718ad71c5a062e59afe2cf37239">&#9670;&#160;</a></span>sum()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -256,12 +528,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>lowerBinBound</em></span>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>lowerFreq</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upperBinBound</em></span>&#160;)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upperFreq</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -270,6 +542,15 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Calculate the total amplitude sum of the spectrum over a frequency range.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">windowData</td><td>The input spectrum data </td></tr>
+    <tr><td class="paramname">lowerFreq</td><td>The lower frequency bound to analyze </td></tr>
+    <tr><td class="paramname">upperFreq</td><td>The upper frequency bound to analyze </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

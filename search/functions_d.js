@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['_7ebreadslicer_0',['~BreadSlicer',['../class_bread_slicer.html#a7c2584242c0549eaff88162dd6de916b',1,'BreadSlicer']]],
-  ['_7edeltaamplitudes_1',['~DeltaAmplitudes',['../class_delta_amplitudes.html#a2bf96bcd8a8dbf8762c797805eaf6023',1,'DeltaAmplitudes']]],
-  ['_7emajorpeaks_2',['~MajorPeaks',['../class_major_peaks.html#a19a85b0f74783c19a8fdccd6d11d5f04',1,'MajorPeaks']]],
-  ['_7espectrogram_3',['~Spectrogram',['../class_spectrogram.html#a175fda7cc377563bffde2240aab8bfa7',1,'Spectrogram']]]
+  ['vowel_5fto_5fcharacter_0',['vowel_to_character',['../class_formants.html#a6efb1644a476d0036e9ae2c5a94a7848',1,'Formants']]]
 ];
