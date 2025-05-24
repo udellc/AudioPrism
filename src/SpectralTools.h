@@ -1,33 +1,78 @@
-#ifndef SPECTRAL_TOOLS
-#define SPECTRAL_TOOLS
+#ifndef SPECTRAL_TOOLS_H
+#define SPECTRAL_TOOLS_H
 
 #include <cmath>
 #include <cstdlib>
 #include <vector>
 
 #include "Config.h"
+#include "HardwareSerial.h"
 
 namespace AudioPrism {
 
-inline float sum(const float* windowData, int lowerBinBound, int upperBinBound)
+/**
+ * Calculate the total amplitude sum of the spectrum over a frequency range.
+ *
+ * @param windowData The input spectrum data
+ * @param lowerFreq The lower frequency bound to analyze
+ * @param upperFreq The upper frequency bound to analyze
+ */
+inline float sum(const float* windowData, int lowerFreq, int upperFreq)
 {
+    if (lowerFreq < 0 || upperFreq > SAMPLE_RATE >> 1 || lowerFreq > upperFreq) {
+        return -1;
+    }
+
+    float freqWidth     = (float)WINDOW_SIZE / (float)SAMPLE_RATE;
+    int   lowerBinBound = round(lowerFreq * freqWidth);
+    int   upperBinBound = round(upperFreq * freqWidth);
+
     float sum = 0.0f;
     for (int i = lowerBinBound; i < upperBinBound; ++i) {
         sum += windowData[i];
     }
+
     return sum;
 }
 
-// Mean of amplitudes in lowerBinBound, upperBinBound
-inline float mean(const float* windowData, int lowerBinBound, int upperBinBound)
+/**
+ * Calculate the mean amplitude of the spectrum over a frequency range.
+ *
+ * @param windowData The input spectrum data
+ * @param lowerFreq The lower frequency bound to analyze
+ * @param upperFreq The upper frequency bound to analyze
+ */
+inline float mean(const float* windowData, int lowerFreq, int upperFreq)
 {
-    float t = sum(windowData, lowerBinBound, upperBinBound);
+    if (lowerFreq < 0 || upperFreq > SAMPLE_RATE >> 1 || lowerFreq > upperFreq) {
+        return -1;
+    }
+
+    float freqWidth     = (float)WINDOW_SIZE / (float)SAMPLE_RATE;
+    int   lowerBinBound = round(lowerFreq * freqWidth);
+    int   upperBinBound = round(upperFreq * freqWidth);
+
+    float t = sum(windowData, lowerFreq, upperFreq);
     return t / float(upperBinBound - lowerBinBound);
 }
 
-// Max amplitude in lowerBinBound, upperBinBound
-inline float max(const float* windowData, int lowerBinBound, int upperBinBound)
+/**
+ * Find the maximum amplitude in a spectrum over a frequency range.
+ *
+ * @param windowData The input spectrum data
+ * @param lowerFreq The lower frequency bound to analyze
+ * @param upperFreq The upper frequency bound to analyze
+ */
+inline float max(const float* windowData, int lowerFreq, int upperFreq)
 {
+    if (lowerFreq < 0 || upperFreq > SAMPLE_RATE >> 1 || lowerFreq > upperFreq) {
+        return -1;
+    }
+
+    float freqWidth     = (float)WINDOW_SIZE / (float)SAMPLE_RATE;
+    int   lowerBinBound = round(lowerFreq * freqWidth);
+    int   upperBinBound = round(upperFreq * freqWidth);
+
     float maxVal = 0.0f;
     for (int i = lowerBinBound; i < upperBinBound; ++i) {
         if (windowData[i] > maxVal) {
@@ -37,49 +82,69 @@ inline float max(const float* windowData, int lowerBinBound, int upperBinBound)
     return maxVal;
 }
 
-// Per-bin delta amplitudes between current and previous window
-// This one should input the deltas array I think, helper functions should allocate memory
-// inline std::vector<float> deltaArray(const float* currWindow,
-//     const float* prevWindow, int lowerBinBound, int upperBinBound)
-// {
-//     int                size = upperBinBound - lowerBinBound;
-//     std::vector<float> deltas;
-//     for (int i = lowerBinBound; i < upperBinBound; ++i) {
-//         deltas[i - lowerBinBound] = std::abs(currWindow[i] - prevWindow[i]);
-//     }
-//     return deltas;
-// }
-
-inline float geometric_mean(const float* windowData, int lowerBinBound, int upperBinBound)
+/**
+ * Calculate the total energy of the spectrum over the frequency range.
+ *
+ * Energy is the sum of the square of the amplitude in each bin.
+ *
+ * @param windowData The input spectrum data
+ * @param lowerFreq The lower frequency bound to analyze
+ * @param upperFreq The upper frequency bound to analyze
+ */
+inline float energy(const float* windowData, int lowerFreq, int upperFreq)
 {
-    float product = 1.0f;
-    for (int i = lowerBinBound; i < upperBinBound; ++i) {
-        product *= windowData[i];
+    if (lowerFreq < 0 || upperFreq > SAMPLE_RATE >> 1 || lowerFreq > upperFreq) {
+        return -1;
     }
-    return pow(product, 1.0f / float(upperBinBound - lowerBinBound));
+
+    float freqWidth     = (float)WINDOW_SIZE / (float)SAMPLE_RATE;
+    int   lowerBinBound = round(lowerFreq * freqWidth);
+    int   upperBinBound = round(upperFreq * freqWidth);
+
+    float energy = 0.;
+    for (int i = lowerBinBound; i < upperBinBound; ++i) {
+        energy += windowData[i] * windowData[i];
+    }
+
+    return energy;
 }
 
-// Sum of absolute delta amplitudes between current and previous window
-inline float flux(const float* currWindow, const float* prevWindow,
-    int lowerBinBound, int upperBinBound)
+/**
+ * Calculate the entropy of the spectrum over a frequency range.
+ *
+ * Entropy is a measure of the distribution of energy over the spectrum. It is
+ * useful to know if a spectrum is periodic or noisy. A measure closer to 0.0
+ * indicates the spectrum is more periodic, meaning a few tones or notes
+ * dominate the signal. An entropy value closer to 1.0 indicates noisiness,
+ * which is a common element of percussive features like snare drums and high
+ * hats.
+ *
+ * To get a better understanding of the calculation, you may find this video
+ * helpful: https://www.youtube.com/watch?v=2s3aJfRr9gE
+ *
+ * @param windowData The input spectrum data
+ * @param lowerFreq The lower frequency bound to analyze
+ * @param upperFreq The upper frequency bound to analyze
+ */
+inline float entropy(const float* windowData, int lowerFreq, int upperFreq)
 {
-    float sumDelta = 0.0f;
-    for (int i = lowerBinBound; i < upperBinBound; ++i) {
-        sumDelta += abs(currWindow[i] - prevWindow[i]);
+    if (lowerFreq < 0 || upperFreq > SAMPLE_RATE >> 1 || lowerFreq > upperFreq) {
+        return -1;
     }
-    return sumDelta;
-}
 
-// https://www.youtube.com/watch?v=2s3aJfRr9gE
-inline float entropy(const float* windowData, int lowerBinBound, int upperBinBound)
-{
+    float freqWidth     = (float)WINDOW_SIZE / (float)SAMPLE_RATE;
+    int   lowerBinBound = round(lowerFreq * freqWidth);
+    int   upperBinBound = round(upperFreq * freqWidth);
+
     float entropy  = 0.;
     float totalAmp = sum(windowData, lowerBinBound, upperBinBound);
     for (int i = lowerBinBound; i < upperBinBound; ++i) {
         // p is the spectral density of the bin, or the percent of the total
         // amplitude it containts. For calculating entropy, it is helpful to
-        // think of this as the probability of the bin containing energy.
+        // think of this as the probability of the bin containing energy. The
+        // small offsets are to avoid division by or log of zero errors.
         float p = (windowData[i] + 1e-12) / (totalAmp + 1e-10);
+        //
         // Calculate the entropy addition of each bin:
         //
         // -log(p) is the 'self-information' of the bin. It is a measure of how
@@ -100,13 +165,119 @@ inline float entropy(const float* windowData, int lowerBinBound, int upperBinBou
     return entropy / log2(upperBinBound - lowerBinBound);
 }
 
-inline float energy(const float* windowData, int lowerBinBound, int upperBinBound)
+// Per-bin delta amplitudes between current and previous window
+// This one should input the deltas array I think, math helper functions shouldn't allocate memory
+// inline std::vector<float> deltaArray(const float* currWindow,
+//     const float* prevWindow, int lowerBinBound, int upperBinBound)
+// {
+//     int                size = upperBinBound - lowerBinBound;
+//     std::vector<float> deltas;
+//     for (int i = lowerBinBound; i < upperBinBound; ++i) {
+//         deltas[i - lowerBinBound] = std::abs(currWindow[i] - prevWindow[i]);
+//     }
+//     return deltas;
+// }
+
+/**
+ * Computes the spectral flux of a spectrum over a frequency range.
+ *
+ * The spectral flux is the sum of energy change in the current spectrum from
+ * the previous. It can be useful to normalize the flux value by the energy sum
+ * in this frequency range.
+ *
+ * @param currWindow The current input spectrum data
+ * @param prevWindow The previous input spectrum data
+ * @param lowerFreq The lower frequency bound to analyze
+ * @param upperFreq The upper frequency bound to analyze
+ */
+inline float flux(const float* currWindow, const float* prevWindow,
+    int lowerFreq, int upperFreq)
 {
-    float energy = 0.;
-    for (int i = lowerBinBound; i < upperBinBound; ++i) {
-        energy += windowData[i] * windowData[i];
+    if (lowerFreq < 0 || upperFreq > SAMPLE_RATE >> 1 || lowerFreq > upperFreq) {
+        return -1;
     }
-    return energy;
+
+    float freqWidth     = (float)WINDOW_SIZE / (float)SAMPLE_RATE;
+    int   lowerBinBound = round(lowerFreq * freqWidth);
+    int   upperBinBound = round(upperFreq * freqWidth);
+
+    float flux = 0.0f;
+    for (int i = lowerBinBound; i < upperBinBound; ++i) {
+        flux += pow(currWindow[i] - prevWindow[i], 2);
+    }
+
+    return flux;
+}
+
+/**
+ * Computes the positive spectral flux of a spectrum over a frequency range.
+ *
+ * The positive spectral flux is the sum of energy increases in the current
+ * spectrum compared to the previous. Positive flux is useful for detecting
+ * onsets in the spectrum. It can be useful to normalize the flux value by the
+ * energy sum in this frequency range.
+ *
+ * @param currWindow The current input spectrum data
+ * @param prevWindow The previous input spectrum data
+ * @param lowerFreq The lower frequency bound to analyze
+ * @param upperFreq The upper frequency bound to analyze
+ */
+inline float positive_flux(const float* currWindow, const float* prevWindow,
+    int lowerFreq, int upperFreq)
+{
+    if (lowerFreq < 0 || upperFreq > SAMPLE_RATE >> 1 || lowerFreq > upperFreq) {
+        return -1;
+    }
+
+    float freqWidth     = (float)WINDOW_SIZE / (float)SAMPLE_RATE;
+    int   lowerBinBound = round(lowerFreq * freqWidth);
+    int   upperBinBound = round(upperFreq * freqWidth);
+
+    float flux = 0.0f;
+    for (int i = lowerBinBound; i < upperBinBound; ++i) {
+        float pos_diff = currWindow[i] - prevWindow[i];
+        if (pos_diff < 0) {
+            pos_diff = 0;
+        }
+        flux += pow(pos_diff, 2);
+    }
+
+    return flux;
+}
+
+/**
+ * Computes the negative spectral flux of a spectrum over a frequency range.
+ *
+ * The negative spectral flux is the sum of energy decreases in the current
+ * spectrum compared to the previous. It can be useful to normalize the flux
+ * value by the energy sum in this frequency range.
+ *
+ * @param currWindow The current input spectrum data
+ * @param prevWindow The previous input spectrum data
+ * @param lowerFreq The lower frequency bound to analyze
+ * @param upperFreq The upper frequency bound to analyze
+ */
+inline float negative_flux(const float* currWindow, const float* prevWindow,
+    int lowerFreq, int upperFreq)
+{
+    if (lowerFreq < 0 || upperFreq > SAMPLE_RATE >> 1 || lowerFreq > upperFreq) {
+        return -1;
+    }
+
+    float freqWidth     = (float)WINDOW_SIZE / (float)SAMPLE_RATE;
+    int   lowerBinBound = round(lowerFreq * freqWidth);
+    int   upperBinBound = round(upperFreq * freqWidth);
+
+    float flux = 0.0f;
+    for (int i = lowerBinBound; i < upperBinBound; ++i) {
+        float neg_diff = currWindow[i] - prevWindow[i];
+        if (neg_diff > 0) {
+            neg_diff = 0;
+        }
+        flux += pow(neg_diff, 2);
+    }
+
+    return flux;
 }
 
 /**
@@ -133,4 +304,4 @@ inline void smooth_window_over_time(const float* windowData, float* smoothedData
 
 } // AudioPrism
 
-#endif // SPECTRAL_TOOLS
+#endif // SPECTRAL_TOOLS_H
