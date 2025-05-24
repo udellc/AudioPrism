@@ -36,6 +36,7 @@
 #define PERCUSSION_DETECTION_H
 
 #include "../AnalysisModule.h"
+#include "HardwareSerial.h"
 #include "SpectralTools.h"
 
 // TODO: enable delta analysis when input buffer is fixed
@@ -118,12 +119,13 @@ public:
         float* currWindow = spectrogram->getCurrentWindow();
         float* prevWindow = spectrogram->getPreviousWindow();
 
-        float totalAmp = AudioPrism::sum(currWindow, lowerBinBound, upperBinBound);
+        int   lowerFreq = lowerBinBound / freqWidth;
+        int   upperFreq = upperBinBound / freqWidth;
+        float totalAmp  = AudioPrism::sum(currWindow, lowerFreq, upperFreq);
 
-        float flux      = 0.;
-        float energy    = 0.;
-        float entropy   = 0.;
-        float geom_mean = 1.;
+        float flux    = 0.;
+        float energy  = 0.;
+        float entropy = 0.;
         for (int i = lowerBinBound; i < upperBinBound; ++i) {
             // calculate flux (only finding an increase in amplitude)
             float pos_diff = currWindow[i] - prevWindow[i];
@@ -138,17 +140,10 @@ public:
             // calculate entropy
             float p = (currWindow[i] + 1e-12) / (totalAmp + 1e-10);
             entropy += p * -(std::log2(p));
-
-            // calculate the geometric mean
-            geom_mean *= (currWindow[i] + 1e-10);
         }
 
         flux /= (energy + 1e-10);
         entropy /= std::log2(upperBinBound - lowerBinBound);
-        geom_mean = std::pow(geom_mean, 1. / (upperBinBound - lowerBinBound));
-
-        float arith_mean = totalAmp / (upperBinBound - lowerBinBound);
-        float flatness   = geom_mean / (arith_mean + 1e-10);
 
         // predict percussion is present if all three submodule's outputs are above their threshold values
         // an output of true indicates that percussion is predicted to be present in the current window
@@ -167,7 +162,6 @@ public:
             Serial.printf("Flux:     %f\n", flux);
             Serial.printf("Energy:   %f\n", energy);
             Serial.printf("Entropy:  %f\n", entropy);
-            Serial.printf("Flatness: %f\n", flatness);
             Serial.printf("==========================\n");
 
             if (output) {

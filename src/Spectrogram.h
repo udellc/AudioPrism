@@ -95,4 +95,4 @@ private:
     uint16_t currIndex;
 };
 
-#endif // SPECTROGRAM
+#endif // SPECTROGRAM_H
