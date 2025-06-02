@@ -137,7 +137,7 @@ inline float entropy(const float* windowData, int lowerFreq, int upperFreq)
     int   upperBinBound = round(upperFreq * freqWidth);
 
     float entropy  = 0.;
-    float totalAmp = sum(windowData, lowerBinBound, upperBinBound);
+    float totalAmp = sum(windowData, lowerFreq, upperFreq);
     for (int i = lowerBinBound; i < upperBinBound; ++i) {
         // p is the spectral density of the bin, or the percent of the total
         // amplitude it containts. For calculating entropy, it is helpful to

@@ -64,6 +64,10 @@ void MajorPeaks::findPeaks()
 {
     float* windowData = spectrogram->getCurrentWindow();
     // iterate through the frequency range, excluding the first and last bins
+
+    int lowerFreq = lowerBinBound / freqWidth;
+    int upperFreq = upperBinBound / freqWidth;
+
     for (int i = lowerBinBound + 1; i < upperBinBound; i++) {
         // if the current bin is a peak, store its frequency and amplitude
         if (windowData[i] > windowData[i - 1]
@@ -78,6 +82,12 @@ void MajorPeaks::findPeaks()
 
             // increment the number of peaks found to reflect the addition of this peak
             numPeaks++;
+
+            if (debugMode & DEBUG_VERBOSE) {
+                Serial.printf("    - [%d, %03g]\n", i, windowData[i]);
+            }
+        } else if (debugMode & DEBUG_VERBOSE) {
+            Serial.printf(" - [%d, %03g]\n", i, windowData[i]);
         }
     }
 }
@@ -138,6 +148,10 @@ void MajorPeaks::printOutput()
 
 void MajorPeaks::doAnalysis()
 {
+    if (debugMode & DEBUG_ENABLE) {
+        Serial.printf("===MAJORPEAKS===\n");
+    }
+
     resetPeaksArrays();
     findPeaks();
     trimPeaks();
@@ -145,7 +159,6 @@ void MajorPeaks::doAnalysis()
 
     // if debug is enabled, print the output to the serial console
     if (debugMode & DEBUG_ENABLE) {
-        Serial.printf("===MAJORPEAKS===\n");
         if (debugMode & DEBUG_VERBOSE) {
             printModuleInfo();
         }

@@ -9,6 +9,8 @@
 #include <cstdint>
 #include <cstring>
 
+#include "Config.h"
+
 /**
  * Spectrogram holds the frequency domain data over multiple time windows.
  *

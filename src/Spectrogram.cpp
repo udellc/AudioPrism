@@ -1,6 +1,4 @@
 #include "Spectrogram.h"
-#include "Config.h"
-#include <cstdint>
 
 // make default to two windows, allow resizing
 Spectrogram::Spectrogram()
