@@ -9,9 +9,9 @@ Spectrogram::Spectrogram()
     this->currIndex  = 0;
 };
 
-Spectrogram::Spectrogram(const uint16_t numWindows)
+Spectrogram::Spectrogram(const uint16_t numWindows, int windowSize)
 {
-    uint16_t numBins = WINDOW_SIZE >> 1;
+    uint16_t numBins = windowSize >> 1;
     this->buffer     = new float[numWindows * numBins];
     this->numWindows = numWindows;
     this->numBins    = numBins;

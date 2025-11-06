@@ -32,12 +32,12 @@ public:
      *
      * Allocates a buffer to hold data for the specified number of windows,
      * with the specified number of frequency bins in each window. Each window
-     * will contain a number of frequency bins equal half the WINDOW_SIZE.
+     * will contain a number of frequency bins equal half the windowSize.
      * Initializes the current index to 0.
      *
      * @param numWindows The number of time windows the Spectrogram holds.
      */
-    Spectrogram(const uint16_t numWindows);
+    Spectrogram(const uint16_t numWindows, int windowSize = WINDOW_SIZE);
 
     ~Spectrogram();
 
