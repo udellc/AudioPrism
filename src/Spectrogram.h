@@ -37,7 +37,7 @@ public:
      *
      * @param numWindows The number of time windows the Spectrogram holds.
      */
-    Spectrogram(const uint16_t numWindows, int windowSize);
+    Spectrogram(const uint16_t numWindows, int windowSize = WINDOW_SIZE);
 
     ~Spectrogram();
 
