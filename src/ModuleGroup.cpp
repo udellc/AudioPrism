@@ -28,6 +28,11 @@ void ModuleGroup::addModule(AnalysisModule* module, int lowerFreq, int upperFreq
     this->modules.push_back(module);
 }
 
+void ModuleGroup::clearModules()
+{
+  this->modules.clear();
+}
+
 void ModuleGroup::runAnalysis()
 {
     for (AnalysisModule* module : this->modules) {
