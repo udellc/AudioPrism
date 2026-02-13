@@ -80,7 +80,7 @@ public:
     /**
      * Clear existing analysis modules.
      */
-    void clearModules();
+    void clearModules() { this->modules.clear(); }
 
     /**
      * Run the analysis function for all modules in the group.
