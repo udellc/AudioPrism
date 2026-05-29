@@ -15,11 +15,11 @@ var searchData=
   ['setsamplerate_12',['setSampleRate',['../class_analysis_module.html#acf2327e3946bf913dbc2a2f0944033d4',1,'AnalysisModule']]],
   ['setspectrogram_13',['setSpectrogram',['../class_analysis_module.html#ac551fa530991a57fb068935bd1fbb975',1,'AnalysisModule']]],
   ['setwindowsize_14',['setWindowSize',['../class_analysis_module.html#a7d0100fcbc0ef537f959194f549ddcb2',1,'AnalysisModule']]],
-  ['smooth_5fwindow_5fover_5ftime_15',['smooth_window_over_time',['../namespace_audio_prism.html#a70d40a54a2be293b8692a91a6e6dfb0b',1,'AudioPrism']]],
-  ['spectrogram_16',['Spectrogram',['../class_spectrogram.html',1,'Spectrogram'],['../class_spectrogram.html#ae4523300613ab1370fd7ae9bfc71d877',1,'Spectrogram::Spectrogram()'],['../class_spectrogram.html#a0a69ddbf2346cbb67d98addfef9c4f48',1,'Spectrogram::Spectrogram(const uint16_t numWindows)']]],
+  ['smooth_5fwindow_5fover_5ftime_15',['smooth_window_over_time',['../namespace_audio_prism.html#a954bdcd917014d04dac52ca6c6fc0331',1,'AudioPrism']]],
+  ['spectrogram_16',['Spectrogram',['../class_spectrogram.html',1,'Spectrogram'],['../class_spectrogram.html#ae4523300613ab1370fd7ae9bfc71d877',1,'Spectrogram::Spectrogram()'],['../class_spectrogram.html#a00efdf8fe0e026367a99938543a9e3da',1,'Spectrogram::Spectrogram(const uint16_t numWindows, int windowSize=WINDOW_SIZE)']]],
   ['spectrogram_17',['spectrogram',['../class_analysis_module.html#a8c0ae89c0fb0d058951cc70fbc46effd',1,'AnalysisModule']]],
   ['started_18',['Getting Started',['../index.html#autotoc_md2',1,'']]],
   ['submodules_19',['Submodules',['../index.html#autotoc_md13',1,'Submodules'],['../index.html#autotoc_md17',1,'Submodules'],['../index.html#autotoc_md21',1,'Submodules'],['../index.html#autotoc_md25',1,'Submodules'],['../index.html#autotoc_md38',1,'Submodules']]],
   ['submodules_20',['submodules',['../class_analysis_module.html#a08dc7ef160258e24dd42c8b7886fa5a8',1,'AnalysisModule']]],
-  ['sum_21',['sum',['../namespace_audio_prism.html#a908bc718ad71c5a062e59afe2cf37239',1,'AudioPrism']]]
+  ['sum_21',['sum',['../namespace_audio_prism.html#a58a1ea1fcd7304e686e1206aaaa6a889',1,'AudioPrism']]]
 ];

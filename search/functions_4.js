@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['energy_0',['energy',['../namespace_audio_prism.html#ac78ee39a6cb40181eedb73a1adeaf431',1,'AudioPrism']]],
-  ['entropy_1',['entropy',['../namespace_audio_prism.html#aa03f8104b363190487c83e403a08a43a',1,'AudioPrism']]]
+  ['energy_0',['energy',['../namespace_audio_prism.html#a09e2f293894ca35ff3bde86d81d3dfda',1,'AudioPrism']]],
+  ['entropy_1',['entropy',['../namespace_audio_prism.html#a98ec404e9414c84321e5afa48156b806',1,'AudioPrism']]]
 ];

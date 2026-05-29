@@ -1,5 +1,6 @@
 var class_analysis_module =
 [
+    [ "~AnalysisModule", "class_analysis_module.html#ae5e09265f54a70521130300c2bff7122", null ],
     [ "addSubmodule", "class_analysis_module.html#abe55bbc24f1494298db8da804956550a", null ],
     [ "doAnalysis", "class_analysis_module.html#a65bdd26ff9b3a24e98ee37ea35e01fec", null ],
     [ "printModuleInfo", "class_analysis_module.html#a5c395cd13c79fb9fbb10eecd79dac611", null ],

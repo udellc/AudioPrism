@@ -6,5 +6,6 @@ var class_module_group =
     [ "addModule", "class_module_group.html#a2e771cb1fcc8c7ce976692be73cb7197", null ],
     [ "addModule", "class_module_group.html#ad45eb27025f2894a40d26b8a3d0a5e47", null ],
     [ "addModule", "class_module_group.html#a823d57a925f22c6bee0f3f760c5620cc", null ],
+    [ "clearModules", "class_module_group.html#ad8339c4863bdf28bae1aa1655c9e207d", null ],
     [ "runAnalysis", "class_module_group.html#a95aea8c8af822200be62244d7f3ccdc3", null ]
 ];

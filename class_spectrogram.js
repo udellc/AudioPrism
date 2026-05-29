@@ -1,7 +1,7 @@
 var class_spectrogram =
 [
     [ "Spectrogram", "class_spectrogram.html#ae4523300613ab1370fd7ae9bfc71d877", null ],
-    [ "Spectrogram", "class_spectrogram.html#a0a69ddbf2346cbb67d98addfef9c4f48", null ],
+    [ "Spectrogram", "class_spectrogram.html#a00efdf8fe0e026367a99938543a9e3da", null ],
     [ "~Spectrogram", "class_spectrogram.html#a175fda7cc377563bffde2240aab8bfa7", null ],
     [ "clearBuffer", "class_spectrogram.html#aded566af483fb92e0e5ae0327f68eaef", null ],
     [ "getBuffer", "class_spectrogram.html#a9a3e9cfa362608c82932427f8fca4baa", null ],

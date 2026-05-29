@@ -13,7 +13,7 @@ var searchData=
   ['setsamplerate_10',['setSampleRate',['../class_analysis_module.html#acf2327e3946bf913dbc2a2f0944033d4',1,'AnalysisModule']]],
   ['setspectrogram_11',['setSpectrogram',['../class_analysis_module.html#ac551fa530991a57fb068935bd1fbb975',1,'AnalysisModule']]],
   ['setwindowsize_12',['setWindowSize',['../class_analysis_module.html#a7d0100fcbc0ef537f959194f549ddcb2',1,'AnalysisModule']]],
-  ['smooth_5fwindow_5fover_5ftime_13',['smooth_window_over_time',['../namespace_audio_prism.html#a70d40a54a2be293b8692a91a6e6dfb0b',1,'AudioPrism']]],
-  ['spectrogram_14',['Spectrogram',['../class_spectrogram.html#ae4523300613ab1370fd7ae9bfc71d877',1,'Spectrogram::Spectrogram()'],['../class_spectrogram.html#a0a69ddbf2346cbb67d98addfef9c4f48',1,'Spectrogram::Spectrogram(const uint16_t numWindows)']]],
-  ['sum_15',['sum',['../namespace_audio_prism.html#a908bc718ad71c5a062e59afe2cf37239',1,'AudioPrism']]]
+  ['smooth_5fwindow_5fover_5ftime_13',['smooth_window_over_time',['../namespace_audio_prism.html#a954bdcd917014d04dac52ca6c6fc0331',1,'AudioPrism']]],
+  ['spectrogram_14',['Spectrogram',['../class_spectrogram.html#ae4523300613ab1370fd7ae9bfc71d877',1,'Spectrogram::Spectrogram()'],['../class_spectrogram.html#a00efdf8fe0e026367a99938543a9e3da',1,'Spectrogram::Spectrogram(const uint16_t numWindows, int windowSize=WINDOW_SIZE)']]],
+  ['sum_15',['sum',['../namespace_audio_prism.html#a58a1ea1fcd7304e686e1206aaaa6a889',1,'AudioPrism']]]
 ];

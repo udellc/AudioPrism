@@ -127,8 +127,8 @@ $(function(){initNavTree('class_spectrogram.html',''); initResizable(true); });
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae4523300613ab1370fd7ae9bfc71d877" id="r_ae4523300613ab1370fd7ae9bfc71d877"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4523300613ab1370fd7ae9bfc71d877">Spectrogram</a> ()</td></tr>
 <tr class="separator:ae4523300613ab1370fd7ae9bfc71d877"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a69ddbf2346cbb67d98addfef9c4f48" id="r_a0a69ddbf2346cbb67d98addfef9c4f48"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a69ddbf2346cbb67d98addfef9c4f48">Spectrogram</a> (const uint16_t numWindows)</td></tr>
-<tr class="separator:a0a69ddbf2346cbb67d98addfef9c4f48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00efdf8fe0e026367a99938543a9e3da" id="r_a00efdf8fe0e026367a99938543a9e3da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00efdf8fe0e026367a99938543a9e3da">Spectrogram</a> (const uint16_t numWindows, int windowSize=WINDOW_SIZE)</td></tr>
+<tr class="separator:a00efdf8fe0e026367a99938543a9e3da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a175fda7cc377563bffde2240aab8bfa7" id="r_a175fda7cc377563bffde2240aab8bfa7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a175fda7cc377563bffde2240aab8bfa7">~Spectrogram</a> ()</td></tr>
 <tr class="separator:a175fda7cc377563bffde2240aab8bfa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a3e9cfa362608c82932427f8fca4baa" id="r_a9a3e9cfa362608c82932427f8fca4baa"><td class="memItemLeft" align="right" valign="top">float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a3e9cfa362608c82932427f8fca4baa">getBuffer</a> () const</td></tr>
@@ -173,8 +173,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a0a69ddbf2346cbb67d98addfef9c4f48" name="a0a69ddbf2346cbb67d98addfef9c4f48"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a69ddbf2346cbb67d98addfef9c4f48">&#9670;&#160;</a></span>Spectrogram() <span class="overload">[2/2]</span></h2>
+<a id="a00efdf8fe0e026367a99938543a9e3da" name="a00efdf8fe0e026367a99938543a9e3da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00efdf8fe0e026367a99938543a9e3da">&#9670;&#160;</a></span>Spectrogram() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -182,13 +182,17 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">Spectrogram::Spectrogram </td>
           <td>(</td>
-          <td class="paramtype">const uint16_t</td>          <td class="paramname"><span class="paramname"><em>numWindows</em></span></td><td>)</td>
+          <td class="paramtype">const uint16_t</td>          <td class="paramname"><span class="paramname"><em>numWindows</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>windowSize</em></span><span class="paramdefsep"> = </span><span class="paramdefval">WINDOW_SIZE</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Creates a <a class="el" href="class_spectrogram.html">Spectrogram</a> with a buffer to hold data.</p>
-<p>Allocates a buffer to hold data for the specified number of windows, with the specified number of frequency bins in each window. Each window will contain a number of frequency bins equal half the WINDOW_SIZE. Initializes the current index to 0.</p>
+<p>Allocates a buffer to hold data for the specified number of windows, with the specified number of frequency bins in each window. Each window will contain a number of frequency bins equal half the windowSize. Initializes the current index to 0.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">numWindows</td><td>The number of time windows the <a class="el" href="class_spectrogram.html">Spectrogram</a> holds. </td></tr>

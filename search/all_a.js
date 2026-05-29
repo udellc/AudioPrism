@@ -1,9 +1,9 @@
 var searchData=
 [
   ['majorpeaks_0',['MajorPeaks',['../class_major_peaks.html',1,'MajorPeaks'],['../class_major_peaks.html#a9bcd8fc64d8b8edfd1219a91ddf6e00b',1,'MajorPeaks::MajorPeaks()'],['../class_major_peaks.html#a0bd8348902b47cafc5712b5ebd17abdc',1,'MajorPeaks::MajorPeaks(int n)'],['../index.html#autotoc_md39',1,'MajorPeaks']]],
-  ['max_1',['max',['../namespace_audio_prism.html#adf7a838f2ecfdeca4652258e811a40f0',1,'AudioPrism']]],
+  ['max_1',['max',['../namespace_audio_prism.html#ab9942a63afa5c90afce9bdb11d585a9f',1,'AudioPrism']]],
   ['maxamplitude_2',['MaxAmplitude',['../class_max_amplitude.html',1,'MaxAmplitude'],['../index.html#autotoc_md10',1,'MaxAmplitude']]],
-  ['mean_3',['mean',['../namespace_audio_prism.html#a8893a2d615020938bd1d3595d3f67773',1,'AudioPrism']]],
+  ['mean_3',['mean',['../namespace_audio_prism.html#ab8dc607c7d101ac518ea4308223e8db9',1,'AudioPrism']]],
   ['meanamplitude_4',['MeanAmplitude',['../class_mean_amplitude.html',1,'MeanAmplitude'],['../class_mean_amplitude.html#ab9ed79dcf26d5120f0526449bf3b122a',1,'MeanAmplitude::MeanAmplitude()'],['../index.html#autotoc_md18',1,'MeanAmplitude']]],
   ['member_20functions_5',['Member Functions',['../index.html#autotoc_md51',1,'AnalysisModule Member Functions'],['../index.html#autotoc_md57',1,'ModuleInterface Member Functions']]],
   ['module_6',['Module',['../index.html#autotoc_md60',1,'Creating a Composite Module'],['../index.html#autotoc_md59',1,'Creating an Atonic Module']]],
