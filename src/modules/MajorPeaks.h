@@ -41,10 +41,10 @@ private:
     int maxNumPeaks = 4; // default number of peaks to find
     int numPeaks    = 0; // number of peaks found this iteration
 
-    // temporary storage for calculating the output
-    int    outputLength      = windowSizeBy2 >> 1;
-    float* outputFrequencies = new float[windowSizeBy2 >> 1];
-    float* outputAmplitudes  = new float[windowSizeBy2 >> 1];
+    static constexpr int MAX_PEAK_STORAGE = 1024;
+    int outputLength = MAX_PEAK_STORAGE;
+    float outputFrequencies[MAX_PEAK_STORAGE] = {0};
+    float outputAmplitudes[MAX_PEAK_STORAGE]  = {0};
 
     // reset peaks arrays
     // this function is called at the beginning of each call to perform analysis

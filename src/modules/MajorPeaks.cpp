@@ -36,27 +36,22 @@ MajorPeaks::~MajorPeaks()
     delete[] output[MP_FREQ]; // free the array of frequencies
     delete[] output[MP_AMP];  // free the array of amplitudes
     delete[] output;          // free the array managing the arrays of frequencies and amplitudes
-
-    // free temporary storage
-    delete[] outputFrequencies;
-    delete[] outputAmplitudes;
 }
 
 void MajorPeaks::resetPeaksArrays()
 {
     numPeaks = 0; // reset the number of peaks to zero
 
-    if (outputLength != windowSizeBy2 >> 1) {
-        delete[] outputFrequencies;
-        delete[] outputAmplitudes;
-        outputFrequencies = new float[windowSizeBy2 >> 1];
-        outputAmplitudes  = new float[windowSizeBy2 >> 1];
-    }
+    outputLength = min(
+        MAX_PEAK_STORAGE,
+        windowSizeBy2 >> 1
+    );
 
     // zero out the output arrays
-    for (int i = 0; i < windowSizeBy2 >> 1; i++) {
-        outputFrequencies[i] = 0;
-        outputAmplitudes[i]  = 0;
+    for (int i = 0; i < outputLength; i++)
+    {
+        outputFrequencies[i] = 0.0f;
+        outputAmplitudes[i]  = 0.0f;
     }
 }
 
@@ -72,16 +67,19 @@ void MajorPeaks::findPeaks()
         // if the current bin is a peak, store its frequency and amplitude
         if (windowData[i] > windowData[i - 1]
             && windowData[i] > windowData[i + 1]) {
-            // store the frequency of the peak
-            // the index is multiplied by freqRes to convert the bin number to a frequency value
-            // freqRes is the frequency width of each bin
-            outputFrequencies[numPeaks] = i * freqRes;
+            if (numPeaks < outputLength)
+            {
+              // store the frequency of the peak
+              // the index is multiplied by freqRes to convert the bin number to a frequency value
+              // freqRes is the frequency width of each bin
+              outputFrequencies[numPeaks] = i * freqRes;
 
-            // store the amplitude of the peak
-            outputAmplitudes[numPeaks] = windowData[i];
+              // store the amplitude of the peak
+              outputAmplitudes[numPeaks] = windowData[i];
 
-            // increment the number of peaks found to reflect the addition of this peak
-            numPeaks++;
+              // increment the number of peaks found to reflect the addition of this peak
+              numPeaks++;
+            }
 
             if (debugMode & DEBUG_VERBOSE) {
                 Serial.printf("    - [%d, %03g]\n", i, windowData[i]);
