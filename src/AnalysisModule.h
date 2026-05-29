@@ -41,6 +41,9 @@ protected:
     int debugMode = 0x00;
 
 public:
+    // Allow derived modules to run their own destructors
+    virtual ~AnalysisModule() = default;
+    
     // pure virtual function to be implemented by dervied classes
     virtual void doAnalysis() = 0;
 

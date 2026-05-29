@@ -78,6 +78,11 @@ public:
         int lowerFreq, int upperFreq);
 
     /**
+     * Clear existing analysis modules.
+     */
+    void clearModules() { this->modules.clear(); }
+
+    /**
      * Run the analysis function for all modules in the group.
      */
     void runAnalysis();

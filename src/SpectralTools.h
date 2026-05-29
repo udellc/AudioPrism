@@ -17,13 +17,13 @@ namespace AudioPrism {
  * @param lowerFreq The lower frequency bound to analyze
  * @param upperFreq The upper frequency bound to analyze
  */
-inline float sum(const float* windowData, int lowerFreq, int upperFreq)
+inline float sum(const float* windowData, int lowerFreq, int upperFreq, int windowSize = WINDOW_SIZE)
 {
     if (lowerFreq < 0 || upperFreq > SAMPLE_RATE >> 1 || lowerFreq > upperFreq) {
         return -1;
     }
 
-    float freqWidth     = (float)WINDOW_SIZE / (float)SAMPLE_RATE;
+    float freqWidth     = (float)windowSize / (float)SAMPLE_RATE;
     int   lowerBinBound = round(lowerFreq * freqWidth);
     int   upperBinBound = round(upperFreq * freqWidth);
 
@@ -42,13 +42,13 @@ inline float sum(const float* windowData, int lowerFreq, int upperFreq)
  * @param lowerFreq The lower frequency bound to analyze
  * @param upperFreq The upper frequency bound to analyze
  */
-inline float mean(const float* windowData, int lowerFreq, int upperFreq)
+inline float mean(const float* windowData, int lowerFreq, int upperFreq, int windowSize = WINDOW_SIZE)
 {
     if (lowerFreq < 0 || upperFreq > SAMPLE_RATE >> 1 || lowerFreq > upperFreq) {
         return -1;
     }
 
-    float freqWidth     = (float)WINDOW_SIZE / (float)SAMPLE_RATE;
+    float freqWidth     = (float)windowSize / (float)SAMPLE_RATE;
     int   lowerBinBound = round(lowerFreq * freqWidth);
     int   upperBinBound = round(upperFreq * freqWidth);
 
@@ -63,13 +63,13 @@ inline float mean(const float* windowData, int lowerFreq, int upperFreq)
  * @param lowerFreq The lower frequency bound to analyze
  * @param upperFreq The upper frequency bound to analyze
  */
-inline float max(const float* windowData, int lowerFreq, int upperFreq)
+inline float max(const float* windowData, int lowerFreq, int upperFreq, int windowSize = WINDOW_SIZE)
 {
     if (lowerFreq < 0 || upperFreq > SAMPLE_RATE >> 1 || lowerFreq > upperFreq) {
         return -1;
     }
 
-    float freqWidth     = (float)WINDOW_SIZE / (float)SAMPLE_RATE;
+    float freqWidth     = (float)windowSize / (float)SAMPLE_RATE;
     int   lowerBinBound = round(lowerFreq * freqWidth);
     int   upperBinBound = round(upperFreq * freqWidth);
 
@@ -91,13 +91,13 @@ inline float max(const float* windowData, int lowerFreq, int upperFreq)
  * @param lowerFreq The lower frequency bound to analyze
  * @param upperFreq The upper frequency bound to analyze
  */
-inline float energy(const float* windowData, int lowerFreq, int upperFreq)
+inline float energy(const float* windowData, int lowerFreq, int upperFreq, int windowSize = WINDOW_SIZE)
 {
     if (lowerFreq < 0 || upperFreq > SAMPLE_RATE >> 1 || lowerFreq > upperFreq) {
         return -1;
     }
 
-    float freqWidth     = (float)WINDOW_SIZE / (float)SAMPLE_RATE;
+    float freqWidth     = (float)windowSize / (float)SAMPLE_RATE;
     int   lowerBinBound = round(lowerFreq * freqWidth);
     int   upperBinBound = round(upperFreq * freqWidth);
 
@@ -126,13 +126,13 @@ inline float energy(const float* windowData, int lowerFreq, int upperFreq)
  * @param lowerFreq The lower frequency bound to analyze
  * @param upperFreq The upper frequency bound to analyze
  */
-inline float entropy(const float* windowData, int lowerFreq, int upperFreq)
+inline float entropy(const float* windowData, int lowerFreq, int upperFreq, int windowSize = WINDOW_SIZE)
 {
     if (lowerFreq < 0 || upperFreq > SAMPLE_RATE >> 1 || lowerFreq > upperFreq) {
         return -1;
     }
 
-    float freqWidth     = (float)WINDOW_SIZE / (float)SAMPLE_RATE;
+    float freqWidth     = (float)windowSize / (float)SAMPLE_RATE;
     int   lowerBinBound = round(lowerFreq * freqWidth);
     int   upperBinBound = round(upperFreq * freqWidth);
 
@@ -191,13 +191,13 @@ inline float entropy(const float* windowData, int lowerFreq, int upperFreq)
  * @param upperFreq The upper frequency bound to analyze
  */
 inline float flux(const float* currWindow, const float* prevWindow,
-    int lowerFreq, int upperFreq)
+    int lowerFreq, int upperFreq, int windowSize = WINDOW_SIZE)
 {
     if (lowerFreq < 0 || upperFreq > SAMPLE_RATE >> 1 || lowerFreq > upperFreq) {
         return -1;
     }
 
-    float freqWidth     = (float)WINDOW_SIZE / (float)SAMPLE_RATE;
+    float freqWidth     = (float)windowSize / (float)SAMPLE_RATE;
     int   lowerBinBound = round(lowerFreq * freqWidth);
     int   upperBinBound = round(upperFreq * freqWidth);
 
@@ -223,13 +223,13 @@ inline float flux(const float* currWindow, const float* prevWindow,
  * @param upperFreq The upper frequency bound to analyze
  */
 inline float positive_flux(const float* currWindow, const float* prevWindow,
-    int lowerFreq, int upperFreq)
+    int lowerFreq, int upperFreq, int windowSize = WINDOW_SIZE)
 {
     if (lowerFreq < 0 || upperFreq > SAMPLE_RATE >> 1 || lowerFreq > upperFreq) {
         return -1;
     }
 
-    float freqWidth     = (float)WINDOW_SIZE / (float)SAMPLE_RATE;
+    float freqWidth     = (float)windowSize / (float)SAMPLE_RATE;
     int   lowerBinBound = round(lowerFreq * freqWidth);
     int   upperBinBound = round(upperFreq * freqWidth);
 
@@ -258,13 +258,13 @@ inline float positive_flux(const float* currWindow, const float* prevWindow,
  * @param upperFreq The upper frequency bound to analyze
  */
 inline float negative_flux(const float* currWindow, const float* prevWindow,
-    int lowerFreq, int upperFreq)
+    int lowerFreq, int upperFreq, int windowSize = WINDOW_SIZE)
 {
     if (lowerFreq < 0 || upperFreq > SAMPLE_RATE >> 1 || lowerFreq > upperFreq) {
         return -1;
     }
 
-    float freqWidth     = (float)WINDOW_SIZE / (float)SAMPLE_RATE;
+    float freqWidth     = (float)windowSize / (float)SAMPLE_RATE;
     int   lowerBinBound = round(lowerFreq * freqWidth);
     int   upperBinBound = round(upperFreq * freqWidth);
 
@@ -293,9 +293,9 @@ inline float negative_flux(const float* currWindow, const float* prevWindow,
  * smooth over real data instead of the continuously smoothed data
  */
 inline void smooth_window_over_time(const float* windowData, float* smoothedData,
-    float smoothingFactor = 0.05)
+    float smoothingFactor = 0.05, int windowSize = WINDOW_SIZE)
 {
-    for (int i = 0; i < (WINDOW_SIZE >> 1); ++i) {
+    for (int i = 0; i < (windowSize >> 1); ++i) {
         float new_weight = smoothingFactor * windowData[i];
         float old_weight = (1 - smoothingFactor) * smoothedData[i];
         smoothedData[i]  = new_weight + old_weight;
